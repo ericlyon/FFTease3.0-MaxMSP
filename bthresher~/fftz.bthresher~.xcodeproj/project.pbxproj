@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		071B965D1784B689004A6928 /* fftease.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B965C1784B689004A6928 /* fftease.h */; };
 		0784AE1E177EDFEA0048E946 /* bthresher~.c in Sources */ = {isa = PBXBuildFile; fileRef = 0784AE1D177EDFEA0048E946 /* bthresher~.c */; };
 		07BFBB0D186BD9F600AE8057 /* legacy.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBAF9186BD9F600AE8057 /* legacy.c */; };
 		07BFBB0E186BD9F600AE8057 /* fftease_utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBAFA186BD9F600AE8057 /* fftease_utilities.c */; };
@@ -29,12 +28,12 @@
 		07BFBB1E186BD9F600AE8057 /* PenroseRand.h in Headers */ = {isa = PBXBuildFile; fileRef = 07BFBB0A186BD9F600AE8057 /* PenroseRand.h */; };
 		07BFBB1F186BD9F600AE8057 /* qsortE.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBB0B186BD9F600AE8057 /* qsortE.c */; };
 		07BFBB20186BD9F600AE8057 /* unconvert.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBB0C186BD9F600AE8057 /* unconvert.c */; };
+		07D994161B10C7BD0064B3D7 /* fftease.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D994151B10C7BD0064B3D7 /* fftease.h */; };
 		22922AD30F38D67900B1EFEA /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 22922AD20F38D67900B1EFEA /* commonsyms.c */; };
 		22CF116E0EE9A7700054F513 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CF116D0EE9A7700054F513 /* MaxAudioAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		071B965C1784B689004A6928 /* fftease.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fftease.h; path = ../../fftease.h; sourceTree = "<group>"; };
 		0784AE1D177EDFEA0048E946 /* bthresher~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "bthresher~.c"; sourceTree = "<group>"; };
 		07BFBAF9186BD9F600AE8057 /* legacy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = legacy.c; path = ../libfftease/legacy.c; sourceTree = "<group>"; };
 		07BFBAFA186BD9F600AE8057 /* fftease_utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fftease_utilities.c; path = ../libfftease/fftease_utilities.c; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		07BFBB0A186BD9F600AE8057 /* PenroseRand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PenroseRand.h; path = ../libfftease/PenroseRand.h; sourceTree = "<group>"; };
 		07BFBB0B186BD9F600AE8057 /* qsortE.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qsortE.c; path = ../libfftease/qsortE.c; sourceTree = "<group>"; };
 		07BFBB0C186BD9F600AE8057 /* unconvert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unconvert.c; path = ../libfftease/unconvert.c; sourceTree = "<group>"; };
+		07D994151B10C7BD0064B3D7 /* fftease.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fftease.h; path = ../libfftease/fftease.h; sourceTree = "<group>"; };
 		22922AD20F38D67900B1EFEA /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../../../c74support/max-includes/common/commonsyms.c"; sourceTree = SOURCE_ROOT; };
 		22CF10220EE984600054F513 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
 		22CF116D0EE9A7700054F513 /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../../../c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = SOURCE_ROOT; };
@@ -79,7 +79,7 @@
 			children = (
 				22CF10220EE984600054F513 /* maxmspsdk.xcconfig */,
 				22922AD20F38D67900B1EFEA /* commonsyms.c */,
-				071B965C1784B689004A6928 /* fftease.h */,
+				07D994151B10C7BD0064B3D7 /* fftease.h */,
 				0784AE1D177EDFEA0048E946 /* bthresher~.c */,
 				07BFBAF9186BD9F600AE8057 /* legacy.c */,
 				07BFBAFA186BD9F600AE8057 /* fftease_utilities.c */,
@@ -123,8 +123,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				07BFBB13186BD9F600AE8057 /* PenroseOscil.h in Headers */,
+				07D994161B10C7BD0064B3D7 /* fftease.h in Headers */,
 				07BFBB1E186BD9F600AE8057 /* PenroseRand.h in Headers */,
-				071B965D1784B689004A6928 /* fftease.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
