@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		071B965D1784B689004A6928 /* fftease.h in Headers */ = {isa = PBXBuildFile; fileRef = 071B965C1784B689004A6928 /* fftease.h */; };
 		071B968C17882552004A6928 /* morphine~.c in Sources */ = {isa = PBXBuildFile; fileRef = 071B968A17882552004A6928 /* morphine~.c */; };
+		0724945B1B10CE6C0045E556 /* fftease.h in Headers */ = {isa = PBXBuildFile; fileRef = 0724945A1B10CE6C0045E556 /* fftease.h */; };
 		07BFBD41186C8EFE00AE8057 /* legacy.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBD2D186C8EFE00AE8057 /* legacy.c */; };
 		07BFBD42186C8EFE00AE8057 /* fftease_utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBD2E186C8EFE00AE8057 /* fftease_utilities.c */; };
 		07BFBD43186C8EFE00AE8057 /* makewindows.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBD2F186C8EFE00AE8057 /* makewindows.c */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		071B965C1784B689004A6928 /* fftease.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fftease.h; path = ../../fftease.h; sourceTree = "<group>"; };
 		071B968A17882552004A6928 /* morphine~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "morphine~.c"; sourceTree = "<group>"; };
+		0724945A1B10CE6C0045E556 /* fftease.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fftease.h; path = ../libfftease/fftease.h; sourceTree = "<group>"; };
 		07BFBD2D186C8EFE00AE8057 /* legacy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = legacy.c; path = ../libfftease/legacy.c; sourceTree = "<group>"; };
 		07BFBD2E186C8EFE00AE8057 /* fftease_utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fftease_utilities.c; path = ../libfftease/fftease_utilities.c; sourceTree = "<group>"; };
 		07BFBD2F186C8EFE00AE8057 /* makewindows.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = makewindows.c; path = ../libfftease/makewindows.c; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				22922AD20F38D67900B1EFEA /* commonsyms.c */,
 				071B968A17882552004A6928 /* morphine~.c */,
 				071B965C1784B689004A6928 /* fftease.h */,
+				0724945A1B10CE6C0045E556 /* fftease.h */,
 				07BFBD2D186C8EFE00AE8057 /* legacy.c */,
 				07BFBD2E186C8EFE00AE8057 /* fftease_utilities.c */,
 				07BFBD2F186C8EFE00AE8057 /* makewindows.c */,
@@ -123,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07BFBD47186C8EFE00AE8057 /* PenroseOscil.h in Headers */,
+				0724945B1B10CE6C0045E556 /* fftease.h in Headers */,
 				07BFBD52186C8EFE00AE8057 /* PenroseRand.h in Headers */,
 				071B965D1784B689004A6928 /* fftease.h in Headers */,
 			);
