@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>F8DE4DC4-7B1C-4391-9258-D3D04F2802BC</string>
 	<key>IDESourceControlProjectName</key>
-	<string>fftz.morphine~</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A941D06785BDF3F5EFF33A464F2117A8767DEEFF</key>
 		<string>https://github.com/ericlyon/FFTease3.0-MaxMSP.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>morphine~/fftz.morphine~.xcodeproj</string>
+	<string>morphine~/fftz.morphine~.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A941D06785BDF3F5EFF33A464F2117A8767DEEFF</key>
