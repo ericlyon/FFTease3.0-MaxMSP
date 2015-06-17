@@ -14,7 +14,7 @@
 		<string>https://github.com/ericlyon/FFTease3.0-MaxMSP.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>FFTease3.0_Code/bthresher~/fftz.bthresher~.xcodeproj</string>
+	<string>Projects/bthresher~/fftz.bthresher~.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A941D06785BDF3F5EFF33A464F2117A8767DEEFF</key>
