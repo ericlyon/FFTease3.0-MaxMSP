@@ -17,6 +17,9 @@
 
 #define fftease_version(objectname) post("%s: version %s compiled %s",objectname,FFTEASE_VERSION,FFTEASE_COMPILE_DATE);
 
+#define MAX_N (1073741824)
+#define MAX_N2 (MAX_N/2)
+#define MAX_Nw (MAX_N*4)
 
 #ifndef PI
 #define PI 3.141592653589793115997963468544185161590576171875

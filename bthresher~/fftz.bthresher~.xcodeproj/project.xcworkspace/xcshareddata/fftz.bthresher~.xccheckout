@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>72ABDBB9-3E89-475A-9A10-D9790B2E735F</string>
 	<key>IDESourceControlProjectName</key>
-	<string>fftz.bthresher~</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A941D06785BDF3F5EFF33A464F2117A8767DEEFF</key>
 		<string>https://github.com/ericlyon/FFTease3.0-MaxMSP.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>bthresher~/fftz.bthresher~.xcodeproj</string>
+	<string>bthresher~/fftz.bthresher~.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A941D06785BDF3F5EFF33A464F2117A8767DEEFF</key>
