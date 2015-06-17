@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		071B967B178737CC004A6928 /* dentist~.c in Sources */ = {isa = PBXBuildFile; fileRef = 071B967A178737CC004A6928 /* dentist~.c */; };
+		0738093E1B31ABA000E08A32 /* fftease.h in Headers */ = {isa = PBXBuildFile; fileRef = 0738093D1B31ABA000E08A32 /* fftease.h */; };
+		07BFBC01186C8C3B00AE8057 /* legacy.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBED186C8C3B00AE8057 /* legacy.c */; };
+		07BFBC02186C8C3B00AE8057 /* fftease_utilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBEE186C8C3B00AE8057 /* fftease_utilities.c */; };
+		07BFBC03186C8C3B00AE8057 /* makewindows.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBEF186C8C3B00AE8057 /* makewindows.c */; };
+		07BFBC04186C8C3B00AE8057 /* overlapadd.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBF0186C8C3B00AE8057 /* overlapadd.c */; };
+		07BFBC05186C8C3B00AE8057 /* PenroseOscil.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBF1186C8C3B00AE8057 /* PenroseOscil.c */; };
+		07BFBC06186C8C3B00AE8057 /* convert.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBF2186C8C3B00AE8057 /* convert.c */; };
+		07BFBC07186C8C3B00AE8057 /* PenroseOscil.h in Headers */ = {isa = PBXBuildFile; fileRef = 07BFBBF3186C8C3B00AE8057 /* PenroseOscil.h */; };
+		07BFBC08186C8C3B00AE8057 /* bloscbank.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBF4186C8C3B00AE8057 /* bloscbank.c */; };
+		07BFBC09186C8C3B00AE8057 /* PenroseRand.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBF5186C8C3B00AE8057 /* PenroseRand.c */; };
+		07BFBC0A186C8C3B00AE8057 /* fft.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBF6186C8C3B00AE8057 /* fft.c */; };
+		07BFBC0B186C8C3B00AE8057 /* fft4.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBF7186C8C3B00AE8057 /* fft4.c */; };
+		07BFBC0C186C8C3B00AE8057 /* oscbank.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBF8186C8C3B00AE8057 /* oscbank.c */; };
+		07BFBC0D186C8C3B00AE8057 /* limited_oscbank.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBF9186C8C3B00AE8057 /* limited_oscbank.c */; };
+		07BFBC0E186C8C3B00AE8057 /* fftease_setup.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBFA186C8C3B00AE8057 /* fftease_setup.c */; };
+		07BFBC0F186C8C3B00AE8057 /* fold.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBFB186C8C3B00AE8057 /* fold.c */; };
+		07BFBC10186C8C3B00AE8057 /* leanconvert.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBFC186C8C3B00AE8057 /* leanconvert.c */; };
+		07BFBC11186C8C3B00AE8057 /* leanunconvert.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBFD186C8C3B00AE8057 /* leanunconvert.c */; };
+		07BFBC12186C8C3B00AE8057 /* PenroseRand.h in Headers */ = {isa = PBXBuildFile; fileRef = 07BFBBFE186C8C3B00AE8057 /* PenroseRand.h */; };
+		07BFBC13186C8C3B00AE8057 /* qsortE.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBBFF186C8C3B00AE8057 /* qsortE.c */; };
+		07BFBC14186C8C3B00AE8057 /* unconvert.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBC00186C8C3B00AE8057 /* unconvert.c */; };
+		22922AD30F38D67900B1EFEA /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 22922AD20F38D67900B1EFEA /* commonsyms.c */; };
+		22CF116E0EE9A7700054F513 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CF116D0EE9A7700054F513 /* MaxAudioAPI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		071B967A178737CC004A6928 /* dentist~.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "dentist~.c"; sourceTree = "<group>"; };
+		0738093D1B31ABA000E08A32 /* fftease.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fftease.h; path = ../libfftease/fftease.h; sourceTree = "<group>"; };
+		07BFBBED186C8C3B00AE8057 /* legacy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = legacy.c; path = ../libfftease/legacy.c; sourceTree = "<group>"; };
+		07BFBBEE186C8C3B00AE8057 /* fftease_utilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fftease_utilities.c; path = ../libfftease/fftease_utilities.c; sourceTree = "<group>"; };
+		07BFBBEF186C8C3B00AE8057 /* makewindows.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = makewindows.c; path = ../libfftease/makewindows.c; sourceTree = "<group>"; };
+		07BFBBF0186C8C3B00AE8057 /* overlapadd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = overlapadd.c; path = ../libfftease/overlapadd.c; sourceTree = "<group>"; };
+		07BFBBF1186C8C3B00AE8057 /* PenroseOscil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = PenroseOscil.c; path = ../libfftease/PenroseOscil.c; sourceTree = "<group>"; };
+		07BFBBF2186C8C3B00AE8057 /* convert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = convert.c; path = ../libfftease/convert.c; sourceTree = "<group>"; };
+		07BFBBF3186C8C3B00AE8057 /* PenroseOscil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PenroseOscil.h; path = ../libfftease/PenroseOscil.h; sourceTree = "<group>"; };
+		07BFBBF4186C8C3B00AE8057 /* bloscbank.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bloscbank.c; path = ../libfftease/bloscbank.c; sourceTree = "<group>"; };
+		07BFBBF5186C8C3B00AE8057 /* PenroseRand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = PenroseRand.c; path = ../libfftease/PenroseRand.c; sourceTree = "<group>"; };
+		07BFBBF6186C8C3B00AE8057 /* fft.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fft.c; path = ../libfftease/fft.c; sourceTree = "<group>"; };
+		07BFBBF7186C8C3B00AE8057 /* fft4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fft4.c; path = ../libfftease/fft4.c; sourceTree = "<group>"; };
+		07BFBBF8186C8C3B00AE8057 /* oscbank.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = oscbank.c; path = ../libfftease/oscbank.c; sourceTree = "<group>"; };
+		07BFBBF9186C8C3B00AE8057 /* limited_oscbank.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = limited_oscbank.c; path = ../libfftease/limited_oscbank.c; sourceTree = "<group>"; };
+		07BFBBFA186C8C3B00AE8057 /* fftease_setup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fftease_setup.c; path = ../libfftease/fftease_setup.c; sourceTree = "<group>"; };
+		07BFBBFB186C8C3B00AE8057 /* fold.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fold.c; path = ../libfftease/fold.c; sourceTree = "<group>"; };
+		07BFBBFC186C8C3B00AE8057 /* leanconvert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = leanconvert.c; path = ../libfftease/leanconvert.c; sourceTree = "<group>"; };
+		07BFBBFD186C8C3B00AE8057 /* leanunconvert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = leanunconvert.c; path = ../libfftease/leanunconvert.c; sourceTree = "<group>"; };
+		07BFBBFE186C8C3B00AE8057 /* PenroseRand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PenroseRand.h; path = ../libfftease/PenroseRand.h; sourceTree = "<group>"; };
+		07BFBBFF186C8C3B00AE8057 /* qsortE.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qsortE.c; path = ../libfftease/qsortE.c; sourceTree = "<group>"; };
+		07BFBC00186C8C3B00AE8057 /* unconvert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unconvert.c; path = ../libfftease/unconvert.c; sourceTree = "<group>"; };
+		22922AD20F38D67900B1EFEA /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../../../c74support/max-includes/common/commonsyms.c"; sourceTree = SOURCE_ROOT; };
+		22CF10220EE984600054F513 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
+		22CF116D0EE9A7700054F513 /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../../../c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = SOURCE_ROOT; };
+		2FBBEAE508F335360078DB84 /* fftz.dentist~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fftz.dentist~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2FBBEADC08F335360078DB84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22CF116E0EE9A7700054F513 /* MaxAudioAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* iterator */ = {
+			isa = PBXGroup;
+			children = (
+				22CF10220EE984600054F513 /* maxmspsdk.xcconfig */,
+				0738093D1B31ABA000E08A32 /* fftease.h */,
+				22922AD20F38D67900B1EFEA /* commonsyms.c */,
+				071B967A178737CC004A6928 /* dentist~.c */,
+				07BFBBED186C8C3B00AE8057 /* legacy.c */,
+				07BFBBEE186C8C3B00AE8057 /* fftease_utilities.c */,
+				07BFBBEF186C8C3B00AE8057 /* makewindows.c */,
+				07BFBBF0186C8C3B00AE8057 /* overlapadd.c */,
+				07BFBBF1186C8C3B00AE8057 /* PenroseOscil.c */,
+				07BFBBF2186C8C3B00AE8057 /* convert.c */,
+				07BFBBF3186C8C3B00AE8057 /* PenroseOscil.h */,
+				07BFBBF4186C8C3B00AE8057 /* bloscbank.c */,
+				07BFBBF5186C8C3B00AE8057 /* PenroseRand.c */,
+				07BFBBF6186C8C3B00AE8057 /* fft.c */,
+				07BFBBF7186C8C3B00AE8057 /* fft4.c */,
+				07BFBBF8186C8C3B00AE8057 /* oscbank.c */,
+				07BFBBF9186C8C3B00AE8057 /* limited_oscbank.c */,
+				07BFBBFA186C8C3B00AE8057 /* fftease_setup.c */,
+				07BFBBFB186C8C3B00AE8057 /* fold.c */,
+				07BFBBFC186C8C3B00AE8057 /* leanconvert.c */,
+				07BFBBFD186C8C3B00AE8057 /* leanunconvert.c */,
+				07BFBBFE186C8C3B00AE8057 /* PenroseRand.h */,
+				07BFBBFF186C8C3B00AE8057 /* qsortE.c */,
+				07BFBC00186C8C3B00AE8057 /* unconvert.c */,
+				22CF116D0EE9A7700054F513 /* MaxAudioAPI.framework */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = iterator;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2FBBEAE508F335360078DB84 /* fftz.dentist~.mxo */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2FBBEAD708F335360078DB84 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0738093E1B31ABA000E08A32 /* fftease.h in Headers */,
+				07BFBC07186C8C3B00AE8057 /* PenroseOscil.h in Headers */,
+				07BFBC12186C8C3B00AE8057 /* PenroseRand.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2FBBEAD608F335360078DB84 /* max-external */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "max-external" */;
+			buildPhases = (
+				2FBBEAD708F335360078DB84 /* Headers */,
+				2FBBEAD808F335360078DB84 /* Resources */,
+				2FBBEADA08F335360078DB84 /* Sources */,
+				2FBBEADC08F335360078DB84 /* Frameworks */,
+				2FBBEADF08F335360078DB84 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "max-external";
+			productName = iterator;
+			productReference = 2FBBEAE508F335360078DB84 /* fftz.dentist~.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+			};
+			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "fftz.dentist~" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* iterator */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2FBBEAD608F335360078DB84 /* max-external */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2FBBEAD808F335360078DB84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		2FBBEADF08F335360078DB84 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FBBEADA08F335360078DB84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07BFBC0A186C8C3B00AE8057 /* fft.c in Sources */,
+				22922AD30F38D67900B1EFEA /* commonsyms.c in Sources */,
+				07BFBC04186C8C3B00AE8057 /* overlapadd.c in Sources */,
+				07BFBC08186C8C3B00AE8057 /* bloscbank.c in Sources */,
+				07BFBC14186C8C3B00AE8057 /* unconvert.c in Sources */,
+				07BFBC10186C8C3B00AE8057 /* leanconvert.c in Sources */,
+				07BFBC0D186C8C3B00AE8057 /* limited_oscbank.c in Sources */,
+				07BFBC05186C8C3B00AE8057 /* PenroseOscil.c in Sources */,
+				07BFBC0C186C8C3B00AE8057 /* oscbank.c in Sources */,
+				07BFBC06186C8C3B00AE8057 /* convert.c in Sources */,
+				07BFBC02186C8C3B00AE8057 /* fftease_utilities.c in Sources */,
+				07BFBC11186C8C3B00AE8057 /* leanunconvert.c in Sources */,
+				07BFBC01186C8C3B00AE8057 /* legacy.c in Sources */,
+				07BFBC13186C8C3B00AE8057 /* qsortE.c in Sources */,
+				07BFBC09186C8C3B00AE8057 /* PenroseRand.c in Sources */,
+				071B967B178737CC004A6928 /* dentist~.c in Sources */,
+				07BFBC0F186C8C3B00AE8057 /* fold.c in Sources */,
+				07BFBC0E186C8C3B00AE8057 /* fftease_setup.c in Sources */,
+				07BFBC03186C8C3B00AE8057 /* makewindows.c in Sources */,
+				07BFBC0B186C8C3B00AE8057 /* fft4.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2FBBEAD008F335010078DB84 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+			};
+			name = Development;
+		};
+		2FBBEAD108F335010078DB84 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+			};
+			name = Deployment;
+		};
+		2FBBEAE108F335360078DB84 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22CF10220EE984600054F513 /* maxmspsdk.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../c74support/msp-includes\"",
+				);
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../..\"",
+				);
+				OTHER_LDFLAGS = "$(C74_SYM_LINKER_FLAGS)";
+				PRODUCT_NAME = "fftz.dentist~";
+			};
+			name = Development;
+		};
+		2FBBEAE208F335360078DB84 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22CF10220EE984600054F513 /* maxmspsdk.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../c74support/msp-includes\"",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../..\"",
+				);
+				OTHER_LDFLAGS = "$(C74_SYM_LINKER_FLAGS)";
+				PRODUCT_NAME = "fftz.dentist~";
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "fftz.dentist~" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FBBEAD008F335010078DB84 /* Development */,
+				2FBBEAD108F335010078DB84 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+		2FBBEAE008F335360078DB84 /* Build configuration list for PBXNativeTarget "max-external" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FBBEAE108F335360078DB84 /* Development */,
+				2FBBEAE208F335360078DB84 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}
