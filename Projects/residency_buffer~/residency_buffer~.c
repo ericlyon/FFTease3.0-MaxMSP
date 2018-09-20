@@ -67,6 +67,9 @@ void resident_dsp64(t_resident *x, t_object *dsp64, short *count, double sampler
 void resident_perform64(t_resident *x, t_object *dsp64, double **ins,
                     long numins, double **outs,long numouts, long vectorsize,
                     long flags, void *userparam);
+t_max_err resident_notify(t_resident *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
+
+
 int C74_EXPORT main(void)
 {
 	t_class *c;
@@ -75,6 +78,7 @@ int C74_EXPORT main(void)
 	
 	class_addmethod(c,(method)resident_dsp64, "dsp64", A_CANT, 0);
 	class_addmethod(c,(method)resident_assist,"assist",A_CANT,0);
+    class_addmethod(c,(method)resident_notify,"notify",A_CANT,0);
 	class_addmethod(c,(method)resident_mute, "mute", A_LONG, 0);
 	class_addmethod(c,(method)resident_meminfo, "meminfo", 0);
 	class_addmethod(c,(method)resident_calcbuf, "calcbuf", A_FLOAT, 0);
@@ -661,4 +665,7 @@ void resident_dsp64(t_resident *x, t_object *dsp64, short *count, double sampler
         object_method(dsp64, gensym("dsp_add64"),x,resident_perform64,0,NULL);
 }
 
-
+t_max_err resident_notify(t_resident *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
+{
+    return buffer_ref_notify(x->resbuf_ref, s, msg, sender, data);
+}

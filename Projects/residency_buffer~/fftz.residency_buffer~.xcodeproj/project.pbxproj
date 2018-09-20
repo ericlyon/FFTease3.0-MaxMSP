@@ -29,8 +29,8 @@
 		07BFBF32186C91DE00AE8057 /* PenroseRand.h in Headers */ = {isa = PBXBuildFile; fileRef = 07BFBF1E186C91DE00AE8057 /* PenroseRand.h */; };
 		07BFBF33186C91DE00AE8057 /* qsortE.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBF1F186C91DE00AE8057 /* qsortE.c */; };
 		07BFBF34186C91DE00AE8057 /* unconvert.c in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBF20186C91DE00AE8057 /* unconvert.c */; };
-		22922AD30F38D67900B1EFEA /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 22922AD20F38D67900B1EFEA /* commonsyms.c */; };
 		22CF116E0EE9A7700054F513 /* MaxAudioAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CF116D0EE9A7700054F513 /* MaxAudioAPI.framework */; };
+		6CFD9C2A215338C300BC34D5 /* commonsyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 6CFD9C29215338C300BC34D5 /* commonsyms.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,10 +56,10 @@
 		07BFBF1E186C91DE00AE8057 /* PenroseRand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PenroseRand.h; path = ../libfftease/PenroseRand.h; sourceTree = "<group>"; };
 		07BFBF1F186C91DE00AE8057 /* qsortE.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qsortE.c; path = ../libfftease/qsortE.c; sourceTree = "<group>"; };
 		07BFBF20186C91DE00AE8057 /* unconvert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unconvert.c; path = ../libfftease/unconvert.c; sourceTree = "<group>"; };
-		22922AD20F38D67900B1EFEA /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../../../c74support/max-includes/common/commonsyms.c"; sourceTree = SOURCE_ROOT; };
 		22CF10220EE984600054F513 /* maxmspsdk.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = maxmspsdk.xcconfig; path = ../../maxmspsdk.xcconfig; sourceTree = SOURCE_ROOT; };
 		22CF116D0EE9A7700054F513 /* MaxAudioAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxAudioAPI.framework; path = "../../../c74support/msp-includes/MaxAudioAPI.framework"; sourceTree = SOURCE_ROOT; };
 		2FBBEAE508F335360078DB84 /* fftz.residency_buffer~.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fftz.residency_buffer~.mxo"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CFD9C29215338C300BC34D5 /* commonsyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = commonsyms.c; path = "../../../c74support/max-includes/common/commonsyms.c"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +77,9 @@
 		089C166AFE841209C02AAC07 /* iterator */ = {
 			isa = PBXGroup;
 			children = (
+				6CFD9C29215338C300BC34D5 /* commonsyms.c */,
 				22CF10220EE984600054F513 /* maxmspsdk.xcconfig */,
 				073809631B31B0D900E08A32 /* fftease.h */,
-				22922AD20F38D67900B1EFEA /* commonsyms.c */,
 				071B969C1788C222004A6928 /* residency_buffer~.c */,
 				07BFBF0D186C91DE00AE8057 /* legacy.c */,
 				07BFBF0E186C91DE00AE8057 /* fftease_utilities.c */,
@@ -156,7 +156,7 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0730;
 			};
 			buildConfigurationList = 2FBBEACF08F335010078DB84 /* Build configuration list for PBXProject "fftz.residency_buffer~" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -200,12 +200,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				07BFBF2A186C91DE00AE8057 /* fft.c in Sources */,
-				22922AD30F38D67900B1EFEA /* commonsyms.c in Sources */,
 				07BFBF24186C91DE00AE8057 /* overlapadd.c in Sources */,
 				07BFBF28186C91DE00AE8057 /* bloscbank.c in Sources */,
 				07BFBF34186C91DE00AE8057 /* unconvert.c in Sources */,
 				07BFBF30186C91DE00AE8057 /* leanconvert.c in Sources */,
 				07BFBF2D186C91DE00AE8057 /* limited_oscbank.c in Sources */,
+				6CFD9C2A215338C300BC34D5 /* commonsyms.c in Sources */,
 				07BFBF25186C91DE00AE8057 /* PenroseOscil.c in Sources */,
 				07BFBF2C186C91DE00AE8057 /* oscbank.c in Sources */,
 				07BFBF26186C91DE00AE8057 /* convert.c in Sources */,
@@ -228,7 +228,9 @@
 		2FBBEAD008F335010078DB84 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Development;
 		};
