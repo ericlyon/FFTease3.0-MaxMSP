@@ -1,0 +1,25 @@
+{
+    "name": "FFTease",
+	"author" : "Eric Lyon and Christopher Penrose",
+	"description" : "A collection of externals that process audio in the spectral domain",
+	"homepatcher" : "FFTease.maxpat",
+	"max_version_min" : "8.0", "max_version_max" : "none",
+	"name" : "@C74_PACKAGE_NAME@",
+	"os" : {
+		"macintosh" : {
+			"platform" : [ "x64", "aarch64" ],
+			"min_version" : "none"
+		},
+		"windows" : {
+			"platform" : [ "x64" ],
+			"min_version" : "none"
+		}
+	},
+	"package_extra" : {
+		"reverse_domain" : "edu.vt.music.disis",
+		"copyright" : "Copyright (c) 1999-2022 Eric Lyon and Christopher Penrose"
+	},
+	"tags" : ["spectral", "analysis"],
+	"version" : "@GIT_VERSION_MAJ@.@GIT_VERSION_MIN@.@GIT_VERSION_SUB@",
+	"website" : "http://disis.music.vt.edu/eric/main/fftease/"
+}
