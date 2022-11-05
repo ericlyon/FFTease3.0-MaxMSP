@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.disarray~">
+	<digest>
+		Spectrum scrambler
+	</digest>
+	<description>
+fftz.disarray~ reorders a certain number of bins, which can significantly transform the timbre.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+		<outlet id="1" name="OUTLET_NAME">
+			<digest>
+				(signal) sync
+			</digest>
+		</outlet>
+		<outlet id="2" name="OUTLET_NAME">
+			<digest>
+				(list) current pattern
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="bang">
+			<description>
+				Initiates new scramble
+			</description>
+		</method>
+
+
+		<method name="fftinfo">
+			<description>
+				Print FFT information to Max window
+			</description>
+		</method>
+
+
+		<method name="mute">
+			<arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Non-zero flag mutes the object
+			</description>
+		</method>
+
+        <method name="reset_shuffle">
+            <description>
+                Initiates new scramble (same as bang)
+            </description>
+        </method>
+
+		<method name="setstate">
+			<arglist>
+                <arg name="pattern" type="list" optional="0" id="0" />
+            </arglist>
+			<description>
+				Immediately set list pattern for current spectrum
+			</description>
+		</method>
+        
+		<method name="showstate">
+			<description>
+				Sends current filter to third outlet as a list
+			</description>
+		</method>
+        
+		<method name="switch_count">
+			<arglist>
+                <arg name="flag" type="int" optional="0" id="0" />
+            </arglist>
+			<description>
+				Number of bins to scramble
+			</description>
+		</method>
+
+<method name="topfreq">
+    <arglist>
+        <arg name="flag" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        The highest frequency from which to switch bins
+    </description>
+</method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="fftz.disarrain~" />
+	</seealsolist>
+
+</c74object>

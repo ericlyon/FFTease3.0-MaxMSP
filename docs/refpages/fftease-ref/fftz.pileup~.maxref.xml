@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="pileup~">
+	<digest>
+		Spectral persistence
+	</digest>
+	<description>
+pileup~ maintains amplitude/phase information in bins (with possible damping) until new information comes in above a given threshold. This is useful for various reverberant effects.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="clear">
+			<description>
+				Zero out all accumulated bin energy
+			</description>
+		</method>
+
+        <method name="fftinfo">
+            <description>
+                Print FFT information to Max window
+            </description>
+        </method>
+
+        <method name="hifreq">
+            <arglist>
+                <arg name="frequency" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Set highest frequency to synthesize (oscillator bank only)
+            </description>
+        </method>
+
+        <method name="inverse_gain">
+            <arglist>
+                <arg name="gain" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Set gain for inverse mode
+            </description>
+        </method>
+
+        <method name="lowfreq">
+            <arglist>
+                <arg name="frequency" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Set lowest frequency to synthesize (oscillator bank only)
+            </description>
+        </method>
+
+        <method name="performance mode">
+            <arglist>
+                <arg name="mode" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                0 - keeps amplitude and phase;
+                1 - keeps just amplitude;
+                2 - inverse mode.
+            </description>
+        </method>
+
+
+ 
+		<method name="mute">
+			<arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Non-zero flag mutes the object
+			</description>
+		</method>
+        
+		<method name="oscbank">
+			<arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Non-zero flag switches to oscillator bank resynthesis
+			</description>
+		</method>
+
+        <method name="persistence">
+            <arglist>
+                <arg name="damping factor" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Damping factor for persisting bins
+            </description>
+        </method>
+
+        <method name="synthresh">
+            <arglist>
+                <arg name="threshold" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Synthesis threshold factor (oscillator bank only)
+            </description>
+        </method>
+
+        <method name="transpose">
+            <arglist>
+                <arg name="factor" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Transposition factor (oscillator bank only)
+            </description>
+        </method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+        
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+  
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<seealsolist>
+        <seealso name="fftz.bthresher~" />
+		<seealso name="fftz.thresher~" />
+	</seealsolist>
+
+</c74object>

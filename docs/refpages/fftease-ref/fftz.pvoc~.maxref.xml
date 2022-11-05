@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.pvoc~">
+	<digest>
+		Phase vocoder
+	</digest>
+	<description>
+pvoc~ performs phase vocoding with the option to limit the minimum and maximum frequencies to synthesize.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+
+        
+        <method name="fftinfo">
+            <description>
+                Print FFT information to Max window
+            </description>
+        </method>
+         
+         <method name="mute">
+             <arglist>
+                 <arg name="flag" type="float" optional="0" id="0" />
+             </arglist>
+             <description>
+                 Non-zero flag mutes the object
+             </description>
+         </method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+        
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+  
+      <attribute name="highfreq" get="1" set="1" type="int" size="10">
+          <description>
+              highest frequency to synthesize (default is 15000)
+          </description>
+      </attribute>
+      
+      <attribute name="lowfreq" get="1" set="1" type="int" size="10">
+          <description>
+              lowest frequency to synthesize (default is 0)
+          </description>
+      </attribute>
+  
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="fftz.pvharm~" />
+	</seealsolist>
+
+</c74object>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.burrow~">
+	<digest>
+		Cross filtering
+	</digest>
+	<description>
+An input sound is noise-reduced according to the changing spectrum of a second filtering input sound
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) source sound
+			</digest>
+		</inlet>
+		<inlet id="1" name="INLET_NAME">
+			<digest>
+				(signal) filter sound
+			</digest>
+		</inlet>
+		<inlet id="2" name="INLET_NAME">
+			<digest>
+				(signal/float) threshold
+			</digest>
+		</inlet>
+		<inlet id="3" name="INLET_NAME">
+			<digest>
+				(signal/float) filter multiplier
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) processed audio
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="invert">
+			<arglist>
+				<arg name="flag" type="float" optional="0" id="0" />
+			</arglist>
+			<digest>
+				TEXT_HERE
+			</digest>
+			<description>
+				Non-zero flag inverts filtering behavior
+			</description>
+		</method>
+		<method name="fftinfo">
+			<description>
+				Print FFT information to Max window
+			</description>
+		</method>
+		<method name="mute">
+			<arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Non-zero flag mutes the object
+			</description>
+		</method>
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<!--digest>
+				Attack Time
+			</digest-->
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<!--digest>
+				Attack Time
+			</digest-->
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="fftz.drown~" />
+        <seealso name="fftz.multyq~" />
+        <seealso name="fftz.scrape~" />
+	</seealsolist>
+
+</c74object>

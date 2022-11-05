@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="pvtuner~">
+	<digest>
+		Frequency-quantized oscillator bank resynthesis
+	</digest>
+	<description>
+pvtuner~ allows you to impose an arbitrary tuning scale on any input sound. Several scales are built into the object, and you can provide arbitrary tunings with a sorted list of numbers representing Hz values.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+
+        <method name="added_sixth_major">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+        <method name="added_sixth_minor">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="basefreq">
+            <arglist>
+                <arg name="frequency" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Base frequency for the scale
+            </description>
+        </method>
+
+        <method name="binfo">
+            <description>
+                Print bin information to Max window
+            </description>
+        </method>
+
+        <method name="diatonic">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="dominant_seventh_chord">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="eastern">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="eq12">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="eq5">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="eq8">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="eqn">
+            <arglist>
+                <arg name="steps" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Build an arbitrary equal tempered scale
+            </description>
+        </method>
+
+        <method name="fftinfo">
+            <description>
+                Print FFT information to Max window
+            </description>
+        </method>
+
+        <method name="frequency_range">
+            <arglist>
+                <arg name="minimum frequency" type="float" optional="0" id="0" />
+                <arg name="maximum frequency" type="float" optional="0" id="1" />
+            </arglist>
+            <description>
+                Frequency range to synthesize
+            </description>
+        </method>
+
+        <method name="list">
+            <arglist>
+                <arg name="scale frequencies" type="list" optional="0" id="0" />
+            </arglist>
+            <description>
+                An ordered list of frequencies defining the scale
+            </description>
+        </method>
+
+        <method name="major_seventh_chord">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="minor">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="minor_seventh_chord">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+         <method name="mute">
+             <arglist>
+                 <arg name="flag" type="float" optional="0" id="0" />
+             </arglist>
+             <description>
+                 Non-zero flag mutes the object
+             </description>
+         </method>
+
+        <method name="pelog">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="pentaclust">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="pentatonic">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="quarterclust">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+        <method name="slendro">
+            <description>
+                Use this built-in scale
+            </description>
+        </method>
+
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+        
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+  
+      <attribute name="highfreq" get="1" set="1" type="int" size="10">
+          <description>
+              highest frequency to synthesize (default is 15000)
+          </description>
+      </attribute>
+      
+      <attribute name="lowfreq" get="1" set="1" type="int" size="10">
+          <description>
+              lowest frequency to synthesize (default is 0)
+          </description>
+      </attribute>
+  
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+        
+		<attribute name="scale_interpolation" get="1" set="1" type="int" size="10">
+			<description>
+				Allow manual scale interpolation (default is 0)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<!--seealsolist>
+		<seealso name="fftz.ether~" />
+	</seealsolist-->
+
+</c74object>
