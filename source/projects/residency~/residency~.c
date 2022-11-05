@@ -94,7 +94,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)residency_float, "float",  A_FLOAT, 0);
 	class_addmethod(c,(method)residency_acquire_sample, "bang", 0);
 
-	CLASS_ATTR_FLOAT(c, "size", 0, t_residency, size_attr);
+	CLASS_ATTR_DOUBLE(c, "size", 0, t_residency, size_attr);
 	CLASS_ATTR_ACCESSORS(c, "size", (method)get_size, (method)set_size);
 	CLASS_ATTR_LABEL(c, "size", 0, "Sample Size");
     

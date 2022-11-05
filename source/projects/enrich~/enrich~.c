@@ -82,11 +82,11 @@ int C74_EXPORT main(void)
  	CLASS_ATTR_SYM(c, "buffername", 0, t_enrich, buffername);
 	CLASS_ATTR_LABEL(c, "buffername", 0, "Buffer Name");
     
- 	CLASS_ATTR_FLOAT(c, "lofreq", 0, t_enrich, lofreq);
+ 	CLASS_ATTR_DOUBLE(c, "lofreq", 0, t_enrich, lofreq);
     CLASS_ATTR_ACCESSORS(c, "lofreq", (method)get_lofreq, (method)set_lofreq);
 	CLASS_ATTR_LABEL(c, "lofreq", 0, "Minimum Synthesis Frequency");
     
-  	CLASS_ATTR_FLOAT(c, "hifreq", 0, t_enrich, hifreq);
+  	CLASS_ATTR_DOUBLE(c, "hifreq", 0, t_enrich, hifreq);
     CLASS_ATTR_ACCESSORS(c, "hifreq", (method)get_hifreq, (method)set_hifreq);
 	CLASS_ATTR_LABEL(c, "hifreq", 0, "Maximum Synthesis Frequency");
     

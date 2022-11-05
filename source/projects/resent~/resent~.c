@@ -113,7 +113,7 @@ int C74_EXPORT main(void)
 	CLASS_ATTR_ACCESSORS(c, "overlap", (method)get_overlap, (method)set_overlap);
 	CLASS_ATTR_LABEL(c, "overlap", 0, "Overlap");	
 	
-	CLASS_ATTR_FLOAT(c, "size", 0, t_resent, size_attr);
+	CLASS_ATTR_DOUBLE(c, "size", 0, t_resent, size_attr);
 	CLASS_ATTR_ACCESSORS(c, "size", (method)get_size, (method)set_size);
 	CLASS_ATTR_LABEL(c, "size", 0, "Size");
 

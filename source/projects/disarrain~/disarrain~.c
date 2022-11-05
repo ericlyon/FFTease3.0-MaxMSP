@@ -106,7 +106,7 @@ int C74_EXPORT main(void)
 	CLASS_ATTR_ACCESSORS(c, "overlap", (method)get_overlap, (method)set_overlap);
 	CLASS_ATTR_LABEL(c, "overlap", 0, "Overlap");
 
- 	CLASS_ATTR_LONG(c, "maxfreq", 0, t_disarrain, top_frequency);
+ 	CLASS_ATTR_DOUBLE(c, "maxfreq", 0, t_disarrain, top_frequency);
 	CLASS_ATTR_ACCESSORS(c, "maxfreq", (method)get_maxfreq, (method)set_maxfreq);
 	CLASS_ATTR_LABEL(c, "maxfreq", 0, "Maximum Frequency");
 	

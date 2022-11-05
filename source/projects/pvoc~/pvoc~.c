@@ -72,11 +72,11 @@ int C74_EXPORT main(void)
 	CLASS_ATTR_ACCESSORS(c, "overlap", (method)get_overlap, (method)set_overlap);
 	CLASS_ATTR_LABEL(c, "overlap", 0, "Overlap");	
 	
-	CLASS_ATTR_FLOAT(c, "lowfreq", 0, t_pvoc, lofreq);
+	CLASS_ATTR_DOUBLE(c, "lowfreq", 0, t_pvoc, lofreq);
 	CLASS_ATTR_ACCESSORS(c, "lowfreq", (method)get_lowfreq, (method)set_lowfreq);
 	CLASS_ATTR_LABEL(c, "lowfreq", 0, "Minimum Frequency");	
 
-	CLASS_ATTR_FLOAT(c, "highfreq", 0, t_pvoc, hifreq);
+	CLASS_ATTR_DOUBLE(c, "highfreq", 0, t_pvoc, hifreq);
 	CLASS_ATTR_ACCESSORS(c, "highfreq",(method)get_highfreq, (method)set_highfreq);
 	CLASS_ATTR_LABEL(c, "highfreq", 0, "Maximum Frequency");	
 	
