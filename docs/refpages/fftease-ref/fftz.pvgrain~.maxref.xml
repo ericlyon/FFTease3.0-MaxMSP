@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="pvgrain~">
+	<digest>
+		Spectral granulator
+	</digest>
+	<description>
+pvgrain~ tracks an input sound and outputs control data that can be used to play notes on a synthesizer or sampler.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+        <method name="basefreq">
+            <arglist>
+                <arg name="frequency" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Base frequency of sample to play back
+            </description>
+        </method>
+        
+        <method name="fftinfo">
+            <description>
+                Print FFT information to Max window
+            </description>
+        </method>
+        
+         <method name="framegrains">
+             <arglist>
+                 <arg name="count" type="float" optional="0" id="0" />
+             </arglist>
+             <description>
+                Maximum number of data grains per FFT frame
+             </description>
+         </method>
+         
+         <method name="mute">
+             <arglist>
+                 <arg name="flag" type="float" optional="0" id="0" />
+             </arglist>
+             <description>
+                 Non-zero flag mutes the object
+             </description>
+         </method>
+         
+         <method name="printchan">
+             <arglist>
+                 <arg name="channel" type="float" optional="0" id="0" />
+             </arglist>
+             <description>
+                 Print information for a particular channel to Max window
+             </description>
+         </method>
+
+        <method name="probability">
+            <arglist>
+                <arg name="odds" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Odds for a grain appearing from an active bin
+            </description>
+        </method>
+
+        <method name="topfreq">
+            <arglist>
+                <arg name="frequency" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Highest frequency to monitor
+            </description>
+        </method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+        
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+  
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<!--seealsolist>
+		<seealso name="fftz.ether~" />
+	</seealsolist-->
+
+</c74object>

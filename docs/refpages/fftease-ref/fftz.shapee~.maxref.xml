@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.shapee~">
+	<digest>
+		Targetted noise reduction
+	</digest>
+	<description>
+scrape~ is like drown~ except that it only operates between the frequencies specified by knee and cutoff to the Nyquist.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--objarglist>
+		<objarg name="analysis length" optional="0" type="int">
+			<digest>
+				Analysis length
+			</digest>
+			<description>
+				The required initial argument specifies size of the analysis buffer in milliseconds.
+			</description>
+		</objarg>
+	</objarglist-->
+	<!--MESSAGES-->
+	<methodlist>
+
+
+
+
+        <method name="fftinfo">
+            <description>
+                Print FFT information to Max window
+            </description>
+        </method>
+
+        <method name="mute">
+            <arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Non-zero flag mutes the object
+            </description>
+        </method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+
+        
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+  
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+ 
+ 
+       
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<!--seealsolist>
+		<seealso name="fftz.drown~" />
+	</seealsolist-->
+
+</c74object>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.bthresher~">
+	<digest>
+		Bin level feedback
+	</digest>
+	<description>
+Energy feeds back with damping inside each bin of an FFT analysis.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) audio input
+			</digest>
+		</inlet>
+		<inlet id="1" name="INLET_NAME">
+			<digest>
+				(signal/float) threshold factor for all bins
+			</digest>
+		</inlet>
+		<inlet id="2" name="INLET_NAME">
+			<digest>
+				(signal/float) damping factor for all bins
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) processed audio
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="alldamp">
+			<arglist>
+				<arg name="damping factor" type="float" optional="0" id="0" />
+			</arglist>
+			<digest>
+				TEXT_HERE
+			</digest>
+			<description>
+				Set damping factor for all bins
+			</description>
+		</method>
+		<method name="allthresh">
+			<arglist>
+				<arg name="threshold" type="float" optional="0" id="0" />
+			</arglist>
+			<digest>
+				TEXT_HERE
+			</digest>
+			<description>
+				Set the threshold factor for all bins
+			</description>
+		</method>
+		<method name="bin">
+			<arglist>
+				<arg name="bin number" type="float" optional="0" id="0" />
+				<arg name="damping factor" type="float" optional="0" id="1" />
+				<arg name="threshold" type="float" optional="0" id="2" />
+			</arglist>
+			<digest>
+				TEXT_HERE
+			</digest>
+			<description>
+				Specify data for a single bin
+			</description>
+		</method>
+		<method name="dump">
+			<digest>
+				TEXT_HERE
+			</digest>
+			<description>
+				Send list of bin data out second outlet
+			</description>
+		</method>
+		<method name="fftinfo">
+			<description>
+				Print FFT information to Max window
+			</description>
+		</method>
+		<method name="inf_hold">
+			<arglist>
+             <arg name="status flag" type="float" optional="0" id="0" />
+             </arglist>
+			<digest>
+				TEXT_HERE
+			</digest>
+			<description>
+				Non-zero argument turns on infinite hold
+			</description>
+		</method>
+		<method name="list">
+			<arglist>
+                <arg name="data" type="list" optional="0" id="0" />
+            </arglist>
+			<digest>
+				TEXT_HERE
+			</digest>
+			<description>
+				A full list of data as sent from the "dump" method will recreate that state
+			</description>
+		</method>
+		<method name="max_hold">
+			<arglist>
+                <arg name="hold time" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Set the maximum hold time in milliseconds
+			</description>
+		</method>
+		<method name="mute">
+			<arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Non-zero flag mutes the object
+			</description>
+		</method>
+		<method name="oscbank">
+			<arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Non-zero flag switches to oscillator bank
+                resynthesis
+			</description>
+		</method>
+		<method name="rdamper">
+			<arglist>
+                <arg name="minimum damp factor" type="float" optional="0" id="0" />
+                <arg name="maximum damp factor" type="float" optional="0" id="1" />
+            </arglist>
+			<description>
+				Randomly set damping parameters for every bin
+			</description>
+		</method>
+		<method name="rthreshold">
+			<arglist>
+                <arg name="minimum threshold factor" type="float" optional="0" id="0" />
+                <arg name="maximum threshold factor" type="float" optional="0" id="1" />
+            </arglist>
+			<description>
+				Randomly set threshold parameters for every bin
+			</description>
+		</method>
+		<method name="synthresh">
+			<arglist>
+                <arg name="oscbank resynthesis threshold" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Factor to set the resythesis threshold in every bin (oscillator bank resynthesis only)
+			</description>
+		</method>
+		<method name="transpose">
+			<arglist>
+                <arg name="frequency scalar" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Multiplier for every frequency in spectrum (oscillator bank resynthesis only)
+			</description>
+		</method>
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<digest>
+				Attack Time
+			</digest>
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<digest>
+				Attack Time
+			</digest>
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<seealsolist>
+        <seealso name="comb~" />
+        <seealso name="fftz.pileup~" />
+		<seealso name="fftz.thresher~" />
+	</seealsolist>
+
+</c74object>

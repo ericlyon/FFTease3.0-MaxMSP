@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="pvharm~">
+	<digest>
+		Harmonizer
+	</digest>
+	<description>
+pvharm~ provides basic harmonizing with two transpositions of the input internally calculated and mixed to the output
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+        <method name="compressor">
+            <arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+                Compression applied when flag is non-zero (off by default)
+            </description>
+        </method>
+        
+        <method name="fftinfo">
+            <description>
+                Print FFT information to Max window
+            </description>
+        </method>
+        
+         <method name="framestop">
+             <arglist>
+                 <arg name="amp" type="float" optional="0" id="0" />
+             </arglist>
+             <description>
+                amplitude below which compressor is turned off
+             </description>
+         </method>
+         
+         <method name="mute">
+             <arglist>
+                 <arg name="flag" type="float" optional="0" id="0" />
+             </arglist>
+             <description>
+                 Non-zero flag mutes the object
+             </description>
+         </method>
+         
+         <method name="osclimit">
+             <arglist>
+                 <arg name="count" type="float" optional="0" id="0" />
+             </arglist>
+             <description>
+                 Maximum number of oscillators to synthesize
+             </description>
+         </method>
+
+        <method name="oscnt">
+            <description>
+                Print oscillator count to Max window
+            </description>
+        </method>
+
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+        
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+  
+      <attribute name="hifreq" get="1" set="1" type="int" size="10">
+          <description>
+              highest frequency to synthesize (default is 15000)
+          </description>
+      </attribute>
+      
+      <attribute name="lowfreq" get="1" set="1" type="int" size="10">
+          <description>
+              lowest frequency to synthesize (default is 0)
+          </description>
+      </attribute>
+  
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="fftz.pvoc~" />
+	</seealsolist>
+
+</c74object>

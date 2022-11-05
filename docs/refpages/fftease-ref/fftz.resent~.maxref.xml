@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.resent~">
+	<digest>
+		Spectral sample buffer
+	</digest>
+	<description>
+resent~ follows the model of residency~ but allows independent control over each bin. It is recommended that you familiarize yourself with residency~ before working with the more complicated resent~
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--objarglist>
+		<objarg name="analysis length" optional="0" type="int">
+			<digest>
+				Analysis length
+			</digest>
+			<description>
+				The required initial argument specifies size of the analysis buffer in milliseconds.
+			</description>
+		</objarg>
+	</objarglist-->
+	<!--MESSAGES-->
+	<methodlist>
+
+
+
+        <method name="acquire_sample">
+            <description>
+               Start analyzing input signal
+            </description>
+        </method>
+
+<method name="addsphase">
+    <arglist>
+        <arg name="phase" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Add input to all phases (input must be in range 0 - 1)
+    </description>
+</method>
+
+<method name="addspeed">
+    <arglist>
+        <arg name="speed" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Add input to all speed factors
+    </description>
+</method>
+
+<method name="bang">
+    <description>
+        Start analyzing input signal (same as acquire_sample)
+    </description>
+</method>
+
+<method name="bin">
+    <arglist>
+        <arg name="bin number" type="float" optional="0" id="0" />
+        <arg name="speed" type="float" optional="0" id="1" />
+    </arglist>
+    <description>
+        Sets the read speed for a specified bin
+    </description>
+</method>
+
+
+
+        <method name="fftinfo">
+            <description>
+                Print FFT information to Max window
+            </description>
+        </method>
+
+<method name="linephase">
+    <arglist>
+        <arg name="bin 1" type="float" optional="0" id="0" />
+        <arg name="phase 1" type="float" optional="0" id="1" />
+        <arg name="bin 2" type="float" optional="0" id="2" />
+        <arg name="phase 2" type="float" optional="0" id="3" />
+    </arglist>
+    <description>
+        Interpolates phase values from a start bin and start phase to an end bin and end phase
+    </description>
+</method>
+
+<method name="linespeed">
+    <arglist>
+        <arg name="speed 1" type="float" optional="0" id="0" />
+        <arg name="phase 1" type="float" optional="0" id="1" />
+        <arg name="speed 2" type="float" optional="0" id="2" />
+        <arg name="phase 2" type="float" optional="0" id="3" />
+    </arglist>
+    <description>
+        Interpolates speed values from a start bin and start speed to an end bin and end speed
+    </description>
+</method>
+
+<method name="mute">
+    <arglist>
+        <arg name="flag" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Non-zero flag mutes the object
+    </description>
+</method>
+
+<method name="oscbank">
+    <arglist>
+        <arg name="flag" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Non-zero flag switches to oscillator bank resynthesis
+    </description>
+</method>
+
+<method name="playthrough">
+    <arglist>
+        <arg name="flag" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        When flag is set, object mirrors input to output while acquiring a sample
+    </description>
+</method>
+
+<method name="randphase">
+    <arglist>
+        <arg name="minimum phase" type="float" optional="0" id="0" />
+        <arg name="maximum phase" type="float" optional="0" id="1" />
+    </arglist>
+    <description>
+        Randomizes all phases between a specified minimum and maximum
+    </description>
+</method>
+
+<method name="randspeed">
+    <arglist>
+        <arg name="minimum speed" type="float" optional="0" id="0" />
+        <arg name="maximum speed" type="float" optional="0" id="1" />
+    </arglist>
+    <description>
+        Randomizes all speeds between a specified minimum and maximum
+    </description>
+</method>
+
+<method name="setphase">
+    <arglist>
+        <arg name="phase" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Set all phases to input value
+    </description>
+</method>
+
+<method name="setspeed">
+    <arglist>
+        <arg name="speed" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Set all speeds to input value
+    </description>
+</method>
+
+<method name="setspeed_and_phase">
+    <arglist>
+        <arg name="speed" type="float" optional="0" id="0" />
+        <arg name="phase" type="float" optional="0" id="1" />
+    </arglist>
+    <description>
+        Set all speeds and phases to the two input values
+    </description>
+</method>
+
+
+<method name="store_incr">
+    <description>
+        Store the current increments
+    </description>
+</method>
+
+
+<method name="synthresh">
+    <arglist>
+        <arg name="threshold factor" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Sets resynthesis threshold (oscillator bank only)
+    </description>
+</method>
+
+
+<method name="transpose">
+    <arglist>
+        <arg name="tranposition factor" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Transposition factor (oscillator bank only)
+    </description>
+</method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+        
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+  
+  
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+        
+       
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="fftz.residency~" />
+	</seealsolist>
+
+</c74object>

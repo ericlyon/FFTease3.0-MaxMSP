@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.residency_buffer~">
+	<digest>
+		Spectral sample buffer
+	</digest>
+	<description>
+residency~ samples input to an internal buffer, after which the sound can be resynthesized with arbitrary speed and pitch.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--objarglist>
+		<objarg name="analysis length" optional="0" type="int">
+			<digest>
+				Analysis length
+			</digest>
+			<description>
+				The required initial argument specifies size of the analysis buffer in milliseconds.
+			</description>
+		</objarg>
+	</objarglist-->
+	<!--MESSAGES-->
+	<methodlist>
+
+
+
+        <method name="acquire_sample">
+            <description>
+               Start analyzing input signal
+            </description>
+        </method>
+
+
+        <method name="bang">
+            <description>
+                Start analyzing input signal (same as acquire_sample)
+            </description>
+        </method>
+
+
+<method name="calcbuf">
+    <arglist>
+        <arg name="duration" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Calculates required buffer size in samples, based on argument
+        duration in milliseconds. Value is sent out third outlet.
+    </description>
+</method>
+
+
+        <method name="fftinfo">
+            <description>
+                Print FFT information to Max window
+            </description>
+        </method>
+
+<method name="meminfo">
+    <description>
+        Print memory usage to Max window
+    </description>
+</method>
+
+<method name="mute">
+    <arglist>
+        <arg name="flag" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Non-zero flag mutes the object
+    </description>
+</method>
+
+<method name="oscbank">
+    <arglist>
+        <arg name="flag" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Non-zero flag switches to oscillator bank resynthesis
+    </description>
+</method>
+
+<method name="playthrough">
+    <arglist>
+        <arg name="flag" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        When flag is set, object mirrors input to output while acquiring a sample
+    </description>
+</method>
+
+
+
+<method name="synthresh">
+    <arglist>
+        <arg name="threshold factor" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Sets resynthesis threshold (oscillator bank only)
+    </description>
+</method>
+
+
+<method name="transpose">
+    <arglist>
+        <arg name="tranposition factor" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Transposition factor (oscillator bank only)
+    </description>
+</method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+
+<attribute name="buffername" get="1" set="1" type="symbol" size="10">
+    <description>
+        Max buffer to read/write FFT frames
+    </description>
+</attribute>
+
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+  
+      <attribute name="interpolation" get="1" set="1" type="int" size="10">
+          <description>
+              Flag to interpolate between FFT frames (default is 0)
+          </description>
+      </attribute>
+      
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+
+ 
+       
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="fftz.resent~" />
+        <seealso name="fftz.residency_buffer~" />
+	</seealsolist>
+
+</c74object>

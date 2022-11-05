@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="pvwarpb~">
+	<digest>
+		Spectral warp
+	</digest>
+	<description>
+An internal frequency warping function is created either according to specification or with the autofunc message. In this version, the warp function is read from a Max buffer.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--objarglist>
+		<objarg name="inputs" optional="0" type="int">
+			<digest>
+				Buffer name
+			</digest>
+			<description>
+				The required initial argument is the name of a buffer where <o>pvwarpb~</o> will read from and write its warp function.
+			</description>
+		</objarg>
+	</objarglist-->
+	<!--MESSAGES-->
+	<methodlist>
+
+        <method name="autofunc">
+            <arglist>
+                <arg name="min" type="float" optional="0" id="0" />
+                <arg name="max" type="float" optional="0" id="1" />
+            </arglist>
+            <description>
+                Internally generate a warp function with individual bin Frequency multipliers ranging from the minimum to maximum factor
+            </description>
+        </method>
+
+
+        <method name="bottomfreq">
+            <arglist>
+                <arg name="frequency" type="float" optional="0" id="0" />
+            </arglist>
+            <description>
+               The lowest frequency to synthesize
+            </description>
+        </method>
+
+
+        <method name="fftinfo">
+            <description>
+                Print FFT information to Max window
+            </description>
+        </method>
+
+
+         <method name="mute">
+             <arglist>
+                 <arg name="flag" type="float" optional="0" id="0" />
+             </arglist>
+             <description>
+                 Non-zero flag mutes the object
+             </description>
+         </method>
+
+<method name="topfreq">
+    <arglist>
+        <arg name="frequency" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        The highest frequency to synthesize
+    </description>
+</method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+ 		<attribute name="buffername" get="1" set="1" type="int" size="10">
+			<description>
+				Name of a buffer where <o>fftz.pvwarpb~</o> will read from and write its warp function.
+			</description>
+		</attribute>
+        
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+  
+  
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+        
+       
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="fftz.pvwarp~" />
+	</seealsolist>
+
+</c74object>

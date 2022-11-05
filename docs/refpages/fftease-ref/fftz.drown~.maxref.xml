@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.drown~">
+	<digest>
+		Spectral noise reduction
+	</digest>
+	<description>
+Reduces the energy in low-energy bins. Adaptive noise reduction is possible.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+
+		<method name="fftinfo">
+			<description>
+				Print FFT information to Max window
+			</description>
+		</method>
+        
+		<method name="mute">
+			<arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Non-zero flag mutes the object
+			</description>
+		</method>
+
+		<method name="adaptive">
+			<arglist>
+                <arg name="flag" type="list" optional="0" id="0" />
+            </arglist>
+			<description>
+				Threshold adapts to overall spectrum energy when flag is non-zero
+			</description>
+		</method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="fftz.burrow~" />
+        <seealso name="fftz.scrape~" />
+	</seealsolist>
+
+</c74object>

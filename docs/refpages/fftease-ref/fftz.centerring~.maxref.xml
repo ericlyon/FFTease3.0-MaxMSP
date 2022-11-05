@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.centerring~">
+	<digest>
+		Frequency independent amplitude modulation
+	</digest>
+	<description>
+centerring~ performs frequency independent amplitude modulation upon the spectral magnitudes of input signals. 
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+			<!--description>
+				TEXT_HERE
+			</description-->
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+
+		<method name="fftinfo">
+			<description>
+				Print FFT information to Max window.
+			</description>
+		</method>
+
+		<method name="mute">
+			<arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Non-zero flag mutes the object.
+			</description>
+		</method>
+		<method name="randphases">
+			<description>
+				Randomize phases
+			</description>
+		</method>
+		<method name="seed">
+			<arglist>
+                <arg name="seed value" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Set the seed, with a value from 0 - 32767
+			</description>
+		</method>
+		<method name="zerophases">
+			<description>
+				Set all phases to zero
+			</description>
+		</method>
+
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<!--seealsolist>
+		<seealso name="fftz.cavoc~" />
+	</seealsolist-->
+
+</c74object>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.enrich~">
+	<digest>
+		Additive synthesis with arbitrary waveform
+	</digest>
+	<description>
+Oscillator bank resynthesis using a waveform read from a Max buffer
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="binstats">
+			<description>
+				Print status of FFT bins to Max window
+			</description>
+		</method>
+        
+		<method name="fftinfo">
+			<description>
+				Print FFT information to Max window
+			</description>
+		</method>
+        
+		<method name="mute">
+			<arglist>
+                <arg name="flag" type="float" optional="0" id="0" />
+            </arglist>
+			<description>
+				Non-zero flag mutes the object
+			</description>
+		</method>
+
+		<method name="setbuf">
+			<arglist>
+                <arg name="buffername" type="list" optional="0" id="0" />
+            </arglist>
+			<description>
+				Specify Max buffer to read from. Buffer must contain 8192 samples
+			</description>
+		</method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="buffername" get="1" set="1" type="symbol" size="10">
+			<description>
+				Max buffer from which to read oscillator bank waveform
+			</description>
+		</attribute>
+        
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+ 
+         <attribute name="hifreq" get="1" set="1" type="float" size="10">
+             <description>
+                 Highest frequency to synthesize
+             </description>
+         </attribute>
+ 
+         <attribute name="lofreq" get="1" set="1" type="float" size="10">
+             <description>
+                 Lowest frequency to synthesize
+             </description>
+         </attribute>
+ 
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<!--seealsolist>
+		<seealso name="fftz.scrape~" />
+	</seealsolist-->
+
+</c74object>

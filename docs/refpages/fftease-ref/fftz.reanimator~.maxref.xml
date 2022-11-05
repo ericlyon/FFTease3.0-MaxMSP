@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="fftz.reanimator~">
+	<digest>
+		Audio texture mapping
+	</digest>
+	<description>
+reanimator~ first analyzes a "texture" sound, and then resynthesizes a "driver" sound by finding the spectral frame in the texture sound that is closest to the current driver frame.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Eric Lyon
+		</metadata>
+		<metadata name="tag">
+			MSP
+		</metadata>
+		<metadata name="tag">
+			FFTease
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" name="INLET_NAME">
+			<digest>
+				(signal) input/messages
+			</digest>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" name="OUTLET_NAME">
+			<digest>
+				(signal) output
+			</digest>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<objarglist>
+		<objarg name="analysis length" optional="0" type="int">
+			<digest>
+				Analysis length
+			</digest>
+			<description>
+				The required initial argument specifies size of the analysis buffer in milliseconds.
+			</description>
+		</objarg>
+	</objarglist>
+	<!--MESSAGES-->
+	<methodlist>
+
+
+
+        <method name="analyze">
+            <description>
+               Start analyzing input signal
+            </description>
+        </method>
+
+
+        <method name="fftinfo">
+            <description>
+                Print FFT information to Max window
+            </description>
+        </method>
+
+<method name="framecount">
+    <description>
+        Print the number of stored FFT frames to the Max window
+    </description>
+</method>
+
+<method name="freeze_and_march">
+    <arglist>
+        <arg name="speed" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Sets the object to start reading through the analyzed bins with the speed specified by the argument
+    </description>
+</method>
+
+<method name="inverse">
+    <arglist>
+        <arg name="flag" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Non-zero flag sets object to find least good, rather than best matches to texture analysis
+    </description>
+</method>
+
+<method name="meminfo">
+    <description>
+        Print amount of stored memory to Max window
+    </description>
+</method>
+
+<method name="mute">
+    <arglist>
+        <arg name="flag" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Non-zero flag mutes the object
+    </description>
+</method>
+
+<method name="oscbank">
+    <arglist>
+        <arg name="flag" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Non-zero flag switches to oscillator bank resynthesis
+    </description>
+</method>
+
+<method name="resume">
+    <description>
+        Returns to regular behavior, reversing the effect of a "freeze_and_march" message
+    </description>
+</method>
+
+<method name="synthresh">
+    <arglist>
+        <arg name="threshold factor" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Sets resynthesis threshold (oscillator bank only)
+    </description>
+</method>
+
+<method name="threshold">
+    <arglist>
+        <arg name="analysis threshold" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Sets analysis threshold (0.0001 by default)
+    </description>
+</method>
+
+
+
+<method name="topbin">
+    <arglist>
+        <arg name="top comparator bin" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        The highest bin to look at for similarities (10 by default)
+    </description>
+</method>
+
+<method name="transpose">
+    <arglist>
+        <arg name="tranposition factor" type="float" optional="0" id="0" />
+    </arglist>
+    <description>
+        Transposition factor (oscillator bank only)
+    </description>
+</method>
+
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+        
+		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+			<description>
+				FFT size (default is 1024)
+			</description>
+		</attribute>
+  
+  
+		<attribute name="overlap" get="1" set="1" type="int" size="10">
+			<description>
+				Overlap factor (default is 8)
+			</description>
+        </attribute>
+        
+       
+	</attributelist>
+	<!--EXAMPLE-->
+
+	<!--SEEALSO-->
+	<!--seealsolist>
+		<seealso name="fftz.ether~" />
+	</seealsolist-->
+
+</c74object>
