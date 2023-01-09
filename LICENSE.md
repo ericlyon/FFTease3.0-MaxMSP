@@ -1,4 +1,4 @@
-FFTease 3.0 is Copyright (c) 1999-2014 Eric Lyon and Christopher Penrose 
+FFTease 3.0 is Copyright (c) 1999-2023 Eric Lyon and Christopher Penrose 
  
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to deal in the Software without restriction,
