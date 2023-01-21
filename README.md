@@ -50,10 +50,10 @@ may be viewed <A HREF="https://quod.lib.umich.edu/cgi/p/pod/dod-idx/fftease-a-co
 - xsyn~ a cross synthesis with compression object
 
 
-**Compilation and Installation** 
+**Compilation** 
 
 
-Instruction for compiling FFTease for Max are provided in the <A HREF = "https://github.com/ericlyon/FFTease3.0-MaxMSP/blob/master/BUILDME.md">BUILDME</A> document included here.
+Instructions for compiling FFTease for Max are provided in the <A HREF = "https://github.com/ericlyon/FFTease3.0-MaxMSP/blob/master/BUILDME.md">BUILDME</A> document included here.
 
 
 **Performance Considerations**
