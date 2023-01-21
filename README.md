@@ -1,59 +1,82 @@
-# FFTease3.0-MaxMSP
+# Welcome to FFTease!
 
-http://disis.music.vt.edu/eric/main/fftease/
+**About FFTease**
+
+FFTease is a collection of objects designed to facilitate spectral sound
+processing in Max and Pd. The collection was designed by me and
+<A HREF="https://soundcloud.com/christopher-penrose">Christopher Penrose</A> in 1999, and has been maintained by me since
+2003. The first paper on FFTease, presented at the 2000 International Computer Music Conference
+may be viewed <A HREF="https://quod.lib.umich.edu/cgi/p/pod/dod-idx/fftease-a-collection-of-spectral-signal-processors-for.pdf?c=icmc;idno=bbp2372.2000.207;format=pdf">here</A>. 
+
+**List of Objects**
+
+- bthresher~ similar to thresher~ but with more control
+- burrow~ a cross-referenced filtering object
+- cavoc~ an 8-rule cellular automata that generates spectra
+- cavoc27~ a 27-rule cellular automata object
+- centerring~ a spectral modulation object
+- codepend~ a classic block convolution object
+- cross~ a cross synthesis object with gating
+- dentist~ a partial knockout object
+- disarrain~ an interpolating version of disarray~
+- disarray~ a spectral redistribution object
+- drown~ a noise reduction (or increase) object
+- enrich~ an oscillator resynthesis with a user-designed waveform
+- ether~ another spectral compositing object
+- leaker~ a sieve-based cross fader
+- loopsea~ spectrally stratified independent looping
+- mindwarp~ a spectral formant warping object
+- morphine~ a morphing object
+- multyq~ a four band filter
+- pileup~ a spectral accumulation object
+- pvcompand~ a spectral compressor/expander object
+- pvgrain~ a spectrum analyzer for granular resynthesis
+- pvharm~ a harmonizer
+- pvoc~ an additive synthesis phase vocoder
+- pvtuner~ a spectrum quantizer for tuning to arbitrary scales
+- pvwarp~ a non-linear frequency warper
+- pvwarpb~ a non-linear frequency warper with a user-accessible warp array
+- reanimator~ an audio texture mapper
+- resent~ similar to residency~ but with independent bin control
+- residency~ a spectral sampler useful for time scaling
+- residency_buffer~ a spectral sampler that writes analysis data to a Pd array
+- schmear~ a spectral smear object
+- scrape~ a noise reduction (or increase) object with frequency control
+- shapee~ a frequency shaping object
+- swinger~ a phase swapping object
+- taint~ a cross synthesis object
+- thresher~ an amplitude/frequency sensitive gating object
+- vacancy~ a spectral compositing object
+- xsyn~ a cross synthesis with compression object
 
 
-## Build requirements
+**Compilation and Installation** 
 
-- git
-- CMake >=3.19
-    - https://cmake.org/download/ 
-    - or via `brew install cmake` on Mac
-- Xcode >= 10 or Visual Studio >= 2017
 
-## Building
+Instruction for compiling FFTease for Max are provided in the <A HREF = "https://github.com/ericlyon/FFTease3.0-MaxMSP/blob/master/BUILDME.md">BUILDME</A> document included here.
 
-1. `cd` into your Max packages directory.
 
-2. Get this repository along with the `max-sdk-base` submodule
+**Performance Considerations**
 
-```sh
-git clone --recurse-submodules https://github.com/ericlyon/FFTease3.0-MaxMSP.git
-```
 
-3. Create a build directory where all IDE files and intermediary CMake files will live. Usually this
-   is called `build`.
+The default Pd audio buffer settings for both I/O vector size and signal
+vector size will work fine for FFT sizes up to around 4096 or so. For
+larger FFT sizes, adjusting the Pd signal vector size and I/O vector
+size upward can dramatically improve performance. With larger FFT sizes,
+the reported CPU load may fluctuate. This is because a large FFT is
+being performed only once for several vectors worth of samples. The
+default FFT size is 1024, and the default overlap factor is 8.
 
-```sh
-mkdir build
-cd build
-```
 
-4. Find which CMake generators are available. CMake is used to generate the projects (e.g. Xcode
-   project, VS solution, Makefiles, etc.), so this is where you can pick. 
+**Acknowledgements**
 
-```sh
-cmake --help
-```
 
-From here, you'll see some options. On Mac, for example, you will see something like Unix Makefiles,
-Ninja, and Xcode as options. On Windows, you'll likely see Visual Studio on this list. This is your
-"generator" that you'll specify on the next step. The default generator will have a `*` next to it.
+This repository was rebuilt for use with the Max 8.2 SDK by @isabelgk. 
 
-5. Generate the projects
+Happy spectral surfing!
 
-For example, to create Xcode projects for each external, do the following from the `build/`
-directory.
+Eric Lyon  
+ericlyon@vt.edu  
+Blacksburg, Virginia  
+January 21, 2023
 
-```sh
-cmake -G "Xcode" ..
-```
-
-6. Build the projects (e.g. the externals)
-
-From here, you can open each project (e.g. with Xcode) and build as usual. You can also build all
-targets in the project with a single command, again from the `build/` directory
-
-```sh
-cmake --build .
-```
