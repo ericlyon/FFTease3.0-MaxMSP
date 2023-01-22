@@ -153,6 +153,7 @@ void fftease_noalias(t_fftease* fft, short flag);
 void fftease_oscbank_setbins(t_fftease *fft, double lowfreq, double highfreq);
 void limited_oscbank(t_fftease *fft, int osclimit, double framethresh);
 double fftease_randf(double min, double max);
+int fftease_randi(int min, int max);
 // Penrose extras
 double frequencyToIncrement( double samplingRate, double frequency, int bufferLength );
 void makeSineBuffer( double *buffer, int bufferLength );

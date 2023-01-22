@@ -280,3 +280,8 @@ double fftease_randf(double min, double max)
 	return min + (max-min) * randv;
 }
 
+int fftease_randi(int min, int max)
+{
+    // random values inclusive of min and max
+    return min + (rand() % (1 + (max - min)));
+}
