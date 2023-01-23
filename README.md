@@ -61,7 +61,7 @@ Instructions for compiling FFTease for Max are provided in the <A HREF = "https:
 
 The default Pd audio buffer settings for both I/O vector size and signal
 vector size will work fine for FFT sizes up to around 4096 or so. For
-larger FFT sizes, adjusting the Pd signal vector size and I/O vector
+larger FFT sizes, adjusting the signal vector size and I/O vector
 size upward can dramatically improve performance. With larger FFT sizes,
 the reported CPU load may fluctuate. This is because a large FFT is
 being performed only once for several vectors worth of samples. The
