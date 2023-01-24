@@ -89,7 +89,7 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)loopsea_randtransp, "randtransp", A_GIMME, 0);
     class_addmethod(c,(method)loopsea_transp_choose, "transp_choose", A_GIMME, 0);
     class_addmethod(c,(method)loopsea_setspeed, "setspeed",  A_FLOAT, 0);
-    class_addmethod(c,(method)loopsea_playthrough,"playthrough",  A_DEFFLOAT, 0);
+//    class_addmethod(c,(method)loopsea_playthrough,"playthrough",  A_DEFFLOAT, 0);
     class_addmethod(c,(method)loopsea_setloops,"setloops",  A_FLOAT, A_FLOAT, 0);
     class_addmethod(c,(method)loopsea_restart_loops,"restart_loops", 0);
     class_addmethod(c,(method)loopsea_flat_transpose,"flat_transpose",0);
