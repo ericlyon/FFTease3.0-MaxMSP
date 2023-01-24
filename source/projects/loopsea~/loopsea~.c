@@ -158,9 +158,10 @@ void loopsea_free(t_loopsea *x){
         sysmem_freeptr(x->tbank);
         sysmem_freeptr(x->interval_bank);
         sysmem_freeptr(x->data);
-        
+        fftease_free(x->fft);
+        sysmem_freeptr(x->fft);
     }
-    fftease_free(x->fft);
+    
 }
 
 void loopsea_setspeed( t_loopsea *x,  t_floatarg speed )
