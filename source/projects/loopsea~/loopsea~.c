@@ -604,7 +604,7 @@ void loopsea_readloops(t_loopsea *x, t_symbol *msg, short argc, t_atom *argv)
     t_double *tbank = x->tbank;
     t_double *frame_incr = x->frame_incr;
     if(argc != fft->N2 * 4){
-        post("readloops~: Houston we have a problem: mismatch between expected size %d, and actual message size %d",fft->N2*3, argc);
+        post("loopsea~: Houston we have a problem: mismatch between expected size %d, and actual message size %d",fft->N2*3, argc);
         return;
     }
     for(i = 0, j = 0; i < fft->N2; i++, j += 4){
