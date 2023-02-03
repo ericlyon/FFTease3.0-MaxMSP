@@ -208,7 +208,7 @@ void *disarray_new(t_symbol *msg, short argc, t_atom *argv)
 	outlet_new((t_pxobject *)x, "signal");
     
 	srand(time(0));
-	x->fft = (t_fftease *) malloc(sizeof(t_fftease));
+	x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
 	fft = x->fft;
 	fft->R = sys_getsr();
 	fft->MSPVectorSize = sys_getblksize();
