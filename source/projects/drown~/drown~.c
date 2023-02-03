@@ -24,7 +24,7 @@ void drown_mute(t_drown *x, t_floatarg toggle);
 void drown_rel2peak(t_drown *x, t_floatarg toggle);
 void drown_assist(t_drown *x, void *b, long m, long a, char *s);
 void drown_float(t_drown *x, double f);
-void drown_overlap(t_drown *x, t_floatarg o);
+// void drown_overlap(t_drown *x, t_floatarg o);
 void drown_free(t_drown *x);
 void drown_init(t_drown *x);
 //void drown_overlap(t_drown *x, t_floatarg f);
@@ -52,7 +52,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)drown_bypass,"bypass", A_FLOAT, 0);
 	class_addmethod(c,(method)drown_rel2peak,"rel2peak",A_FLOAT,0);
 //	class_addmethod(c,(method)drown_fftsize,"fftsize",A_FLOAT,0);
-	class_addmethod(c,(method)drown_overlap,"overlap",A_FLOAT,0);
+//	class_addmethod(c,(method)drown_overlap,"overlap",A_FLOAT,0);
 	class_addmethod(c,(method)drown_winfac,"winfac",A_FLOAT,0);
 	class_addmethod(c,(method)drown_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)drown_float,"float",A_FLOAT,0);
