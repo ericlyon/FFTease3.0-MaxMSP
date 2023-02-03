@@ -195,7 +195,7 @@ void *schmear_new(t_symbol *s, int argc, t_atom *argv)
 	x->schmearmult = 0.1;
 	x->mute = 0;
 	atom_arg_getdouble(&x->threshold, 0, argc, argv);
-	atom_arg_getdouble(&x->schmearmult, 1, argc, argv);
+	// atom_arg_getdouble(&x->schmearmult, 1, argc, argv);
 	fft->N = FFTEASE_DEFAULT_FFTSIZE;
 	fft->overlap = FFTEASE_DEFAULT_OVERLAP;
 	fft->winfac = FFTEASE_DEFAULT_WINFAC;
