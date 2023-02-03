@@ -1,7 +1,5 @@
 #include "fftease.h"
-/*
- This external links to qsortE, so unlike others in this collection, morphine~ is covered under the GNU GPL.
- */
+
 static t_class *morphine_class;
 
 #define OBJECT_NAME "morphine~"
@@ -9,14 +7,13 @@ static t_class *morphine_class;
 typedef struct _pickme {
 	
 	int		bin;
-	float		value;
+	float	value;
 	
 } pickme;
 
 
 typedef struct _morphine
 {
-
 	t_pxobject x_obj;
 	t_fftease *fft;
 	t_fftease *fft2;
@@ -135,26 +132,26 @@ void morphine_transition(t_morphine *x, t_floatarg f)
 
 void *morphine_new(t_symbol *s, int argc, t_atom *argv)
 {
-	t_fftease *fft, *fft2;	
+	// t_fftease *fft, *fft2;
 	t_morphine *x = (t_morphine *)object_alloc(morphine_class);
 	dsp_setup((t_pxobject *)x,3);
 	outlet_new((t_pxobject *)x, "signal");
 	x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
 	x->fft2 = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
-	fft = x->fft;
-	fft2 = x->fft2;
-	fft->initialized = 0;
-	fft2->initialized = 0;
+	//fft = x->fft;
+	//fft2 = x->fft2;
+	x->fft->initialized = 0;
+	x->fft2->initialized = 0;
 	x->exponScale = -5.0;	
 	atom_arg_getdouble(&x->exponScale, 0, argc, argv);
-	fft->N = FFTEASE_DEFAULT_FFTSIZE;
-	fft->overlap = FFTEASE_DEFAULT_OVERLAP;
-	fft->winfac = FFTEASE_DEFAULT_WINFAC;
-	fft2->N = FFTEASE_DEFAULT_FFTSIZE;
-	fft2->overlap = FFTEASE_DEFAULT_OVERLAP;
-	fft2->winfac = FFTEASE_DEFAULT_WINFAC;	
-	fft2->R = fft->R = sys_getsr();
-	fft2->MSPVectorSize = fft->MSPVectorSize = sys_getblksize();
+	x->fft->N = FFTEASE_DEFAULT_FFTSIZE;
+	x->fft->overlap = FFTEASE_DEFAULT_OVERLAP;
+	x->fft->winfac = FFTEASE_DEFAULT_WINFAC;
+	x->fft2->N = FFTEASE_DEFAULT_FFTSIZE;
+	x->fft2->overlap = FFTEASE_DEFAULT_OVERLAP;
+	x->fft2->winfac = FFTEASE_DEFAULT_WINFAC;
+	x->fft2->R = x->fft->R = sys_getsr();
+	x->fft2->MSPVectorSize = x->fft->MSPVectorSize = sys_getblksize();
 	attr_args_process(x, argc, argv);
 	morphine_init(x);
 	return x;
@@ -162,28 +159,24 @@ void *morphine_new(t_symbol *s, int argc, t_atom *argv)
 
 void morphine_init(t_morphine *x)
 {
-//	int i;
-	t_fftease *fft = x->fft;
-	t_fftease *fft2 = x->fft2;
-	short initialized = fft->initialized;
+	//t_fftease *fft = x->fft;
+	//t_fftease *fft2 = x->fft2;
+	short initialized = x->fft->initialized;
     
 	x->x_obj.z_disabled = 1;
     
-	fftease_init(fft);
-	fftease_init(fft2);
+	fftease_init(x->fft);
+	fftease_init(x->fft2);
 
 	if(!initialized){
 		x->morphIndex = 0.;
 		x->mute = 0;
-		x->picks = (pickme *) sysmem_newptrclear((fft->N2+1) * sizeof(pickme));
-		x->mirror = (pickme *) sysmem_newptrclear((fft->N2+1) * sizeof(pickme));
+		x->picks = (pickme *) sysmem_newptrclear((x->fft->N2+1) * sizeof(pickme));
+		x->mirror = (pickme *) sysmem_newptrclear((x->fft->N2+1) * sizeof(pickme));
 		
 	} else if(x->fft->initialized == 1) {
-		x->picks = (pickme *) sysmem_resizeptrclear(x->picks, (fft->N2+1) * sizeof(pickme));
-		x->mirror = (pickme *) sysmem_resizeptrclear(x->mirror, (fft->N2+1) * sizeof(pickme));
-//        x->fft->input = (double*)sysmem_resizeptrclear(x->fft->input, fft->Nw * sizeof(double));
-//        x->fft2->input = (double*)sysmem_resizeptrclear(x->fft2->input, fft->Nw * sizeof(double));
-//        x->fft2->output = (double*)sysmem_resizeptrclear(x->fft2->output,fft->Nw *sizeof(double));
+		x->picks = (pickme *) sysmem_resizeptrclear(x->picks, (x->fft->N2+1) * sizeof(pickme));
+		x->mirror = (pickme *) sysmem_resizeptrclear(x->mirror, (x->fft->N2+1) * sizeof(pickme));
 	}
 
 	x->x_obj.z_disabled = 0;	
