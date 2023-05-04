@@ -34,6 +34,7 @@ typedef struct _bthresher
 	long overlap_attr;
 } t_bthresher;
 
+// will fix old memory calls
 
 void *bthresher_new(t_symbol *s, int argc, t_atom *argv);
 t_int *offset_perform(t_int *w);
@@ -172,7 +173,7 @@ t_max_err set_overlap(t_bthresher *x, void *attr, long ac, t_atom *av)
 
 void bthresher_fftinfo( t_bthresher *x )
 {
-	fftease_fftinfo( x->fft, OBJECT_NAME );	
+	fftease_fftinfo(x->fft, OBJECT_NAME);
 }
 
 void bthresher_free( t_bthresher *x ){
@@ -180,11 +181,11 @@ void bthresher_free( t_bthresher *x ){
 	t_fftease *fft = x->fft;
 	fftease_free(fft);
 	/* external-specific memory */
-	free(x->composite_frame);
-	free(x->frames_left);
-	free(x->move_threshold);
-	free(x->damping_factor);
-	free(x->list_data);
+    sysmem_freeptr(x->composite_frame);
+    sysmem_freeptr(x->frames_left);
+    sysmem_freeptr(x->move_threshold);
+    sysmem_freeptr(x->damping_factor);
+    sysmem_freeptr(x->list_data);
 }
 
 void bthresher_max_hold(t_bthresher *x, t_double f)
@@ -204,9 +205,9 @@ void bthresher_allthresh(t_bthresher *x, t_double f)
 {
 	int i;
 	t_fftease *fft = x->fft;
-	//post("thresh %f",f);
-	for(i=0;i < fft->N2+1;i++)
-		x->move_threshold[i] = f;
+    for(i=0;i < fft->N2+1;i++){
+        x->move_threshold[i] = f;
+    }
 }
 
 void bthresher_alldamp(t_bthresher *x, t_double f)
@@ -214,9 +215,9 @@ void bthresher_alldamp(t_bthresher *x, t_double f)
 	int i;
 	t_fftease *fft = x->fft;
 
-	//post("damp %f",f);
-	for(i=0;i < fft->N2+1;i++)
-		x->damping_factor[i] = f;
+    for(i=0;i < fft->N2+1;i++){
+        x->damping_factor[i] = f;
+    }
 }
 
 
@@ -255,13 +256,11 @@ void bthresher_list (t_bthresher *x, t_symbol *msg, short argc, t_atom *argv) {
 	double *damping_factor = x->damping_factor;
 	double *move_threshold = x->move_threshold;
 	
-	//	post("reading %d elements", argc);
 	idiv = fdiv = (double) argc / 3.0 ;
 	if( fdiv - idiv > 0.0 ) {
 		post("list must be in triplets");
 		return;
 	}
-	
 	
 	for( i = 0; i < argc; i += 3 ) {
 		bin = atom_getintarg(i,argc,argv);
@@ -302,7 +301,7 @@ t_fftease *fft;
 	outlet_new((t_pxobject *)x, "signal");
 	x->x_obj.z_misc |= Z_NO_INPLACE;
 	
-	x->fft = (t_fftease *) sysmem_newptrclear( sizeof(t_fftease) );
+	x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
 	
 	fft = x->fft;
 	fft->initialized = 0;
@@ -326,8 +325,6 @@ t_fftease *fft;
     bthresher_init(x);
 	return x;
 }
-
-
 
 void bthresher_transpose(t_bthresher *x, t_double tf)
 {
@@ -358,25 +355,23 @@ void bthresher_init(t_bthresher *x)
 		x->mute = 0;
 		x->bypass = 0;
 		x->inf_hold = 0;
-		x->composite_frame = (double *) calloc(fft->N + 2, sizeof(double));
-		x->frames_left = (int *) calloc(fft->N + 2, sizeof(int));
-		
+		x->composite_frame = (double *) sysmem_newptrclear((fft->N + 2) * sizeof(double));
+		x->frames_left = (int *) sysmem_newptrclear((fft->N + 2) * sizeof(int));
 		
 		// TRIPLETS OF bin# damp_factor threshold
-		x->list_data = (t_atom *) calloc((fft->N2 + 1) * 3, sizeof(t_atom));
-		x->move_threshold = (double *) calloc((fft->N2+1), sizeof(double));
-		x->damping_factor = (double *) calloc((fft->N2+1), sizeof(double));
+		x->list_data = (t_atom *) sysmem_newptrclear(((fft->N2 + 1) * 3) * sizeof(t_atom));
+		x->move_threshold = (double *) sysmem_newptrclear((fft->N2+1) * sizeof(double));
+		x->damping_factor = (double *) sysmem_newptrclear((fft->N2+1) * sizeof(double));
 	
 		for(i = 0; i < fft->N2+1; i++) {
 			x->move_threshold[i] = x->init_thresh;
 			x->damping_factor[i] = x->init_damping;
 		}
 	} else {
-		x->list_data = (t_atom *) realloc((void *)x->list_data, (fft->N2 + 1) * 3 * sizeof(t_atom));
-		x->move_threshold = (double *) realloc((void *)x->move_threshold, (fft->N2+1) * sizeof(double));
-		x->damping_factor = (double *) realloc((void *)x->damping_factor, (fft->N2+1) * sizeof(double));
-	} 
-// NEED TO HANDLE REALLOC CASE!!!
+		x->list_data = (t_atom *) sysmem_resizeptrclear((void *)x->list_data, (fft->N2 + 1) * 3 * sizeof(t_atom));
+		x->move_threshold = (double *) sysmem_resizeptrclear((void *)x->move_threshold, (fft->N2+1) * sizeof(double));
+		x->damping_factor = (double *) sysmem_resizeptrclear((void *)x->damping_factor, (fft->N2+1) * sizeof(double));
+	}
 
 	x->tadv = (double) fft->D / (double) fft->R;
 	x->max_hold_frames = x->max_hold_time / x->tadv;
