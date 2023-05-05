@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -188,7 +188,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 259.0, 316.0, 20.0, 20.0 ]
+					"patching_rect" : [ 259.0, 316.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -200,7 +200,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 52.0, 242.0, 20.0, 20.0 ]
+					"patching_rect" : [ 52.0, 242.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -223,11 +223,10 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-14",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 80.0, 242.0, 126.0, 36.0 ],
+					"patching_rect" : [ 80.0, 242.0, 223.0, 21.0 ],
 					"text" : "turn on for adaptive relative threshold"
 				}
 
@@ -329,7 +328,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -606,6 +605,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 1 ],
+					"midpoints" : [ 181.5, 478.25, 207.5, 478.25 ],
 					"order" : 0,
 					"source" : [ "obj-36", 0 ]
 				}
