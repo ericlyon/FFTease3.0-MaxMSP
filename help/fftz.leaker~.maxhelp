@@ -56,8 +56,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 337.0, 220.0, 220.0, 21.0 ],
-					"text" : "<- select two soundfiles to crossfade"
+					"patching_rect" : [ 326.0, 214.0, 203.0, 21.0 ],
+					"text" : "select two soundfiles to crossfade"
 				}
 
 			}
@@ -69,7 +69,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 243.0, 220.0, 24.0, 24.0 ]
+					"patching_rect" : [ 241.0, 214.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -82,7 +82,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 279.0, 220.0, 39.0, 23.0 ],
+					"patching_rect" : [ 279.0, 214.0, 39.0, 23.0 ],
 					"text" : "open"
 				}
 
@@ -109,7 +109,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 154.0, 220.0, 24.0, 24.0 ]
+					"patching_rect" : [ 155.0, 214.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -122,7 +122,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 190.0, 220.0, 39.0, 23.0 ],
+					"patching_rect" : [ 190.0, 214.0, 39.0, 23.0 ],
 					"text" : "open"
 				}
 
@@ -393,7 +393,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 163.5, 244.5, 199.5, 244.5 ],
+					"midpoints" : [ 164.5, 244.5, 199.5, 244.5 ],
 					"source" : [ "obj-6", 0 ]
 				}
 
@@ -401,7 +401,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
-					"midpoints" : [ 252.5, 244.5, 288.5, 244.5 ],
+					"midpoints" : [ 250.5, 244.5, 288.5, 244.5 ],
 					"source" : [ "obj-7", 0 ]
 				}
 
