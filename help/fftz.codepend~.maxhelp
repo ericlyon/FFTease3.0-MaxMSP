@@ -563,7 +563,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 343.0, 247.5, 254.0, 33.0 ],
+					"patching_rect" : [ 343.0, 247.5, 257.0, 33.0 ],
 					"text" : "inverse threshold (lower values intensify effect but only when \"invert\" is turned on)"
 				}
 
@@ -576,14 +576,14 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 328.0, 351.0, 279.0, 20.0 ],
+					"patching_rect" : [ 326.0, 351.0, 279.0, 20.0 ],
 					"text" : "scaling exponent (lower values increase distortion)"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"color" : [ 0.8, 0.839216, 0.709804, 1.0 ],
+					"color" : [ 0.125490196078431, 0.325490196078431, 1.0, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-15",
