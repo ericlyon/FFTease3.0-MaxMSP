@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 5,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -52,7 +52,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 5,
-							"revision" : 3,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -97,7 +97,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 103.0, 58.0, 50.0, 22.0 ]
+									"patching_rect" : [ 128.0, 56.0, 50.0, 22.0 ]
 								}
 
 							}
@@ -110,7 +110,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "float", "float", "float" ],
-									"patching_rect" : [ 271.0, 81.0, 69.0, 22.0 ],
+									"patching_rect" : [ 296.0, 79.0, 69.0, 22.0 ],
 									"text" : "unpack f f f"
 								}
 
@@ -124,7 +124,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 271.0, 44.0, 122.0, 22.0 ],
+									"patching_rect" : [ 296.0, 42.0, 122.0, 22.0 ],
 									"text" : "loadmess 50 100 0.3"
 								}
 
@@ -155,7 +155,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 140.0, 100.0, 50.0, 23.0 ]
+									"patching_rect" : [ 165.0, 98.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -182,7 +182,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 50.0, 128.0, 41.0, 23.0 ],
+									"patching_rect" : [ 75.0, 126.0, 41.0, 23.0 ],
 									"text" : "*~ 50"
 								}
 
@@ -196,7 +196,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 50.0, 100.0, 69.0, 23.0 ],
+									"patching_rect" : [ 75.0, 98.0, 69.0, 23.0 ],
 									"text" : "cycle~ 0.3"
 								}
 
@@ -224,7 +224,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
-									"patching_rect" : [ 50.0, 40.0, 25.0, 25.0 ]
+									"patching_rect" : [ 19.0, 27.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -236,7 +236,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 57.0, 299.0, 25.0, 25.0 ]
+									"patching_rect" : [ 57.0, 299.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -251,6 +251,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-25", 0 ],
+									"midpoints" : [ 28.5, 133.5, 59.5, 133.5 ],
 									"source" : [ "obj-2", 0 ]
 								}
 
@@ -286,6 +287,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-34", 0 ],
+									"midpoints" : [ 305.5, 111.0, 240.0, 111.0, 240.0, 87.0, 174.5, 87.0 ],
 									"source" : [ "obj-3", 0 ]
 								}
 
@@ -293,6 +295,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-36", 0 ],
+									"midpoints" : [ 330.5, 129.5, 128.5, 129.5 ],
 									"source" : [ "obj-3", 1 ]
 								}
 
@@ -300,6 +303,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
+									"midpoints" : [ 355.5, 106.0, 246.5, 106.0, 246.5, 45.0, 137.5, 45.0 ],
 									"source" : [ "obj-3", 2 ]
 								}
 
@@ -307,6 +311,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-28", 1 ],
+									"midpoints" : [ 174.5, 123.0, 106.5, 123.0 ],
 									"source" : [ "obj-34", 0 ]
 								}
 
@@ -314,6 +319,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-29", 1 ],
+									"midpoints" : [ 128.5, 199.5, 98.5, 199.5 ],
 									"source" : [ "obj-36", 0 ]
 								}
 
@@ -321,6 +327,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-26", 0 ],
+									"midpoints" : [ 137.5, 87.5, 84.5, 87.5 ],
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -394,7 +401,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 576.5, 412.0, 153.0, 69.0 ],
+					"patching_rect" : [ 566.0, 413.0, 153.0, 69.0 ],
 					"text" : "FFT size makes a big difference in where the smeared energy goes"
 				}
 
@@ -435,7 +442,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 221.0, 186.0, 20.0, 20.0 ]
+					"patching_rect" : [ 221.0, 186.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -497,14 +504,14 @@
 			}
 , 			{
 				"box" : 				{
-					"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"id" : "obj-15",
 					"local" : 1,
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
 					"numoutlets" : 0,
 					"patching_rect" : [ 221.0, 578.461791999999946, 44.0, 44.0 ],
-					"prototypename" : "helpfile"
+					"prototypename" : "helpfile",
+					"style" : "maxscore.default.buttons"
 				}
 
 			}
@@ -655,6 +662,7 @@
 			}
 , 			{
 				"box" : 				{
+					"color" : [ 0.125490196078431, 0.325490196078431, 1.0, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-1",
@@ -826,7 +834,17 @@
 				"type" : "iLaX"
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"styles" : [ 			{
+				"name" : "maxscore.default.buttons",
+				"default" : 				{
+					"accentcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+ ]
 	}
 
 }
