@@ -289,7 +289,7 @@ void reanimator_init(t_reanimator *x )
 		
 	}
     else if(initialized == 1){
-			post("doing reinit! tot frames: %d", x->total_frames);
+	//		post("doing reinit! tot frames: %d", x->total_frames);
 
 	// danger: could be more frames this time!!!
 		while(framecount < x->total_frames ){
