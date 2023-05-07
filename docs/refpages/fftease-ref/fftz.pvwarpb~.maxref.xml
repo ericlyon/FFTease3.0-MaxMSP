@@ -100,20 +100,20 @@ An internal frequency warping function is created either according to specificat
 	</methodlist>
 	<!--ATTRIBUTES-->
 	<attributelist>
- 		<attribute name="buffername" get="1" set="1" type="int" size="10">
+ 		<attribute name="buffername" get="1" set="1" type="symbol" size="1">
 			<description>
 				Name of a buffer where <o>fftz.pvwarpb~</o> will read from and write its warp function.
 			</description>
 		</attribute>
         
-		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+		<attribute name="fftsize" get="1" set="1" type="int" size="1">
 			<description>
 				FFT size (default is 1024)
 			</description>
 		</attribute>
   
   
-		<attribute name="overlap" get="1" set="1" type="int" size="10">
+		<attribute name="overlap" get="1" set="1" type="int" size="1">
 			<description>
 				Overlap factor (default is 8)
 			</description>

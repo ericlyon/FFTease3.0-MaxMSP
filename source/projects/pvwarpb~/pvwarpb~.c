@@ -32,6 +32,7 @@ typedef struct _pvwarpb
 	short automate;
 	long fftsize_attr;
 	long overlap_attr;
+    t_symbol *buffername_attr;
     t_double *warpfunc; // workspace to create a new function
 	short initialized; // state for object
 } t_pvwarpb;
@@ -61,6 +62,9 @@ t_max_err set_fftsize(t_pvwarpb *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_pvwarpb *x, void *attr, long *ac, t_atom **av);
 t_max_err set_overlap(t_pvwarpb *x, void *attr, long ac, t_atom *av);
 t_max_err get_overlap(t_pvwarpb *x, void *attr, long *ac, t_atom **av);
+t_max_err set_buffername(t_pvwarpb *x, void *attr, long ac, t_atom *av);
+t_max_err get_buffername(t_pvwarpb *x, void *attr, long *ac, t_atom **av);
+
 void pvwarpb_dsp64(t_pvwarpb *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
 void pvwarpb_perform64(t_pvwarpb *x, t_object *dsp64, double **ins,
                     long numins, double **outs,long numouts, long vectorsize,
@@ -84,13 +88,18 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)pvwarpb_fftinfo,"fftinfo",0);
     class_addmethod(c,(method)pvwarpb_dblclick,"dblclick", A_CANT, 0);
 	class_addmethod(c,(method)pvwarpb_float,"float",A_FLOAT,0);
+    
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_pvwarpb, fftsize_attr);
 	CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
 	CLASS_ATTR_LABEL(c, "fftsize", 0, "FFT Size");	
 	
 	CLASS_ATTR_FLOAT(c, "overlap", 0, t_pvwarpb, overlap_attr);
 	CLASS_ATTR_ACCESSORS(c, "overlap", (method)get_overlap, (method)set_overlap);
-	CLASS_ATTR_LABEL(c, "overlap", 0, "Overlap");	
+	CLASS_ATTR_LABEL(c, "overlap", 0, "Overlap");
+    
+    CLASS_ATTR_SYM(c, "buffername", 0, t_pvwarpb, buffername_attr);
+    CLASS_ATTR_ACCESSORS(c, "buffername", (method)get_buffername, (method)set_buffername);
+    CLASS_ATTR_LABEL(c, "buffername", 0, "Buffer Name");
 	
 	CLASS_ATTR_ORDER(c, "fftsize",    0, "1");
 	CLASS_ATTR_ORDER(c, "overlap",    0, "2");
@@ -138,7 +147,8 @@ void update_warp_function( t_pvwarpb *x )
 	t_buffer_obj *dbuf;
     long b_nchans;
     long b_frames;
-    double *warpfunc = (double*) sysmem_newptrclear(N2);
+    //double *warpfunc = (double*) sysmem_newptrclear(N2);
+    t_double *warpfunc = x->warpfunc;
     float *b_samples;
 	double cf1 = x->cf1;
 	double cf2 = x->cf2;
@@ -183,9 +193,9 @@ void update_warp_function( t_pvwarpb *x )
 	if( lobin < 0 ){
 		lobin = 0;
 	} 
-	if( verbose )
-		post("bump1: hi %d mid %d lo %d",hibin,midbin,lobin);
-	
+    if( verbose ){
+        post("bump1: hi %d mid %d lo %d",hibin,midbin,lobin);
+    }
 	warpfunc[midbin] = warpfac1;
 	diff = warpfac1 - 1.0 ;
 	bin_extent = hibin - midbin ;
@@ -211,8 +221,9 @@ void update_warp_function( t_pvwarpb *x )
 	if( lobin < 0 ){
 		lobin = 0;
 	} 
-	if( verbose )
-		post("bump2: hi %d mid %d lo %d",hibin,midbin,lobin);
+    if( verbose ){
+        post("bump2: hi %d mid %d lo %d",hibin,midbin,lobin);
+    }
 	warpfunc[midbin] = warpfac2;
 	diff = warpfac2 - 1.0 ;
 	bin_extent = hibin - midbin ;
@@ -232,7 +243,6 @@ void update_warp_function( t_pvwarpb *x )
     }
     buffer_unlock(dbuf);
     object_method(dbuf, gensym("dirty"));
-    sysmem_freeptr(warpfunc);
 	x->please_update = 0;
 }
 void pvwarpb_verbose(t_pvwarpb *x, t_floatarg state)
@@ -253,7 +263,10 @@ void pvwarpb_autofunc(t_pvwarpb *x, t_floatarg minval, t_floatarg maxval)
     t_double *warpfunc = x->warpfunc;
     float *b_samples;
     
-	/////
+    if(x->buffername == NULL){
+        object_error((t_object*)x,"pvwarpb: no warp function defined");
+        return;
+    }
     if(! x->tablebuf_ref){
         x->tablebuf_ref = buffer_ref_new((t_object*)x, x->buffername);
     } else {
@@ -261,7 +274,7 @@ void pvwarpb_autofunc(t_pvwarpb *x, t_floatarg minval, t_floatarg maxval)
     }
     dbuf = buffer_ref_getobject(x->tablebuf_ref);
     if(dbuf == NULL){
-        object_post((t_object*)x,"%s: nonexistent buffer 3 ( %s )",
+        object_error((t_object*)x,"%s: nonexistent buffer 3 ( %s )",
             OBJECT_NAME, x->buffername->s_name);
         return;
     }
@@ -370,7 +383,7 @@ void *pvwarpb_new(t_symbol *s, int argc, t_atom *argv)
 {
 	t_fftease *fft;
 	t_pvwarpb *x = (t_pvwarpb *)object_alloc(pvwarpb_class);
-	atom_arg_getsym(&x->buffername,0,argc,argv);
+	
 	dsp_setup((t_pxobject *)x,10);
 	outlet_new((t_pxobject *)x, "signal");
 	x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
@@ -384,6 +397,9 @@ void *pvwarpb_new(t_symbol *s, int argc, t_atom *argv)
 	fft->N = FFTEASE_DEFAULT_FFTSIZE;
 	fft->overlap = FFTEASE_DEFAULT_OVERLAP;
 	fft->winfac = FFTEASE_DEFAULT_WINFAC;
+    x->tablebuf_ref = NULL;
+    x->buffername = NULL;
+    // atom_arg_getsym(&x->buffername,0,argc,argv);
     x->warpfunc = (t_double *) sysmem_newptrclear(8192);
 	attr_args_process(x, argc, argv);
 	pvwarpb_init(x);
@@ -766,6 +782,31 @@ t_max_err set_overlap(t_pvwarpb *x, void *attr, long ac, t_atom *av)
 	return MAX_ERR_NONE;
 }
 
+t_max_err get_buffername(t_pvwarpb *x, void *attr, long *ac, t_atom **av)
+{
+    if (ac && av) {
+        char alloc;
+        
+        if (atom_alloc(ac, av, &alloc)) {
+            return MAX_ERR_GENERIC;
+        }
+        x->buffername_attr = x->buffername;
+        atom_setsym(*av, x->buffername_attr);
+    }
+    return MAX_ERR_NONE;
+}
+
+
+t_max_err set_buffername(t_pvwarpb *x, void *attr, long ac, t_atom *av)
+{
+    if (ac && av) {
+        t_symbol *val = atom_getsym(av);
+        x->buffername = val;
+        // pvwarpb_init(x);
+    }
+    return MAX_ERR_NONE;
+}
+
 
 void pvwarpb_dsp64(t_pvwarpb *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
@@ -779,7 +820,7 @@ void pvwarpb_dsp64(t_pvwarpb *x, t_object *dsp64, short *count, double samplerat
 	if(!samplerate)
         return;
 	x->always_update = 0;
-	update_warp_function(x);
+	// update_warp_function(x);
 	for( i = 1; i < 10; i++ ){
 		// only the first 6 inlets alter warp function
 		if( i < 6 ){
