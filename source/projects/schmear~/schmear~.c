@@ -27,12 +27,12 @@ void schmear_mute(t_schmear *x, t_floatarg toggle);
 void schmear_rel2peak(t_schmear *x, t_floatarg toggle);
 void schmear_assist(t_schmear *x, void *b, long m, long a, char *s);
 void schmear_float(t_schmear *x, double f);
-// void schmear_overlap(t_schmear *x, t_floatarg o);
 void schmear_free(t_schmear *x);
 void schmear_init(t_schmear *x);
 void schmear_overlap(t_schmear *x, t_floatarg f);
 void schmear_winfac(t_schmear *x, t_floatarg f);
 void schmear_threshold(t_schmear *x, t_floatarg f);
+void schmear_mult(t_schmear *x, t_floatarg f);
 void schmear_fftinfo(t_schmear *x);
 void schmear_bypass(t_schmear *x, t_floatarg toggle);
 void schmear_schmimp(t_schmear *x, t_symbol *msg, short argc, t_atom *argv);
@@ -56,6 +56,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)schmear_mute,"mute",A_FLOAT,0);
 	class_addmethod(c,(method)schmear_bypass,"bypass", A_FLOAT, 0);
 	class_addmethod(c,(method)schmear_threshold,"threshold",A_FLOAT,0);
+    class_addmethod(c,(method)schmear_mult,"mult",A_FLOAT,0);
 	class_addmethod(c,(method)schmear_shift,"shift",A_FLOAT,0);
 	class_addmethod(c,(method)schmear_schmimp,"schmimp",A_GIMME,0);
 	class_addmethod(c,(method)schmear_oscbank,"oscbank",A_FLOAT,0);
@@ -161,6 +162,11 @@ void schmear_threshold(t_schmear *x, t_floatarg t)
 	x->threshold = (float)t;
 }
 
+void schmear_mult(t_schmear *x, t_floatarg t)
+{
+    x->schmearmult = (float)t;
+}
+
 void schmear_bypass(t_schmear *x, t_floatarg toggle)
 {
 	x->bypass = (short)toggle;
@@ -171,8 +177,8 @@ void schmear_assist (t_schmear *x, void *b, long msg, long arg, char *dst)
 	if (msg==1) {
 		switch (arg) {
 			case 0: sprintf(dst,"(signal) Input"); break;
-			case 1: sprintf(dst,"(signal/float) Threshold Generator"); break;
-			case 2: sprintf(dst,"(signal/float) Multiplier for Weak Bins"); break;
+			// case 1: sprintf(dst,"(signal/float) Threshold Generator"); break;
+			// case 2: sprintf(dst,"(signal/float) Multiplier for Weak Bins"); break;
 		}
 	} else if (msg==2) {
 		sprintf(dst,"(signal) Output");
@@ -194,8 +200,6 @@ void *schmear_new(t_symbol *s, int argc, t_atom *argv)
 	x->threshold = 0.1;
 	x->schmearmult = 0.1;
 	x->mute = 0;
-	atom_arg_getdouble(&x->threshold, 0, argc, argv);
-	// atom_arg_getdouble(&x->schmearmult, 1, argc, argv);
 	fft->N = FFTEASE_DEFAULT_FFTSIZE;
 	fft->overlap = FFTEASE_DEFAULT_OVERLAP;
 	fft->winfac = FFTEASE_DEFAULT_WINFAC;
