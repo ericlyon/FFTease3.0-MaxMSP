@@ -136,7 +136,6 @@ t_max_err get_fftsize(t_bthresher *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_fftsize(t_bthresher *x, void *attr, long ac, t_atom *av)
 {
-	
 	if (ac && av) {
 		long val = atom_getlong(av);
 		x->fft->N = (int) val;
@@ -293,8 +292,7 @@ void bthresher_dump (t_bthresher *x) {
 
 void *bthresher_new(t_symbol *s, int argc, t_atom *argv)
 {
-t_fftease *fft;
-
+    t_fftease *fft;
 	t_bthresher *x = (t_bthresher *)object_alloc(bthresher_class);
 	x->list_outlet = listout((t_pxobject *)x);
 	dsp_setup((t_pxobject *)x,3);

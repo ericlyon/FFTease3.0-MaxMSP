@@ -9,7 +9,6 @@ static t_class *thresher_class;
 
 typedef struct _thresher
 {
-
 	t_pxobject x_obj;
 	t_fftease *fft;
 	double move_threshold;
@@ -52,7 +51,6 @@ void thresher_perform64(t_thresher *x, t_object *dsp64, double **ins,
 
 int C74_EXPORT main(void)
 {
-
 	t_class *c;
 	c = class_new("fftz.thresher~", (method)thresher_new, (method)thresher_free, sizeof(t_thresher),0,A_GIMME,0);
 	
@@ -65,8 +63,8 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)thresher_oscbank,"oscbank",A_FLOAT,0);
 	class_addmethod(c,(method)thresher_transpose,"transpose",A_FLOAT,0);
 	class_addmethod(c,(method)thresher_synthresh,"synthresh",A_FLOAT,0);
-
 	class_addmethod(c,(method)thresher_float, "float",  A_FLOAT, 0);
+    
 	CLASS_ATTR_LONG(c, "fftsize", 0, t_thresher, fftsize_attr);
 	CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
 	CLASS_ATTR_LABEL(c, "fftsize", 0, "FFT Size");	
@@ -86,11 +84,58 @@ int C74_EXPORT main(void)
 	return 0;
 }
 
-
-void thresher_fftsize(t_thresher *x, t_floatarg f)
+t_max_err get_fftsize(t_thresher *x, void *attr, long *ac, t_atom **av)
 {
-	x->fft->N = (int) f;
-	thresher_init(x);
+    if (*ac && *av) {
+        //memory passed in, use it
+    }
+    else {
+        *ac = 1; // size of attr data
+        *av = (t_atom *)getbytes(sizeof(t_atom) * (*ac));
+        if (!(*av)) {
+            *ac = 0;
+            return MAX_ERR_OUT_OF_MEM;
+        }
+    }
+    x->fftsize_attr = x->fft->N;
+    //    post("fftsize attribute set to %d\n", x->fft->N);
+    atom_setlong(*av, x->fftsize_attr);
+    return MAX_ERR_NONE;
+}
+
+t_max_err set_fftsize(t_thresher *x, void *attr, long ac, t_atom *av)
+{
+    if (ac && av) {
+        long val = atom_getlong(av);
+        x->fft->N = (int) val;
+        thresher_init(x);
+    }
+    return MAX_ERR_NONE;
+}
+
+t_max_err get_overlap(t_thresher *x, void *attr, long *ac, t_atom **av)
+{
+    if (ac && av) {
+        char alloc;
+        
+        if (atom_alloc(ac, av, &alloc)) {
+            return MAX_ERR_GENERIC;
+        }
+        x->overlap_attr = x->fft->overlap;
+        atom_setlong(*av, x->overlap_attr);
+    }
+    return MAX_ERR_NONE;
+}
+
+
+t_max_err set_overlap(t_thresher *x, void *attr, long ac, t_atom *av)
+{
+    if (ac && av) {
+        long val = atom_getlong(av);
+        x->fft->overlap = (int) val;
+        thresher_init(x);
+    }
+    return MAX_ERR_NONE;
 }
 
 void thresher_transpose(t_thresher *x, t_floatarg tf)
@@ -107,13 +152,13 @@ void thresher_oscbank(t_thresher *x, t_floatarg flag)
 {
 	x->fft->obank_flag = (short) flag;
 }
-
+/*
 void thresher_overlap(t_thresher *x, t_floatarg f)
 {
 	x->fft->overlap = (int) f;
 	thresher_init(x);
 }
-
+*/
 void thresher_winfac(t_thresher *x, t_floatarg f)
 {
 	x->fft->winfac = (int) f;
@@ -168,20 +213,18 @@ void *thresher_new(t_symbol *s, int argc, t_atom *argv)
 
 	dsp_setup((t_pxobject *)x,3);
 	outlet_new((t_pxobject *)x, "signal");
+    x->x_obj.z_misc |= Z_NO_INPLACE;
 
 	x->fft = (t_fftease *) sysmem_newptr(sizeof(t_fftease) );
 	fft = x->fft;
 	fft->initialized = 0;
 	fft->R = sys_getsr();
-	fft->MSPVectorSize = sys_getblksize();	
-	
+	fft->MSPVectorSize = sys_getblksize();
 	x->move_threshold = 0.001;
 	x->damping_factor = 0.99;
-	atom_arg_getdouble(&x->move_threshold , 0, argc, argv);
-	atom_arg_getdouble(&x->damping_factor , 1, argc, argv);	
-	fft->N = FFTEASE_DEFAULT_FFTSIZE;
-	fft->overlap = FFTEASE_DEFAULT_OVERLAP;
-	fft->winfac = FFTEASE_DEFAULT_WINFAC;	
+	x->fft->N = FFTEASE_DEFAULT_FFTSIZE;
+	x->fft->overlap = FFTEASE_DEFAULT_OVERLAP;
+	x->fft->winfac = FFTEASE_DEFAULT_WINFAC;
 	
 	attr_args_process(x, argc, argv);
 	thresher_init(x);
@@ -195,7 +238,6 @@ void thresher_init(t_thresher *x)
 	x->x_obj.z_disabled = 1;
 	fftease_init(fft);
 	x->tadv = (double) fft->D / (double) fft->R ;
-	//post("tadv %f",x->tadv);
 	if(!initialized){
 		x->mute = 0;
 		x->bypass = 0;
@@ -361,56 +403,6 @@ void thresher_float(t_thresher *x, double f) // Look at floats at inlets
     }
 }
 
-t_max_err get_fftsize(t_thresher *x, void *attr, long *ac, t_atom **av)
-{
-	if (ac && av) {
-		char alloc;
-		
-		if (atom_alloc(ac, av, &alloc)) {
-			return MAX_ERR_GENERIC;
-		}
-		x->fftsize_attr = x->fft->N;
-		atom_setlong(*av, x->fftsize_attr);
-	}	
-	return MAX_ERR_NONE;
-	
-}
-
-t_max_err set_fftsize(t_thresher *x, void *attr, long ac, t_atom *av)
-{
-	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->N = (int) val;
-		thresher_init(x);
-	}
-	return MAX_ERR_NONE;
-}
-
-t_max_err get_overlap(t_thresher *x, void *attr, long *ac, t_atom **av)
-{
-	if (ac && av) {
-		char alloc;
-		
-		if (atom_alloc(ac, av, &alloc)) {
-			return MAX_ERR_GENERIC;
-		}
-		x->overlap_attr = x->fft->overlap;
-		atom_setlong(*av, x->overlap_attr);
-	}	
-	return MAX_ERR_NONE;
-} 
-
-
-t_max_err set_overlap(t_thresher *x, void *attr, long ac, t_atom *av)
-{	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		thresher_init(x);
-	}
-	return MAX_ERR_NONE;
-}
 
 void thresher_dsp64(t_thresher *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {

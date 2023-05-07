@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1694.0, 273.0, 589.0, 532.0 ],
+		"rect" : [ 370.0, 1416.0, 589.0, 532.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -264,8 +264,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 88.972076000000001, 392.0, 240.0, 23.0 ],
-					"text" : "fftz.thresher~ @fftsize 1024 @overlap 8"
+					"patching_rect" : [ 88.972076000000001, 392.0, 168.0, 23.0 ],
+					"text" : "fftz.thresher~ @fftsize 1024"
 				}
 
 			}
@@ -340,7 +340,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-15", 2 ],
-					"midpoints" : [ 409.472076000000015, 376.0, 319.472076000000015, 376.0 ],
+					"midpoints" : [ 409.472076000000015, 376.0, 247.472076000000015, 376.0 ],
 					"source" : [ "obj-13", 0 ]
 				}
 
@@ -348,7 +348,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-15", 1 ],
-					"midpoints" : [ 138.472075999999987, 376.0, 208.972076000000015, 376.0 ],
+					"midpoints" : [ 138.472075999999987, 376.0, 172.972076000000015, 376.0 ],
 					"source" : [ "obj-14", 0 ]
 				}
 
