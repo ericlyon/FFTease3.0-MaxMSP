@@ -130,7 +130,7 @@ void *pvcompand_new(t_symbol *s, int argc, t_atom *argv)
 	dsp_setup((t_pxobject *)x,2);
 	outlet_new((t_pxobject *)x, "signal");
 
-	x->fft = (t_fftease *) malloc(sizeof(t_fftease));
+    x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
 	fft = x->fft;
 	fft->initialized = 0;
 	fft->R = sys_getsr();
@@ -138,7 +138,7 @@ void *pvcompand_new(t_symbol *s, int argc, t_atom *argv)
 	
 	// INITIALIZATIONS
 	x->max_atten = -6.0;
-	atom_arg_getdouble(&x->max_atten , 0, argc, argv);
+	// atom_arg_getdouble(&x->max_atten , 0, argc, argv);
 	fft->N = FFTEASE_DEFAULT_FFTSIZE;
 	fft->overlap = FFTEASE_DEFAULT_OVERLAP;
 	fft->winfac = FFTEASE_DEFAULT_WINFAC;
