@@ -259,7 +259,7 @@ t_fftease *fft;
 	dsp_setup((t_pxobject *)x,1);
 	outlet_new((t_pxobject *)x, "signal");
 
-	x->fft = (t_fftease *) malloc(sizeof(t_fftease));
+	x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
 	fft = x->fft;
 	fft->R = sys_getsr();
 	fft->MSPVectorSize = sys_getblksize();
