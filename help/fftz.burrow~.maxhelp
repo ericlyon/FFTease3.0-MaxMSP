@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1348.0, 1235.0, 759.0, 694.0 ],
+		"rect" : [ 577.0, 1031.0, 759.0, 694.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -246,8 +246,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 4,
+							"minor" : 6,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -835,6 +835,7 @@
 			}
 , 			{
 				"box" : 				{
+					"color" : [ 0.125490196078431, 0.325490196078431, 1.0, 1.0 ],
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-26",
@@ -920,7 +921,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 113.0, 207.5, 377.0, 21.0 ],
+					"patching_rect" : [ 129.0, 178.5, 377.0, 21.0 ],
 					"text" : "select a sound source and then burrow into it with filtered noise."
 				}
 
