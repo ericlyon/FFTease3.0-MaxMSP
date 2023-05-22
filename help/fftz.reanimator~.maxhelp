@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1169.0, 769.0, 543.0, 526.0 ],
+		"rect" : [ 100.0, 100.0, 543.0, 526.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -74,7 +74,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 17.0, 99.0, 483.0, 50.0 ],
-					"text" : "reanimator~ first analyzes a \"texture\" sound, and then resynthesizes a \"driver\" sound by finding the spectral frame in the texture sound that is closest to the current driver frame.",
+					"text" : "fftz.reanimator~ first analyzes a \"texture\" sound, and then resynthesizes a \"driver\" sound by finding the spectral frame in the texture sound that is closest to the current driver frame.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

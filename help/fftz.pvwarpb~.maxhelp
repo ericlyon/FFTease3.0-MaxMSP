@@ -369,7 +369,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 21.0, 96.0, 483.0, 50.0 ],
-					"text" : "Spectrum warper. An internal frequency warping function is created either according to specification or with the autofunc message. Try it on vocal sounds. In this version, the warp function is read from a Max buffer.",
+					"text" : "Spectrum warper. A frequency warping function is created either according to specification or with the \"autofunc\" message. Try it on vocal sounds. In this version, the warp function is read from a Max buffer.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

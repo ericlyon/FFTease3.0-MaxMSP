@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1711.0, 419.0, 576.0, 622.0 ],
+		"rect" : [ 166.0, 144.0, 576.0, 622.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -186,7 +186,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 15.5, 98.0, 493.0, 79.0 ],
-					"text" : "centerring~ performs frequency independent amplitude modulation upon the spectral magnitudes of input signals. The effect is somewhat akin to flanging. The base frequency is used to derive the frequency of an oscillator associated with each frequency band. The frequency bandwidth and constant control the deviation of a particular frequency band's modulation oscillator frequency.",
+					"text" : "fftz.centerring~ performs frequency independent amplitude modulation upon the spectral magnitudes of input signals. The effect is somewhat akin to flanging. The base frequency is used to derive the frequency of an oscillator associated with each frequency band. The frequency bandwidth and constant control the deviation of a particular frequency band's modulation oscillator frequency.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 
@@ -275,8 +275,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 4,
+							"minor" : 6,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}

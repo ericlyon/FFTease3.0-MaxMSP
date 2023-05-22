@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1327.0, 923.0, 562.0, 440.0 ],
+		"rect" : [ 100.0, 100.0, 562.0, 440.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -143,7 +143,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 21.0, 93.0, 520.0, 65.0 ],
-					"text" : "pvcompand~ either expands or compresses the differences between the amplitudes of the spectral frames. The threshold is interpreted as dB and useful ranges are from about -60 to +60. Positive values increase the \"peakiness\" of the sound and negative values tend to whiten the spectrum.",
+					"text" : "fftz.pvcompand~ either expands or compresses the differences between the amplitudes of the spectral frames. The threshold is interpreted as dB and useful ranges are from about -60 to +60. Positive values increase the \"peakiness\" of the sound and negative values tend to whiten the spectrum.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

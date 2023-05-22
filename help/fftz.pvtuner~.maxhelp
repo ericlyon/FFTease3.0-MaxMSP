@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1047.0, 540.0, 811.0, 582.0 ],
+		"rect" : [ 100.0, 100.0, 811.0, 582.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -99,8 +99,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 4,
+							"minor" : 6,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -289,7 +289,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 19.0, 94.0, 483.0, 50.0 ],
-					"text" : "pvtuner~ allows you to impose an arbitrary tuning scale on any input sound. Several scales are built into the object, and you can provide arbitrary tunings with a sorted list of numbers representing Hz values.",
+					"text" : "fftz.pvtuner~ allows you to impose an arbitrary tuning scale on any input sound. Several scales are built into the object, and you can provide arbitrary tunings with a sorted list of numbers representing Hz values.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

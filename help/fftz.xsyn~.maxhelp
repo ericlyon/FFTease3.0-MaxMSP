@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 723.0, 308.0, 586.0, 416.0 ],
+		"rect" : [ 170.0, 271.0, 585.0, 416.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -91,8 +91,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 21.972076000000001, 97.0, 535.0, 21.0 ],
-					"text" : "xsyn~ filters the first input with the second input, creating a spectral cross synthesis effect.",
+					"patching_rect" : [ 21.972076000000001, 97.0, 550.0, 21.0 ],
+					"text" : "fftz.xsyn~ filters the first input with the second input, creating a spectral cross synthesis effect.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 561.0, 791.0, 574.0, 520.0 ],
+		"rect" : [ 126.0, 183.0, 574.0, 520.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -62,8 +62,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 4,
+							"minor" : 6,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -303,8 +303,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.972076000000001, 108.0, 535.0, 108.0 ],
-					"text" : "vacancy~ performs spectral compositing. The threshold controls the compositing. Useful values lie in the range from -90 dB to 90 dB. Threshold inversion is available via the invert message. The threshold can also track the current RMS value of of the signal. In RMS tracking mode, the useful threshold range will be somewhat different depending upon the character of the input signals. Phases will be derived from the left input unless phase swapping is specified. In this case phases will be taken from the right input signal when the threshold test is true.",
+					"patching_rect" : [ 17.972076000000001, 107.0, 535.0, 108.0 ],
+					"text" : "fftz.vacancy~ performs spectral compositing. The threshold controls the compositing. Useful values lie in the range from -90 dB to 90 dB. Threshold inversion is available via the invert message. The threshold can also track the current RMS value of of the signal. In RMS tracking mode, the useful threshold range will be somewhat different depending upon the character of the input signals. Phases will be derived from the left input unless phase swapping is specified. In this case phases will be taken from the right input signal when the threshold test is true.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

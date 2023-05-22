@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1008.0, 1032.0, 690.0, 485.0 ],
+		"rect" : [ 100.0, 100.0, 690.0, 485.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -110,8 +110,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.0, 96.0, 414.0, 36.0 ],
-					"text" : "enrich~ synthesizes an oscillator bank that reads from a Max buffer, \nwhich can contain any user-specified waveform. Useful for distortion.",
+					"patching_rect" : [ 18.0, 96.0, 433.0, 36.0 ],
+					"text" : "fftz.enrich~ synthesizes an oscillator bank that reads from a Max buffer,  which can contain any user-specified waveform. Useful for distortion.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 
@@ -124,8 +124,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.0, 75.0, 253.0, 21.0 ],
-					"text" : "Additive synthesis with arbitrary waveform"
+					"patching_rect" : [ 18.0, 75.0, 269.0, 21.0 ],
+					"text" : "Additive synthesis with an arbitrary waveform"
 				}
 
 			}
@@ -323,7 +323,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 257.0, 569.0, 82.0, 22.0 ],
 									"saved_object_attributes" : 									{
-										"filename" : "fftz.function.js",
+										"filename" : "fftz.function",
 										"parameter_enable" : 0
 									}
 ,

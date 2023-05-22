@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 689.0, 123.0, 533.0, 444.0 ],
+		"rect" : [ 154.0, 289.0, 533.0, 444.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -93,7 +93,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 17.972076000000001, 98.0, 498.0, 50.0 ],
-					"text" : "swinger~ replaces the phases of one signal (left) with those from another (right). The result often sounds like victory. A swinging trick: Don't connect any signal to the right inlet and listen to the result.",
+					"text" : "fftz.swinger~ replaces the phases of one signal (left) with those from another (right). The result often sounds like victory. A swinging trick: Don't connect any signal to the right inlet and listen to the result.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

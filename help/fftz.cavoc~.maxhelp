@@ -1084,7 +1084,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 15.5, 96.0, 296.0, 36.0 ],
-					"text" : "cavoc~ generates spectra with an 8 rule cellular automaton. Start with very low gain.",
+					"text" : "fftz.cavoc~ generates spectra with an 8 rule cellular automaton. Start with very low gain.",
 					"textcolor" : [ 0.501961, 0.501961, 0.501961, 1.0 ]
 				}
 

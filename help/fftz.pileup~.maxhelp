@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 365.0, 820.0, 904.0, 564.0 ],
+		"rect" : [ 100.0, 100.0, 904.0, 564.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -124,7 +124,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 18.0, 96.0, 728.0, 36.0 ],
-					"text" : "pileup~ maintains amplitude/phase information in bins (with possible damping) until new information comes in above a given threshold. This is useful for various reverberant effects.",
+					"text" : "fftz.pileup~ maintains amplitude/phase information in bins (with possible damping) until new information comes in above a given threshold. This is useful for various reverberant effects.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

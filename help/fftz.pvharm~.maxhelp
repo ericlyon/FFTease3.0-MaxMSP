@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1119.0, 1438.0, 577.0, 525.0 ],
+		"rect" : [ 100.0, 100.0, 577.0, 525.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -250,8 +250,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 24.0, 96.0, 364.0, 36.0 ],
-					"text" : "pvharm~ provides basic harmonizing with two transpositions of the input internally calculated and mixed to the output",
+					"patching_rect" : [ 24.0, 96.0, 378.0, 36.0 ],
+					"text" : "fftz.pvharm~ provides basic harmonizing with two transpositions of the input internally calculated and mixed to the output",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

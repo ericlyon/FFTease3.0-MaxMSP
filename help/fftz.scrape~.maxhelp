@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 746.0, 274.0, 618.0, 497.0 ],
+		"rect" : [ 1002.0, 1439.0, 618.0, 497.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -185,7 +185,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 19.972076000000001, 98.0, 489.0, 79.0 ],
-					"text" : "scrape~ is like drown~ except that it only operates between the frequencies specified by knee and cutoff to the Nyquist. Between knee and cutoff is a transition range to gradually increase the noise reduction. This is good if you just want to scrape some noise off the upper frequency range without affecting lower parts of the spectrum (much).",
+					"text" : "fftz.scrape~ is like fftz.drown~ except that it only operates between the frequencies specified by knee and cutoff to the Nyquist frequency. Between knee and cutoff is a transition range to gradually increase the noise reduction. This is good if you just want to scrape some noise off the upper frequency range without affecting lower parts of the spectrum (much).",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

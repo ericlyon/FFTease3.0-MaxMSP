@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1970.0, 673.0, 876.0, 672.0 ],
+		"rect" : [ 148.0, 291.0, 876.0, 672.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -188,7 +188,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 17.0, 97.0, 498.0, 108.0 ],
-					"text" : "taint~ multiplies the spectra of two input signals. Multiplication of spectra can cause significant drops in the amplitude of the output signal. The inverse option allows division of the input spectra. Division requires the use of a threshold to avert division by zero. Also, signal division will cause massive amplitude gains. Be careful of your ears and equipment. Start the amplitude very low (-100dB) and slowly work up to an acceptable level. A pad is provided to balance gain between normal and invert options.",
+					"text" : "fftz.taint~ multiplies the spectra of two input signals. Multiplication of spectra can cause significant drops in the amplitude of the output signal. The inverse option allows division of the input spectra. Division requires the use of a threshold to avert division by zero. Also, signal division will cause massive amplitude gains. Be careful of your ears and equipment. Start the amplitude very low (-100dB) and slowly work up to an acceptable level. A pad is provided to balance gain between normal and invert options.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

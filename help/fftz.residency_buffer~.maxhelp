@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 111.0, 264.0, 729.0, 634.0 ],
+		"rect" : [ 100.0, 100.0, 729.0, 634.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -164,8 +164,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 19.0, 101.0, 494.0, 108.0 ],
-					"text" : "residency_buffer~ is like residency~ except that it uses an MSP buffer rather than an internal buffer. This makes it more complicated to work with, but potentially more efficient than residency~. Any number of units may access the same buffer (or different ones). The buffername must be set as an attribute. Do NOT attempt to play the recorded buffer with groove~ or other time-domain audio objects unless you have some idea of what you are doing (and turn the volume way down before attempting this).",
+					"patching_rect" : [ 19.0, 101.0, 498.0, 108.0 ],
+					"text" : "fftz.residency_buffer~ is like fftz.residency~ except that it uses a Max buffer rather than an internal buffer. This makes it more complicated to work with, but potentially more efficient than fftz.residency~. Any number of units may access the same buffer (or different ones). The buffername must be set as an attribute. Do NOT attempt to play the recorded buffer with groove~ or other time-domain audio objects unless you have some idea of what you are doing (and turn the volume way down before attempting this).",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

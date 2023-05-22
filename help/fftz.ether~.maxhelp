@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 987.0, 833.0, 710.0, 537.0 ],
+		"rect" : [ 100.0, 100.0, 710.0, 537.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -197,7 +197,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 14.0, 97.0, 676.0, 94.0 ],
-					"text" : "ether~ selects portions of two input signals and creates a composite output spectrum based upon the amplitude of the inputs. In a bin-by-bin comparison, the strongest bin of the two inputs will be selected. Sending the inverse message will reverse this behavior, selecting the weakest bins. The composite index is a scalar for the selection of the second input. Higher values for the composite index will favor the second input. Useful values will vary according to the amplitude characteristics of the input signals. Try values greater than 0 and less than 100. But higher values may be effective depending upon the input signals.",
+					"text" : "fftz.ether~ selects portions of two input signals and creates a composite output spectrum based upon the amplitude of the inputs. In a bin-by-bin comparison, the strongest bin of the two inputs will be selected. Sending the inverse message will reverse this behavior, selecting the weakest bins. The composite index is a scalar for the selection of the second input. Higher values for the composite index will favor the second input. Useful values will vary according to the amplitude characteristics of the input signals. Try values greater than 0 and less than 100. But higher values may be effective depending upon the input signals.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

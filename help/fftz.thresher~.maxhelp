@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 370.0, 1416.0, 589.0, 532.0 ],
+		"rect" : [ 98.0, 135.0, 589.0, 532.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -146,7 +146,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 22.972076000000001, 99.0, 525.0, 65.0 ],
-					"text" : "thresher~ sustains the amplitude and frequency in lower-energy FFT bins. The extent of this effect is controlled by the threshold parameter: at 0. all frames pass, at higher values more frames are sustained. The damping factor controls the decay time. A value of 1. gives an infinite freeze.",
+					"text" : "fftz.thresher~ sustains the amplitude and frequency in lower-energy FFT bins. The extent of this effect is controlled by the threshold parameter: at 0. all frames pass, at higher values more frames are sustained. The damping factor controls the decay time. A value of 1. gives an infinite freeze.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

@@ -1,0 +1,156 @@
+{
+"fftz.bthresher~" : {
+	"description" : "fftz.bthresher~ provides independent control over the parameters of each individual bin for feedback effects.",
+	"digest" : "Bin level feedback"
+},
+"fftz.burrow~" : {
+	"description" : "Use one sound to filter another sound.",
+	"digest" : "Cross filtering"
+},
+"fftz.cavoc27~" : {
+	"description" : "fftz.cavoc27~ generates spectra with a 27 rule cellular automaton.",
+	"digest" : "Cellular Automata-generated spectra"
+},
+"fftz.cavoc~" : {
+	"description" : "fftz.cavoc~ generates spectra with an 8 rule cellular automaton.",
+	"digest" : "Cellular Automata-generated spectra"
+},
+"fftz.centerring~" : {
+	"description" : "fftz.centerring~ performs frequency independent amplitude modulation upon the spectral magnitudes of input signals. ",
+	"digest" : "Frequency independent amplitude modulation"
+},
+"fftz.codepend~" : {
+	"description" : "fftz.codepend~ is a classic \"block convolution\" processor. It performs a complex multiply upon the spectra of two input signals.",
+	"digest" : "Block convolution with complex multiplication"
+},
+"fftz.cross~" : {
+	"description" : "fftz.cross~ uses a threshold to determine whether to perform spectral multiplication or maintain the last calculated magnitude/phase pair.",
+	"digest" : "Cross synthesis with thresholding"
+},
+"fftz.dentist~" : {
+	"description" : "fftz.dentist~ punches out all but a select set of bins.",
+	"digest" : "Zeros out most of the spectrum"
+},
+"fftz.disarrain~" : {
+	"description" : "fftz.disarrain~ reorders a certain number of bins, which can significantly transform the timbre. Interpolation between states is provided.",
+	"digest" : "Spectrum scrambler"
+},
+"fftz.disarray~" : {
+	"description" : "fftz.disarray~ reorders a certain number of bins, which can significantly transform the timbre.",
+	"digest" : "Spectrum scrambler"
+},
+"fftz.drown~" : {
+	"description" : "fftz.drown~ reduces the energy of low energy bins for noise reduction.",
+	"digest" : "Spectral noise reduction"
+},
+"fftz.enrich~" : {
+	"description" : "fftz.enrich~ synthesizes an oscillator bank that reads from a Max buffer,  which can contain any user-specified waveform. Useful for distortion.",
+	"digest" : "Additive synthesis with an arbitrary waveform"
+},
+"fftz.ether~" : {
+	"description" : "fftz.ether~ selects portions of two input signals and creates a composite output spectrum based upon the amplitude of the inputs.",
+	"digest" : "Spectral compositing"
+},
+"fftz.leaker~" : {
+	"description" : "fftz.leaker~ combines two input sounds, with the spectral contribution of each sound determined by an internally maintained sieve",
+	"digest" : "Spectral crossfade"
+},
+"fftz.loopsea~" : {
+	"description" : "fftz.loopsea~ stores a spectral recording of a sound, and then creates loops on a per-bin basis.",
+	"digest" : "FFT bin level algorithmic looper"
+},
+"fftz.mindwarp~" : {
+	"description" : "fftz.mindwarp~ performs spectral envelope warping. It can be used to correct for the formant shifting effects of pitch-scaling.",
+	"digest" : "Spectral envelope warping"
+},
+"fftz.morphine~" : {
+	"description" : "fftz.morphine~ performs spectral morphing, creating a new spectrum from its two inputs.",
+	"digest" : "Spectral morphing"
+},
+"fftz.multyq~" : {
+	"description" : "fftz.multyq~ is a four band equalizer.",
+	"digest" : "Spectral EQ"
+},
+"fftz.pileup~" : {
+	"description" : "fftz.pileup~ maintains amplitude/phase information in bins (with possible damping) until new information comes in above a given threshold.",
+	"digest" : "Spectral persistence"
+},
+"fftz.pvcompand~" : {
+	"description" : "fftz.pvcompand~ either expands or compresses the differences between the amplitudes of the spectral frames.",
+	"digest" : "Spectral compander"
+},
+"fftz.pvgrain~" : {
+	"description" : "fftz.pvgrain~ tracks an input sound and outputs control data that can be used to play notes on a synthesizer or sampler.",
+	"digest" : "Spectral granulator"
+},
+"fftz.pvharm~" : {
+	"description" : "fftz.pvharm~ provides basic harmonizing with two transpositions of the input internally calculated and mixed to the output.",
+	"digest" : "Harmonizer"
+},
+"fftz.pvoc~" : {
+	"description" : "fftz.pvoc~ performs phase vocoding with the option to limit minimum and maximum frequency to synthesize.",
+	"digest" : "Phase vocoder"
+},
+"fftz.pvtuner~" : {
+	"description" : "fftz.pvtuner~ allows you to impose an arbitrary tuning scale on any input sound.",
+	"digest" : "Frequency-quantized oscillator bank resynthesis"
+},
+"fftz.pvwarpb~" : {
+	"description" : "A frequency warping function is created either according to specifications or with the \"autofunc\" message. For fftz.pvwarpb~, the warp function is read from a Max buffer.",
+	"digest" : "Spectral Warp"
+},
+"fftz.pvwarp~" : {
+	"description" : "fftz.pvwarp~ creates an internal frequency warping function.",
+	"digest" : "Spectral Warp"
+},
+"fftz.reanimator~" : {
+	"description" : "fftz.reanimator~ first analyzes a \"texture\" sound, and then resynthesizes a \"driver\" sound by finding the spectral frame in the texture sound that is closest to the current driver frame.",
+	"digest" : "Audio texture mapping"
+},
+"fftz.resent~" : {
+	"description" : "fftz.resent~ follows the model of fftz.residency~ but allows independent control over each bin.",
+	"digest" : "Spectral sample buffer"
+},
+"fftz.residency_buffer~" : {
+	"description" : "fftz.residency_buffer~ is like fftz.residency~ except that it uses a Max buffer rather than an internal buffer.",
+	"digest" : "Spectral sample buffer"
+},
+"fftz.residency~" : {
+	"description" : "fftz.residency~ samples input to an internal buffer, after which the sound can be resynthesized with arbitrary speed and pitch.",
+	"digest" : "Spectral sample buffer"
+},
+"fftz.schmear~" : {
+	"description" : "fftz.schmear~ convolves the amplitude spectrum with a user-supplied impulse response, thus smearing the spectrum.",
+	"digest" : "Spectral smearing"
+},
+"fftz.scrape~" : {
+	"description" : "fftz.scrape~ is like fftz.drown~ except that it only operates between the frequencies specified by knee up to the Nyquist frequency.",
+	"digest" : "Shaped noise reduction"
+},
+"fftz.shapee~" : {
+	"description" : "fftz.shapee~ shapes the frequency evolution of one signal with that of another.",
+	"digest" : "Frequency shaping"
+},
+"fftz.swinger~" : {
+	"description" : "fftz.swinger~ replaces the phases of one signal with those from another.",
+	"digest" : "Cross synthesis"
+},
+"fftz.taint~" : {
+	"description" : "fftz.taint~ multiplies the spectra of two input signals.",
+	"digest" : "Spectral multiplication"
+},
+"fftz.thresher~" : {
+	"description" : "fftz.thresher~ sustains the amplitude and frequency in lower-energy FFT bins.",
+	"digest" : "Damped bin-level feedback"
+},
+"fftz.vacancy~" : {
+	"description" : "fftz.vacancy~ performs spectral compositing.",
+	"digest" : "Spectral compositing"
+},
+"fftz.xsyn~" : {
+	"description" : "fftz.xsyn~ filters the first input with the second input, creating a spectral cross synthesis effect.",
+	"digest" : "Cross synthesis"
+}
+
+}
+

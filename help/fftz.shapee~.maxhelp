@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1092.0, 256.0, 532.0, 440.0 ],
+		"rect" : [ 127.0, 220.0, 532.0, 440.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -93,7 +93,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 17.972076000000001, 100.0, 489.0, 36.0 ],
-					"text" : "shapee~ shapes the frequency evolution of one signal with that of another. The shape width controls the amount of the frequency shaping effect.",
+					"text" : "fftz.shapee~ shapes the frequency evolution of one signal with that of another. The shape width controls the amount of the frequency shaping effect.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

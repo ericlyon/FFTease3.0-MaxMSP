@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1172.0, 293.0, 1047.0, 873.0 ],
+		"rect" : [ 100.0, 100.0, 1047.0, 873.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -119,7 +119,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 28.0, 100.0, 483.0, 36.0 ],
-					"text" : "residency~ samples input to an internal buffer, after which the sound can be resynthesized with arbitrary speed and pitch.",
+					"text" : "fftz.residency~ samples input to an internal buffer, after which the sound can be resynthesized with arbitrary speed and pitch.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

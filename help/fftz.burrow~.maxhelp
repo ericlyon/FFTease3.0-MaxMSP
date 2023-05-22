@@ -131,7 +131,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 15.5, 100.0, 722.0, 65.0 ],
-					"text" : "burrow~ filters the sound in the left input by utlizing a second signal input as a filter threshold reference. The threshold controls the extent of the filtering. Threshold inversion is available via the invert message. Since the spectral shape of the second sound is *subtracted* from the first, the normal behavior of burrow~ is inverse to more familiar filtering. When the \"inverse\" flag is set, the second sound becomes a positive (and perhaps more intuitively understandable) filter.",
+					"text" : "fftz.burrow~ filters the sound in the left input by utlizing a second signal input as a filter threshold reference. The threshold controls the extent of the filtering. Threshold inversion is available via the invert message. Since the spectral shape of the second sound is *subtracted* from the first, the normal behavior of burrow~ is inverse to more familiar filtering. When the \"inverse\" flag is set, the second sound becomes a positive (and perhaps more intuitively understandable) filter.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

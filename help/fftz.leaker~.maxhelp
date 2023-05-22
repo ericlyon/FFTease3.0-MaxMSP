@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1499.0, 761.0, 592.0, 554.0 ],
+		"rect" : [ 100.0, 100.0, 592.0, 554.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -151,7 +151,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 19.0, 97.0, 509.0, 79.0 ],
-					"text" : "leaker~ combines two input sounds, with the spectral contribution of each sound determined by an internally maintained sieve and a threshold selection value. At value 0, only sound 1 is heard and at value 1, only sound 2 is heard. At intermediate values, parts of each spectrum are aggregated according to the sieve structure which may be specified as upsieve, downsieve or randsieve.",
+					"text" : "fftz.leaker~ combines two input sounds, with the spectral contribution of each sound determined by an internally maintained sieve and a threshold selection value. At value 0, only sound 1 is heard and at value 1, only sound 2 is heard. At intermediate values, parts of each spectrum are aggregated according to the sieve structure which may be specified as upsieve, downsieve or randsieve.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

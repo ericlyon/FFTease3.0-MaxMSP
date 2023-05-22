@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1285.0, 461.0, 716.0, 670.0 ],
+		"rect" : [ 100.0, 100.0, 716.0, 670.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -180,7 +180,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 14.0, 97.0, 696.0, 123.0 ],
-					"text" : "mindwarp~ performs spectral envelope warping. It can be used to correct for the formant shifting effects of pitch-scaling. The warp factor is tuned to warp spectra to compensate for directly corresponding pitch-scaling values. For example, if you have pitch-scaled a signal by a factor of two, increasing its frequency content by an octave, by providing mindwarp~ with a warp factor of 2. and the pitch-scaled signal, mindwarp~ will restore the spectral formant of the signal to an estimation of the shape present in the original unscaled signal. Currently, warp factor values are restricted to the range [1/16 ... 16.]. mindwarp~ utilizes frequency shaping to perform its duty. You may need to fiddle with the shape width to best catch the formants. It can be fun to decorrelate the warp factor from the transposition factor.",
+					"text" : "fftz.mindwarp~ performs spectral envelope warping. It can be used to correct for the formant shifting effects of pitch-scaling. The warp factor is tuned to warp spectra to compensate for directly corresponding pitch-scaling values. For example, if you have pitch-scaled a signal by a factor of two, increasing its frequency content by an octave, by providing mindwarp~ with a warp factor of 2. and the pitch-scaled signal, mindwarp~ will restore the spectral formant of the signal to an estimation of the shape present in the original unscaled signal. Currently, warp factor values are restricted to the range [1/16 ... 16.]. mindwarp~ utilizes frequency shaping to perform its duty. You may need to fiddle with the shape width to best catch the formants. It can be fun to decorrelate the warp factor from the transposition factor.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1024.0, 620.0, 924.0, 654.0 ],
+		"rect" : [ 100.0, 100.0, 924.0, 654.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -195,7 +195,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 21.0, 97.0, 703.0, 50.0 ],
-					"text" : "multyq~ is a four band equalizer. Gain values below 0. create notches rather than peaks, but only go as far as -1.0. Bandwidth is from 0 to 1. Only three bands are used in this example, but CPU usage is the same regardless of how many are used. As the filter is FFT-based, its performance is spotty in the low frequency range.",
+					"text" : "fftz.multyq~ is a four band equalizer. Gain values below 0. create notches rather than peaks, but only go as far as -1.0. Bandwidth is from 0 to 1. Only three bands are used in this example, but CPU usage is the same regardless of how many are used. As the filter is FFT-based, its performance is spotty in the low frequency range.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

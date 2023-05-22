@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1498.0, 1482.0, 546.0, 461.0 ],
+		"rect" : [ 100.0, 100.0, 546.0, 461.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -58,7 +58,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 20.0, 97.0, 364.0, 36.0 ],
-					"text" : "pvoc~ performs phase vocoding with the option to limit minimum and maximum frequency to synthesize.",
+					"text" : "fftz.pvoc~ performs phase vocoding with the option to limit minimum and maximum frequency to synthesize.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

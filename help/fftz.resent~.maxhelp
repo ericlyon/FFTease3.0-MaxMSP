@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 91.0, 1417.0, 797.0, 531.0 ],
+		"rect" : [ 91.0, 100.0, 797.0, 531.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -48,7 +48,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 29.0, 97.0, 483.0, 50.0 ],
-					"text" : "resent~ follows the model of residency~ but allows independent control over each bin. It is recommended that you familiarize yourself with residency~ before working with the more complicated resent~",
+					"text" : "fftz.resent~ follows the model of fftz.residency~ but allows independent control over each bin. It is recommended that you familiarize yourself with residency~ before working with the more complicated resent~",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

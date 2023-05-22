@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 534.0, 390.0, 759.0, 645.0 ],
+		"rect" : [ 100.0, 100.0, 759.0, 645.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -497,7 +497,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 19.0, 101.0, 374.0, 50.0 ],
-					"text" : "schmear~ convolves the amplitude spectrum with a user-supplied impulse response, thus smearing the spectrum,  for those times when you need a New York moment.",
+					"text" : "fftz.schmear~ convolves the amplitude spectrum with a user-supplied impulse response, thus smearing the spectrum,  for those times when you need a New York moment.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

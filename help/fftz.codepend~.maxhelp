@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1752.0, 233.0, 674.0, 579.0 ],
+		"rect" : [ 68.0, 155.0, 674.0, 579.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -248,7 +248,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 18.0, 98.0, 552.0, 108.0 ],
-					"text" : "codepend~ is a classic \"block convolution\" processor. It performs a complex multiply upon the spectra of two input signals. Multiplication of spectra can cause significant drops in the amplitude of the output signal. The invert message causes codepend~ to perform complex division of the input spectra rather than multiplication. Be careful! This can cause huge amplitude gains. A \"pad\" message is provided to allow for empirical amplitude balancing between the normal and \"invert\" states. Experiment at low volume levels while getting a feel for this external.",
+					"text" : "fftz.codepend~ is a classic \"block convolution\" processor. It performs a complex multiply upon the spectra of two input signals. Multiplication of spectra can cause significant drops in the amplitude of the output signal. The invert message causes codepend~ to perform complex division of the input spectra rather than multiplication. Be careful! This can cause huge amplitude gains. A \"pad\" message is provided to allow for empirical amplitude balancing between the normal and \"invert\" states. Experiment at low volume levels while getting a feel for this external.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 
@@ -292,8 +292,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 4,
+							"minor" : 6,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
