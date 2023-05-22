@@ -65,6 +65,7 @@ jobs:
         if [ -d help ]; then cp -r help $PACKAGE_NAME; fi
         if [ -d init ]; then cp -r init $PACKAGE_NAME; fi
         if [ -d media ]; then cp -r media $PACKAGE_NAME; fi
+        if [ -d misc ]; then cp -r misc $PACKAGE_NAME; fi
         if [ -d patchers ]; then cp -r patchers $PACKAGE_NAME; fi
         if [ -e $PACKAGE_NAME/ReadMe-Public.md ]; then rm -f $PACKAGE_NAME/ReadMe.md; mv $PACKAGE_NAME/ReadMe-Public.md $PACKAGE_NAME/ReadMe.md; fi
 
