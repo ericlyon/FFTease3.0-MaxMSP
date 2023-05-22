@@ -343,13 +343,12 @@ void cavoc27_init(t_cavoc27 *x)
 		x->ichannel = (double *) sysmem_newptrclear((fft->N+2) * sizeof(double));
 		x->tmpchannel = (double *) sysmem_newptrclear((fft->N+2) * sizeof(double));
 		x->last_frame = (double *) sysmem_newptrclear((fft->N+2) * sizeof(double));
-		x->rule = (short *) calloc(27, sizeof(short));
+		x->rule = (short *) sysmem_newptrclear(27 * sizeof(short));
 	} else {
 		x->ichannel = (double *)sysmem_resizeptrclear(x->ichannel,(fft->N+2)*sizeof(double));
 		x->tmpchannel = (double *)sysmem_resizeptrclear(x->tmpchannel,(fft->N+2)*sizeof(double));
 		x->last_frame = (double *)sysmem_resizeptrclear(x->last_frame,(fft->N+2)*sizeof(double));
 	}
-	
 	cavoc27_rand_set_rule(x); 
 	cavoc27_rand_set_spectrum(x);
 	for( i = 0; i < fft->N+2; i++ ){
