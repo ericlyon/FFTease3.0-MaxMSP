@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 4,
+			"minor" : 6,
+			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 165.0, 665.0, 641.0, 573.0 ],
+		"rect" : [ 122.0, 194.0, 641.0, 573.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -122,7 +122,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 14.5, 96.0, 497.0, 36.0 ],
-					"text" : "drown~ reduces the energy of low energy bins for noise reduction. Or you could use a factor > 1. to increase the noise in the signal.",
+					"text" : "fftz.drown~ reduces the energy of low energy bins for noise reduction. Or you could use a factor > 1. to increase the noise in the signal.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 
@@ -335,8 +335,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 4,
+							"minor" : 6,
+							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}

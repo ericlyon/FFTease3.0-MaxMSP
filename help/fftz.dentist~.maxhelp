@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 306.0, 831.0, 556.0, 502.0 ],
+		"rect" : [ 163.0, 170.0, 556.0, 502.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -116,8 +116,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 17.0, 98.0, 306.0, 21.0 ],
-					"text" : "dentist~ punches out all but a select set of partials. ",
+					"patching_rect" : [ 17.0, 98.0, 324.0, 21.0 ],
+					"text" : "fftz.dentist~ punches out all but a select set of partials. ",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 

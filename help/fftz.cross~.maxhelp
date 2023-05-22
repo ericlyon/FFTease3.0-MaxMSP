@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1423.0, 792.0, 620.0, 537.0 ],
+		"rect" : [ 106.0, 208.0, 620.0, 537.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 10.0,
@@ -200,7 +200,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 14.666672, 96.0, 580.0, 36.0 ],
-					"text" : "cross~ uses a threshold to determine whether to perform spectral multiplication or maintain the last calculated magnitude/phase pair.",
+					"text" : "fftz.cross~ uses a threshold to determine whether to perform spectral multiplication or maintain the last calculated magnitude/phase pair.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
 
