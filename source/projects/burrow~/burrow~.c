@@ -135,12 +135,16 @@ t_max_err get_overlap(t_burrow *x, void *attr, long *ac, t_atom **av)
 
 
 t_max_err set_overlap(t_burrow *x, void *attr, long ac, t_atom *av)
-{	
+{
+    int test_overlap;
     if (ac && av) {
         long val = atom_getlong(av);
-        x->fft->overlap = (int) val;
-        x->fft2->overlap = (int) val;
-        burrow_init(x);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            x->fft2->overlap = (int) val;
+            burrow_init(x);
+        }
     }
     return MAX_ERR_NONE;
 }
