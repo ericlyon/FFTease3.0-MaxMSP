@@ -261,7 +261,6 @@ t_fftease *fft;
 	t_cavoc27 *x = (t_cavoc27 *)object_alloc(cavoc27_class);
 	dsp_setup((t_pxobject *)x,1);
 	outlet_new((t_pxobject *)x, "signal");
-
 	x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
 	fft = x->fft;
 	fft->R = sys_getsr();
@@ -277,9 +276,8 @@ t_fftease *fft;
 	if(!x->hold_time)
 		x->hold_time = 0.15;
 	fft->obank_flag = 0;
+    attr_args_process(x, argc, argv);
     cavoc27_init(x);
-	attr_args_process(x, argc, argv);
-	
 	return x;
 }
 
