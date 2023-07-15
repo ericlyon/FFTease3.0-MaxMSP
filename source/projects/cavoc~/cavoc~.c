@@ -50,10 +50,8 @@ void cavoc_retune (t_cavoc *x, t_floatarg min, t_floatarg max);
 void cavoc_mute (t_cavoc *x, t_floatarg toggle);
 void cavoc_external_trigger(t_cavoc *x, t_floatarg toggle);
 void cavoc_init(t_cavoc *x);
-//void cavoc_overlap(t_cavoc *x, t_floatarg f);
 void cavoc_winfac(t_cavoc *x, t_floatarg f);
 void cavoc_fftinfo(t_cavoc *x);
-//void cavoc_fftsize(t_cavoc *x, t_floatarg f);
 void cavoc_bang(t_cavoc *x);
 void cavoc_topfreq(t_cavoc *x, t_floatarg tf);
 void cavoc_oscbank(t_cavoc *x, t_floatarg flag);
@@ -87,9 +85,6 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)cavoc_retune,"retune",A_FLOAT,A_FLOAT,0);
 	class_addmethod(c,(method)cavoc_topfreq,"topfreq",A_FLOAT,0);
 	class_addmethod(c,(method)cavoc_bottomfreq,"bottomfreq",A_FLOAT,0);
-//	class_addmethod(c,(method)cavoc_overlap,"overlap",A_FLOAT,0);
-	class_addmethod(c,(method)cavoc_winfac,"winfac",A_FLOAT,0);
-//	class_addmethod(c,(method)cavoc_fftsize,"fftsize",A_FLOAT,0);
 	class_addmethod(c,(method)cavoc_oscbank,"oscbank",A_FLOAT,0);
 	class_addmethod(c,(method)cavoc_fftinfo,"fftinfo",0);
 	
@@ -125,7 +120,6 @@ t_max_err get_fftsize(t_cavoc *x, void *attr, long *ac, t_atom **av)
 {
 	if (ac && av) {
 		char alloc;
-		
 		if (atom_alloc(ac, av, &alloc)) {
 			return MAX_ERR_GENERIC;
 		}
@@ -163,10 +157,14 @@ t_max_err get_overlap(t_cavoc *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_cavoc *x, void *attr, long ac, t_atom *av)
 {
+    int test_overlap;
 	if (ac && av) {
 		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		cavoc_init(x);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            cavoc_init(x);
+        }
 	}
 	return MAX_ERR_NONE;
 }
@@ -237,12 +235,14 @@ t_max_err set_holdtime(t_cavoc *x, void *attr, long ac, t_atom *av)
     double f;
 	if (ac && av) {
 		f = (double) atom_getfloat(av);
-        if(f <= 0)
+        if(f <= 0){
             return 0;
+        }
         x->hold_time = f;
         x->hold_frames = (int) ((x->hold_time/1000.0) / x->frame_duration);
-        if( x->hold_frames < 1 )
+        if( x->hold_frames < 1 ){
             x->hold_frames = 1;
+        }
         x->frames_left = x->hold_frames;
 	}
 	return MAX_ERR_NONE;
@@ -316,20 +316,7 @@ void cavoc_oscbank(t_cavoc *x, t_floatarg flag)
 {
 	x->fft->obank_flag = (short) flag;
 }
-/*
-void cavoc_hold_time(t_cavoc *x, t_floatarg f)
-{
-	
-	if(f <= 0)
-		return;
-	x->hold_time = f;
-	x->hold_frames = (int) ((x->hold_time/1000.0) / x->frame_duration);
-	if( x->hold_frames < 1 )
-		x->hold_frames = 1;
-	x->frames_left = x->hold_frames;
-	
-}
-*/
+
 void cavoc_rule (t_cavoc *x, t_symbol *msg, short argc, t_atom *argv)
 {
 	int i;
@@ -378,7 +365,6 @@ void *cavoc_new(t_symbol *msg, short argc, t_atom *argv)
 	x->fft->R = sys_getsr();
 	x->fft->MSPVectorSize = sys_getblksize();
     x->fft->initialized = 0;
-    // these should be attributes:
     
 	x->density = 0.1;
 	x->hold_time = 500.0; // convert from ms
@@ -387,9 +373,8 @@ void *cavoc_new(t_symbol *msg, short argc, t_atom *argv)
 	x->fft->N = FFTEASE_DEFAULT_FFTSIZE;
 	x->fft->overlap = FFTEASE_DEFAULT_OVERLAP;
 	x->fft->winfac = FFTEASE_DEFAULT_WINFAC;
-	
-	cavoc_init(x);
     attr_args_process(x, argc, argv);
+	cavoc_init(x);
 	return x;
 }
 
@@ -407,9 +392,10 @@ void cavoc_init(t_cavoc *x)
 		error("zero sampling rate!");
 		return;
 	}
-	x->frame_duration = (float)fft->D/(float) fft->R;
-	if(x->hold_time <= 0.0)
-		x->hold_time = 150;
+	x->frame_duration = (float)fft->D/(float)fft->R;
+    if(x->hold_time <= 0.0){
+        x->hold_time = 150;
+    }
 	x->hold_frames = (int) ((x->hold_time * 0.001) / x->frame_duration) ;
 	x->frames_left = x->hold_frames;
 	x->trigger_value = 0;
@@ -417,7 +403,6 @@ void cavoc_init(t_cavoc *x)
 	x->bottomfreq = 0.0;
 
 	if(!initialized){
-		
 		srand(time(0));
 		x->mute = 0;
 		
@@ -432,16 +417,13 @@ void cavoc_init(t_cavoc *x)
 		x->amps = (double *) sysmem_newptrclear((fft->N2 + 1) * sizeof(double));
 		x->cavoc = (double *) sysmem_newptrclear((fft->N + 2) * sizeof(double));
 		x->rule = (short *)  sysmem_newptrclear(8 * sizeof(short));
-		
 		x->rule[2] = x->rule[3] = x->rule[5] = x->rule[6] = 1;
 		x->rule[0] = x->rule[1] = x->rule[4] = x->rule[7] = 0;
-		
-		
 	} else {    
-		x->freqs = (double *) sysmem_resizeptrclear(x->freqs, (fft->N2 + 1) * sizeof(double));
-		x->amps = (double *) sysmem_resizeptrclear(x->amps, (fft->N2 + 1) * sizeof(double));
+		x->freqs = (double *) sysmem_resizeptrclear((void *)x->freqs, (fft->N2 + 1) * sizeof(double));
+		x->amps = (double *) sysmem_resizeptrclear((void *)x->amps, (fft->N2 + 1) * sizeof(double));
+        x->cavoc = (double *) sysmem_resizeptrclear((void *)x->cavoc,(fft->N + 2) * sizeof(double));
 	}
-
 	build_spectrum(x, 0.9, 1.1);
 	x->x_obj.z_disabled = 0;
 }
