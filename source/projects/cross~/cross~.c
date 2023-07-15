@@ -10,7 +10,7 @@ typedef struct _cross
 	t_pxobject x_obj;
 	t_fftease *fft;
 	t_fftease *fft2; 
-	double threshie;
+	t_double threshie;
 	short thresh_connected;
 	short mute;//flag
 	short bypass;
@@ -46,7 +46,7 @@ void cross_dsp64(t_cross *x, t_object *dsp64, short *count, double samplerate, l
 int C74_EXPORT main(void)
 {	
 	t_class *c;
-	c = class_new("fftz.cross~", (method)cross_new, (method)dsp_free, sizeof(t_cross),0,A_GIMME,0);
+	c = class_new("fftz.cross~", (method)cross_new, (method)cross_free, sizeof(t_cross),0,A_GIMME,0);
 	
 	class_addmethod(c,(method)cross_dsp64, "dsp64", A_CANT, 0);
 	class_addmethod(c,(method)cross_assist,"assist",A_CANT,0);
@@ -138,7 +138,6 @@ void cross_mute(t_cross *x, t_floatarg toggle)
 
 void cross_free(t_cross *x)
 {
-
 	dsp_free((t_pxobject *) x);
 	fftease_free(x->fft);
 	fftease_free(x->fft2);
@@ -147,7 +146,7 @@ void cross_free(t_cross *x)
 }
 
 
-void cross_float(t_cross *x, double f) // Look at floats at inlets
+void cross_float(t_cross *x, t_double f) // Look at floats at inlets
 {
 	int inlet = x->x_obj.z_in;
 	
@@ -213,19 +212,19 @@ void do_cross(t_cross *x)
 	t_fftease *fft2 = x->fft2;
 	int i;
 	int N2 = fft->N2;
-	double a1, b1, a2, b2;
-	double *buffer1 = fft->buffer;
-	double *buffer2 = fft2->buffer;
-	double *channel1 = fft->channel;
+	t_double a1, b1, a2, b2;
+    t_double *buffer1 = fft->buffer;
+    t_double *buffer2 = fft2->buffer;
+    t_double *channel1 = fft->channel;
 	short autonorm = x->autonorm;
 	int N = fft->N;
-	double mult = fft->mult;
+    t_double mult = fft->mult;
 	int even, odd;
-	double gainer;
-	double threshie = x->threshie;
-	double ingain = 0;
-	double outgain, rescale;
-	double mymult;
+    t_double gainer;
+    t_double threshie = x->threshie;
+    t_double ingain = 0;
+    t_double outgain, rescale;
+    t_double mymult;
 		
 	fold(fft);		
 	fold(fft2);	
@@ -265,7 +264,9 @@ void do_cross(t_cross *x)
 			// post("gain emergency!");
 			rescale = 1.0;
 		} else {
-			rescale = ingain / outgain;
+            if(outgain != 0.0){
+                rescale = ingain / outgain;
+            }
 		} 
 		// post("ingain %f outgain %f rescale %f",ingain, outgain, rescale);
 		mymult = mult * rescale;
@@ -282,25 +283,25 @@ void cross_perform64(t_cross *x, t_object *dsp64, double **ins,
                        long flags, void *userparam)
 {
 	int i, j;
-	double *MSPInputVector1 = ins[0];
-	double *MSPInputVector2 = ins[1];
-	double *threshold = ins[2];
-	double *MSPOutputVector = outs[0];
+    t_double *MSPInputVector1 = ins[0];
+    t_double *MSPInputVector2 = ins[1];
+    t_double *threshold = ins[2];
+    t_double *MSPOutputVector = outs[0];
 
 	t_fftease *fft = x->fft;
 	t_fftease *fft2 = x->fft2;
 	int MSPVectorSize = fft->MSPVectorSize;
 	int operationRepeat = fft->operationRepeat;
 	int operationCount = fft->operationCount;
-	double *internalInputVector1 = fft->internalInputVector;
-	double *internalInputVector2 = fft2->internalInputVector;
-	double *internalOutputVector = fft->internalOutputVector;
-	double *inputOne = fft->input;
-	double *inputTwo = fft2->input;
-	double *output = fft->output;
+    t_double *internalInputVector1 = fft->internalInputVector;
+    t_double *internalInputVector2 = fft2->internalInputVector;
+    t_double *internalOutputVector = fft->internalOutputVector;
+    t_double *inputOne = fft->input;
+    t_double *inputTwo = fft2->input;
+    t_double *output = fft->output;
 	int D = fft->D;
 	int Nw = fft->Nw;
-	double mult = fft->mult;	
+    t_double mult = fft->mult;	
 	
 	if(x->mute || x->x_obj.z_disabled){
 		for(i=0; i < vectorsize; i++){ MSPOutputVector[i] = 0.0; }
@@ -399,13 +400,17 @@ t_max_err get_overlap(t_cross *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_cross *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		x->fft2->overlap = (int) val;
-		cross_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            x->fft2->overlap = (int) val;
+            cross_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 void cross_dsp64(t_cross *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
