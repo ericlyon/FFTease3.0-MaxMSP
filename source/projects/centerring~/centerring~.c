@@ -16,15 +16,15 @@ typedef struct _centerring
     int bufferLength;
     int recalc;
     int	seed;
-    double baseFreq;
-    double constFreq;
-    double bandFreq;
-    double frameR;
-    double *ringPhases;
-    double *ringIncrements;
-    double *sineBuffer;
-    double *bufferOne;
-    double *channelOne;
+    t_double baseFreq;
+    t_double constFreq;
+    t_double bandFreq;
+    t_double frameR;
+    t_double *ringPhases;
+    t_double *ringIncrements;
+    t_double *sineBuffer;
+    t_double *bufferOne;
+    t_double *channelOne;
 	short connected[8];
 	short mute;
 	short bypass;
@@ -37,9 +37,9 @@ typedef struct _centerring
 void *centerring_new(t_symbol *s, int argc, t_atom *argv);
 t_int *centerring_perform(t_int *w);
 void centerring_dsp(t_centerring *x, t_signal **sp, short *count);
-void centerring_float(t_centerring *x, double myFloat);
+void centerring_float(t_centerring *x, t_double myFloat);
 void centerring_assist(t_centerring *x, void *b, long m, long a, char *s);
-void centerring_dest(t_centerring *x, double f);
+void centerring_dest(t_centerring *x, t_double f);
 void centerring_messages(t_centerring *x, t_symbol *s, short argc, t_atom *argv);
 void centerring_adjust( t_centerring *x );
 void centerring_zerophases( t_centerring *x );
@@ -56,9 +56,9 @@ t_max_err set_fftsize(t_centerring *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_centerring *x, void *attr, long *ac, t_atom **av);
 t_max_err set_overlap(t_centerring *x, void *attr, long ac, t_atom *av);
 t_max_err get_overlap(t_centerring *x, void *attr, long *ac, t_atom **av);
-void centerring_dsp64(t_centerring *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
-void centerring_perform64(t_centerring *x, t_object *dsp64, double **ins,
-                          long numins, double **outs,long numouts, long vectorsize,
+void centerring_dsp64(t_centerring *x, t_object *dsp64, short *count, t_double samplerate, long maxvectorsize, long flags);
+void centerring_perform64(t_centerring *x, t_object *dsp64, t_double **ins,
+                          long numins, t_double **outs,long numouts, long vectorsize,
                           long flags, void *userparam);
 
 void centerring_float( t_centerring *x, t_floatarg df )
@@ -198,13 +198,13 @@ void centerring_init(t_centerring *x)
 		x->mute = 0;
 		x->bufferLength = 131072;
 		x->recalc = 0;
-		x->ringPhases = (double *) sysmem_newptrclear((N2 + 1) * sizeof(double));
-		x->ringIncrements = (double *) sysmem_newptrclear((N2 + 1) * sizeof(double));
-		x->sineBuffer = (double *) sysmem_newptrclear((x->bufferLength + 1)* sizeof(double));
+		x->ringPhases = (t_double *) sysmem_newptrclear((N2 + 1) * sizeof(t_double));
+		x->ringIncrements = (t_double *) sysmem_newptrclear((N2 + 1) * sizeof(t_double));
+		x->sineBuffer = (t_double *) sysmem_newptrclear((x->bufferLength + 1)* sizeof(t_double));
 		makeSineBuffer(x->sineBuffer, x->bufferLength);
 	} else {
-		x->ringIncrements = (double *)sysmem_resizeptrclear((void *)x->ringIncrements, (N2 + 1) * sizeof(double));
-		x->ringPhases = (double *)sysmem_resizeptrclear((void *)x->ringPhases, (N2 + 1) * sizeof(double));
+		x->ringIncrements = (t_double *)sysmem_resizeptrclear((void *)x->ringIncrements, (N2 + 1) * sizeof(t_double));
+		x->ringPhases = (t_double *)sysmem_resizeptrclear((void *)x->ringPhases, (N2 + 1) * sizeof(t_double));
 	}
 
 	centerring_adjust(x);
@@ -215,7 +215,7 @@ void centerring_init(t_centerring *x)
 void centerring_free(t_centerring *x)
 {
 	dsp_free((t_pxobject *) x);
-	// fftease_free(x->fft);
+	fftease_free(x->fft); // trouble?
     sysmem_freeptr(x->fft);
 	sysmem_freeptr(x->ringPhases);
 	sysmem_freeptr(x->ringIncrements);
@@ -225,7 +225,7 @@ void centerring_free(t_centerring *x)
 void centerring_adjust( t_centerring *x ) {
 	
 	int		i;
-	double	*ringIncrements = x->ringIncrements;
+	t_double	*ringIncrements = x->ringIncrements;
 	int N2 = x->fft->N2;
 	
 	if(x->frameR == 0){
@@ -265,15 +265,15 @@ void centerring_randphases( t_centerring *x ) {
 void do_centerring(t_centerring *x)
 {
 	t_fftease *fft = x->fft;
-	double *buffer = fft->buffer;
-	double *channel = fft->channel;
+	t_double *buffer = fft->buffer;
+	t_double *channel = fft->channel;
 	int i, odd, even;
-	double a1,b1;
+	t_double a1,b1;
 	int N2 = fft->N2;
 	int bufferLength = x->bufferLength;
-	double *ringPhases = x->ringPhases;
-	double *ringIncrements = x->ringIncrements;
-	double *sineBuffer = x->sineBuffer;
+	t_double *ringPhases = x->ringPhases;
+	t_double *ringIncrements = x->ringIncrements;
+	t_double *sineBuffer = x->sineBuffer;
 	
 	/* recalculate our oscillator values if object inputs have been updated */
 	
@@ -321,26 +321,26 @@ void do_centerring(t_centerring *x)
 	overlapadd(fft);
 }
 
-void centerring_perform64(t_centerring *x, t_object *dsp64, double **ins,
-                            long numins, double **outs,long numouts, long vectorsize,
+void centerring_perform64(t_centerring *x, t_object *dsp64, t_double **ins,
+                            long numins, t_double **outs,long numouts, long vectorsize,
                             long flags, void *userparam)
 {
 
 	int i, j;
 	t_fftease *fft = x->fft;
-	double *MSPInputVector = ins[0];
-	double *vec_baseFreq = ins[1];
-	double *vec_bandFreq = ins[2];
-	double *vec_constFreq = ins[3];
-	double *MSPOutputVector = outs[0];
-	double *input = fft->input;
+	t_double *MSPInputVector = ins[0];
+	t_double *vec_baseFreq = ins[1];
+	t_double *vec_bandFreq = ins[2];
+	t_double *vec_constFreq = ins[3];
+	t_double *MSPOutputVector = outs[0];
+	t_double *input = fft->input;
 	int D = fft->D;
 	int Nw = fft->Nw;
-	double *output = fft->output;
+	t_double *output = fft->output;
 	float mult = fft->mult ;
 	int MSPVectorSize = fft->MSPVectorSize;
-	double *internalInputVector = fft->internalInputVector;
-	double *internalOutputVector = fft->internalOutputVector;		
+	t_double *internalInputVector = fft->internalInputVector;
+	t_double *internalOutputVector = fft->internalOutputVector;
 	int operationRepeat = fft->operationRepeat;
 	int operationCount = fft->operationCount;	
 
@@ -496,14 +496,18 @@ t_max_err get_overlap(t_centerring *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_centerring *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		centerring_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            centerring_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
-void centerring_dsp64(t_centerring *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
+void centerring_dsp64(t_centerring *x, t_object *dsp64, short *count, t_double samplerate, long maxvectorsize, long flags)
 {
     int reset_required = 0;
     int i;

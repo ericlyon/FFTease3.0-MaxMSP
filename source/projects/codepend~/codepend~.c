@@ -69,7 +69,7 @@ void codepend_perform64(t_codepend *x, t_object *dsp64, double **ins,
 int C74_EXPORT main(void)
 {
 	t_class *c;
-	c = class_new("fftz.codepend~", (method)codepend_new, (method)dsp_free, sizeof(t_codepend),0,A_GIMME,0);
+	c = class_new("fftz.codepend~", (method)codepend_new, (method)codepend_free, sizeof(t_codepend),0,A_GIMME,0);
 	
 	class_addmethod(c,(method)codepend_dsp64, "dsp64", A_CANT, 0);
 	class_addmethod(c,(method)codepend_assist,"assist",A_CANT,0);    
@@ -77,9 +77,10 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)codepend_bypass,"bypass", A_FLOAT, 0);	
 	class_addmethod(c,(method)codepend_mute,"mute", A_FLOAT, 0);
 	class_addmethod(c,(method)codepend_pad,"pad", A_FLOAT, 0);
-	class_addmethod(c,(method)codepend_winfac,"winfac", A_FLOAT, 0);
+//	class_addmethod(c,(method)codepend_winfac,"winfac", A_FLOAT, 0);
 	class_addmethod(c,(method)codepend_fftinfo,"fftinfo", 0);
 	class_addmethod(c,(method)codepend_float,"float", 0);
+    
 	CLASS_ATTR_LONG(c, "fftsize", 0, t_codepend, fftsize_attr);
 	CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
 	CLASS_ATTR_LABEL(c, "fftsize", 0, "FFT Size");	
@@ -164,8 +165,8 @@ void codepend_free(t_codepend *x)
 	dsp_free((t_pxobject *) x);
 	fftease_free(x->fft);
 	fftease_free(x->fft2);
-    sysmem_freeptr(x->fft);
-    sysmem_freeptr(x->fft2);
+//    sysmem_freeptr(x->fft);
+//    sysmem_freeptr(x->fft2);
 }
 
 void codepend_pad(t_codepend *x, t_floatarg pad)
@@ -216,7 +217,7 @@ void *codepend_new(t_symbol *s, int argc, t_atom *argv)
 	t_codepend *x = (t_codepend *)object_alloc(codepend_class);
 	dsp_setup((t_pxobject *)x,4);
 	outlet_new((t_pxobject *)x, "signal");
-	x->x_obj.z_misc |= Z_NO_INPLACE; // probably not needed
+//	x->x_obj.z_misc |= Z_NO_INPLACE; // probably not needed
 
 	x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
 	x->fft2 = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
@@ -224,9 +225,6 @@ void *codepend_new(t_symbol *s, int argc, t_atom *argv)
 	fft2 = x->fft2;
 	fft->initialized = 0;
 	fft2->initialized = 0;
-    fft->MSPVectorSize = sys_getblksize();
-    fft2->MSPVectorSize = sys_getblksize();
-
 	
 	/* optional arguments: scaling exponent, threshold (now linear), overlap, winfac */
 	x->exponent = 0.25;
@@ -256,13 +254,10 @@ void codepend_init(t_codepend *x )
 {
 	t_fftease *fft = x->fft;
 	t_fftease *fft2 = x->fft2;
-	x->x_obj.z_disabled = 1;
 	short initialized = fft->initialized;
-	
+    x->x_obj.z_disabled = 1;
 	fftease_init(fft);
 	fftease_init(fft2);
-	
-
 	if(!initialized){
 		x->invert_pad = 0.025; // -32 dB
 		x->invert_countdown = 0;
@@ -285,29 +280,30 @@ void do_codepend(t_codepend *x)
 	float a1, b1, a2, b2, threshold = 0.1;
 	int even, odd;
 	int invert = x->invert;
-	double exponent = x->exponent;
-	double *bufferOne = fft->buffer;
-	double *bufferTwo = fft2->buffer;
-	double *channelOne = fft->channel;
-	//	float *channelTwo = fft2->channel;
+	t_double exponent = x->exponent;
+	t_double *bufferOne = fft->buffer;
+	t_double *bufferTwo = fft2->buffer;
+	t_double *channelOne = fft->channel;
+	t_double *channelTwo = fft2->channel;
 	
 	if(x->invert_countdown > 0){
-		
-		if(x->invert) { // we 
-		} else {
-		}  
 		--(x->invert_countdown);
 		if(! x->invert_countdown){ // countdown just ended
 			if(x->invert_nextstate){ // moving to invert (gain is already down)
 				x->invert = x->invert_nextstate;
 			} else { // invert is already off - now reset gain
-				x->fft->mult = 1. / (float) x->fft->N;
+                if( x->fft->N == 0){
+                    x->fft->mult = 0.0;
+                    post("codepend - zero N size detected\n");
+                } else {
+                    x->fft->mult = 1. / (float) x->fft->N;
+                }
 			}
 		}
 	}
-	if ( x->threshold != 0. )
-		threshold = x->threshold;		
-	
+    if ( x->threshold != 0. ){
+        threshold = x->threshold;
+    }
 	fold(fft);
 	fold(fft2);
 	
@@ -328,24 +324,24 @@ void do_codepend(t_codepend *x)
 			a2 = ( i == N2 ? *(bufferTwo+1) : *(bufferTwo+even) );
 			b2 = ( i == 0 || i == N2 ? 0. : *(bufferTwo+odd) );
 			
-			/* complex division */	
+			// complex division
 			
 			mag_1 = hypot( a1, b1 );
 			mag_2 = hypot( a2, b2 );
 			
-			if ( mag_2 > threshold )
-				*(channelOne+even) =  mag_1 / mag_2;
-			
-			else
-				*(channelOne+even) =  mag_1 / threshold;
-			
-			if ( mag_1 != 0. && mag_2 != 0. )
-				*(channelOne+odd) = atan2( b2, a2 ) - atan2( b1, a1 );
-			
-			else 
-				*(channelOne+odd) = 0.;
-			
-			/* raise resulting magnitude to a desired power */
+            if( (mag_2 > 0.0) && (threshold > 0.0) ){
+                if ( mag_2 > threshold ){
+                    *(channelOne+even) =  mag_1 / mag_2;
+                } else{
+                    *(channelOne+even) =  mag_1 / threshold;
+                }
+            }
+            if ( mag_1 != 0. && mag_2 != 0. ){
+                *(channelOne+odd) = atan2( b2, a2 ) - atan2( b1, a1 );
+            } else {
+                *(channelOne+odd) = 0.;
+            }
+			// raise resulting magnitude to a desired power
 			
 			*(channelOne+even) = pow( *(channelOne+even), exponent );
 		}  
@@ -366,7 +362,7 @@ void do_codepend(t_codepend *x)
 			a2 = ( i == N2 ? *(bufferTwo+1) : *(bufferTwo+even) );
 			b2 = ( i == 0 || i == N2 ? 0. : *(bufferTwo+odd) );
 			
-			/* complex multiply */
+			// complex multiply
 			
 			f_real = (a1 * a2) - (b1 * b2);
 			f_imag = (a1 * b2) + (b1 * a2);	
@@ -374,13 +370,13 @@ void do_codepend(t_codepend *x)
 			*(channelOne+even) = hypot( f_real, f_imag );
 			*(channelOne+odd) = -atan2( f_imag, f_real );
 			
-			/* raise resulting magnitude to a desired power */
+			// raise resulting magnitude to a desired power
 			
 			*(channelOne+even) = pow( *(channelOne+even), exponent );
 		}
 	}
 	
-	/* convert back to complex form, read for the inverse fft */
+	// convert back to complex form, read for the inverse fft
 	
 	for ( i = 0; i <= N2; i++ ) {
 		
@@ -394,6 +390,7 @@ void do_codepend(t_codepend *x)
 	
 	rdft(fft, -1);
 	overlapadd(fft);
+    
 }
 
 void codepend_perform64(t_codepend *x, t_object *dsp64, double **ins,
@@ -503,9 +500,12 @@ t_max_err set_fftsize(t_codepend *x, void *attr, long ac, t_atom *av)
 	
 	if (ac && av) {
 		long val = atom_getlong(av);
+        post("new FFT size: %d\n",val);
+        
 		x->fft->N = (int) val;
 		x->fft2->N = (int) val;
 		codepend_init(x);
+        
 	}
 	return MAX_ERR_NONE;
 }
@@ -526,12 +526,16 @@ t_max_err get_overlap(t_codepend *x, void *attr, long *ac, t_atom **av)
 
 
 t_max_err set_overlap(t_codepend *x, void *attr, long ac, t_atom *av)
-{	
+{
+    int test_overlap;
 	if (ac && av) {
 		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		x->fft2->overlap = (int) val;
-		codepend_init(x);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            x->fft2->overlap = (int) val;
+            codepend_init(x);
+        }
 	}
 	return MAX_ERR_NONE;
 }

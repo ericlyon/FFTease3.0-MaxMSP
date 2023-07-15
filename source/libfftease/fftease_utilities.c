@@ -130,10 +130,10 @@ void fftease_init(t_fftease *fft)
 	
 	fft->in_count = -(fft->Nw);
 	fft->out_count = fft->in_count;
-	fft->mult = 1.0 / (double) fft->N;
-	fft->c_fundamental =  (double) fft->R/(double) fft->N;
-	fft->c_factor_in =  (double) fft->R/((double)fft->D * TWOPI);
-	fft->c_factor_out = TWOPI * (double)  fft->D / (double) fft->R;
+	fft->mult = 1.0 / (t_double) fft->N;
+	fft->c_fundamental =  (t_double) fft->R/(t_double) fft->N;
+	fft->c_factor_in =  (t_double) fft->R/((t_double)fft->D * TWOPI);
+	fft->c_factor_out = TWOPI * (t_double)  fft->D / (t_double) fft->R;
 	// fft->synt = 0.001;
 	fft->L = FFTEASE_OSCBANK_TABLESIZE;
 	fft->pitch_increment = fft->P * fft->L / fft->R;
@@ -146,34 +146,34 @@ void fftease_init(t_fftease *fft)
 		fft->obank_flag = 0; // default no oscbank
 		fft->lo_bin = 0; 
 		fft->hi_bin = fft->N2; 
-		mem = (fft->Nw) * sizeof(double);
-		fft->Wanal = (double *) sysmem_newptrclear(mem);
-		fft->Wsyn = (double *) sysmem_newptrclear(mem);	
-		fft->Hwin = (double *) sysmem_newptrclear(mem);	
-		fft->input = (double *) sysmem_newptrclear(mem);		
-		fft->output = (double *) sysmem_newptrclear(mem);	
-		mem = (fft->N + 2) * sizeof(double);
-		fft->buffer = (double *) sysmem_newptrclear(mem);	
-		mem = (fft->N + 2) * sizeof(double);
-		fft->channel = (double *) sysmem_newptrclear(mem);	
+		mem = (fft->Nw) * sizeof(t_double);
+		fft->Wanal = (t_double *) sysmem_newptrclear(mem);
+		fft->Wsyn = (t_double *) sysmem_newptrclear(mem);
+		fft->Hwin = (t_double *) sysmem_newptrclear(mem);
+		fft->input = (t_double *) sysmem_newptrclear(mem);
+		fft->output = (t_double *) sysmem_newptrclear(mem);
+		mem = (fft->N + 2) * sizeof(t_double);
+		fft->buffer = (t_double *) sysmem_newptrclear(mem);
+		mem = (fft->N + 2) * sizeof(t_double);
+		fft->channel = (t_double *) sysmem_newptrclear(mem);
 		mem = (fft->N * 2) * sizeof(int);
 		fft->bitshuffle = (int *) sysmem_newptrclear(mem);	
-		mem = (fft->N*2)*sizeof(double);
-		fft->trigland = (double *) sysmem_newptrclear(mem);	
-		mem = (fft->N2+1)*sizeof(double);
-		fft->c_lastphase_in = (double *) sysmem_newptrclear(mem);	
-		fft->c_lastphase_out = (double *)sysmem_newptrclear(mem);	
+		mem = (fft->N*2)*sizeof(t_double);
+		fft->trigland = (t_double *) sysmem_newptrclear(mem);
+		mem = (fft->N2+1)*sizeof(t_double);
+		fft->c_lastphase_in = (t_double *) sysmem_newptrclear(mem);
+		fft->c_lastphase_out = (t_double *)sysmem_newptrclear(mem);
 		// oscbank stuff
-		mem = (fft->N+1)*sizeof(double);
-		fft->lastamp = (double *) sysmem_newptrclear(mem);	
-		fft->lastfreq = (double *) sysmem_newptrclear(mem);	
-		fft->bindex = (double *) sysmem_newptrclear(mem);	
-		mem = (2 + fft->L)*sizeof(double); // includes guardpoint
-		fft->table = (double *) sysmem_newptrclear(mem);	
+		mem = (fft->N+1)*sizeof(t_double);
+		fft->lastamp = (t_double *) sysmem_newptrclear(mem);
+		fft->lastfreq = (t_double *) sysmem_newptrclear(mem);
+		fft->bindex = (t_double *) sysmem_newptrclear(mem);
+		mem = (2 + fft->L)*sizeof(t_double); // includes guardpoint
+		fft->table = (t_double *) sysmem_newptrclear(mem);
 		// double buffering
-		mem = fft->D * sizeof(double);
-		fft->internalInputVector = (double *) sysmem_newptrclear(mem);
-		fft->internalOutputVector = (double *) sysmem_newptrclear(mem);
+		mem = fft->D * sizeof(t_double);
+		fft->internalInputVector = (t_double *) sysmem_newptrclear(mem);
+		fft->internalOutputVector = (t_double *) sysmem_newptrclear(mem);
 		fft->initialized = 1;
 	}
     else if( (fft->N == fft->last_N) && (fft->overlap == fft->last_overlap) &&
@@ -183,37 +183,37 @@ void fftease_init(t_fftease *fft)
     }
     else {
 		// post("Resizing FFT Memory");
-		mem = (fft->Nw)*sizeof(double);
-		fft->Wanal = (double *) sysmem_resizeptrclear((void *) fft->Wanal, mem);
-		fft->Wsyn = (double *) sysmem_resizeptrclear((void *) fft->Wsyn, mem);
-		fft->Hwin = (double *)sysmem_resizeptrclear((void *) fft->Hwin, mem);
-		fft->input = (double *) sysmem_resizeptrclear((void *) fft->input, mem);
-		fft->output = (double *) sysmem_resizeptrclear((void *) fft->output, mem);	
-		mem = (fft->N + 2)*sizeof(double);
-		fft->buffer = (double *) sysmem_resizeptrclear((void *) fft->buffer, mem);
-		mem = (fft->N+2)*sizeof(double);
-		fft->channel = (double *) sysmem_resizeptrclear((void *) fft->channel, mem);
+		mem = (fft->Nw)*sizeof(t_double);
+		fft->Wanal = (t_double *) sysmem_resizeptrclear((void *) fft->Wanal, mem);
+		fft->Wsyn = (t_double *) sysmem_resizeptrclear((void *) fft->Wsyn, mem);
+		fft->Hwin = (t_double *)sysmem_resizeptrclear((void *) fft->Hwin, mem);
+		fft->input = (t_double *) sysmem_resizeptrclear((void *) fft->input, mem);
+		fft->output = (t_double *) sysmem_resizeptrclear((void *) fft->output, mem);
+		mem = (fft->N + 2)*sizeof(t_double);
+		fft->buffer = (t_double *) sysmem_resizeptrclear((void *) fft->buffer, mem);
+		mem = (fft->N+2)*sizeof(t_double);
+		fft->channel = (t_double *) sysmem_resizeptrclear((void *) fft->channel, mem);
 		mem = (fft->N*2)*sizeof(int);
 		fft->bitshuffle = (int *) sysmem_resizeptrclear((void *) fft->bitshuffle, mem);
-		mem = (fft->N*2)*sizeof(double);
-		fft->trigland = (double *) sysmem_resizeptrclear((void *) fft->trigland, mem);
-		mem = (fft->N2+1)*sizeof(double);
-		fft->c_lastphase_in = (double *) sysmem_resizeptrclear((void *) fft->c_lastphase_in, mem);
-		fft->c_lastphase_out = (double *)sysmem_resizeptrclear((void *)fft->c_lastphase_out, mem);
-		mem = (fft->N+1)*sizeof(double);
-		fft->lastamp = (double *) sysmem_resizeptrclear((void *) fft->lastamp, mem);
-		fft->lastfreq = (double *) sysmem_resizeptrclear((void *) fft->lastfreq, mem);
-		fft->bindex = (double *) sysmem_resizeptrclear((void *) fft->bindex, mem);	
-		mem = fft->D * sizeof(double);
-		fft->internalInputVector = (double *)sysmem_resizeptrclear((void *) fft->internalInputVector, mem);
-		fft->internalOutputVector = (double *) sysmem_resizeptrclear((void *) fft->internalOutputVector, mem);		
+		mem = (fft->N*2)*sizeof(t_double);
+		fft->trigland = (t_double *) sysmem_resizeptrclear((void *) fft->trigland, mem);
+		mem = (fft->N2+1)*sizeof(t_double);
+		fft->c_lastphase_in = (t_double *) sysmem_resizeptrclear((void *) fft->c_lastphase_in, mem);
+		fft->c_lastphase_out = (t_double *)sysmem_resizeptrclear((void *)fft->c_lastphase_out, mem);
+		mem = (fft->N+1)*sizeof(t_double);
+		fft->lastamp = (t_double *) sysmem_resizeptrclear((void *) fft->lastamp, mem);
+		fft->lastfreq = (t_double *) sysmem_resizeptrclear((void *) fft->lastfreq, mem);
+		fft->bindex = (t_double *) sysmem_resizeptrclear((void *) fft->bindex, mem);
+		mem = fft->D * sizeof(t_double);
+		fft->internalInputVector = (t_double *)sysmem_resizeptrclear((void *) fft->internalInputVector, mem);
+		fft->internalOutputVector = (t_double *) sysmem_resizeptrclear((void *) fft->internalOutputVector, mem);
 	}
     fft->last_N = fft->N;
     fft->last_overlap = fft->overlap;
     fft->last_winfac = fft->winfac;
     fft->last_R = fft->R;
 	for ( i = 0; i < fft->L; i++ ) {
-		fft->table[i] = (double) fft->N * cos((double)i * TWOPI / (double)fft->L);
+		fft->table[i] = (t_double) fft->N * cos((t_double)i * TWOPI / (t_double)fft->L);
 	}
 	fft->table[fft->L] = fft->table[fft->L - 1]; // guard point
 	makewindows( fft->Hwin, fft->Wanal, fft->Wsyn, fft->Nw, fft->N, fft->D);
@@ -272,11 +272,11 @@ int fftease_msp_sanity_check(t_fftease *fft, char *oname)
 	}
 }
 
-double fftease_randf(double min, double max)
+t_double fftease_randf(t_double min, t_double max)
 {
-	double randv;
+    t_double randv;
 	
-	randv = (double) (rand() % 32768) / 32768.0 ;
+	randv = (t_double) (rand() % 32768) / 32768.0 ;
 	return min + (max-min) * randv;
 }
 
