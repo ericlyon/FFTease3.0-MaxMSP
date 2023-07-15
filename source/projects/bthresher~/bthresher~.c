@@ -138,6 +138,7 @@ t_max_err set_fftsize(t_bthresher *x, void *attr, long ac, t_atom *av)
 {
 	if (ac && av) {
 		long val = atom_getlong(av);
+        val = fftease_fft_size(val);
 		x->fft->N = (int) val;
 		bthresher_init(x);
 	}
@@ -160,11 +161,15 @@ t_max_err get_overlap(t_bthresher *x, void *attr, long *ac, t_atom **av)
 
 
 t_max_err set_overlap(t_bthresher *x, void *attr, long ac, t_atom *av)
-{	
+{
+    int test_overlap;
 	if (ac && av) {
 		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		bthresher_init(x);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            bthresher_init(x);
+        }
 	}
 	return MAX_ERR_NONE;
 }
@@ -353,6 +358,7 @@ void bthresher_init(t_bthresher *x)
 		x->mute = 0;
 		x->bypass = 0;
 		x->inf_hold = 0;
+        
 		x->composite_frame = (double *) sysmem_newptrclear((fft->N + 2) * sizeof(double));
 		x->frames_left = (int *) sysmem_newptrclear((fft->N + 2) * sizeof(int));
 		
@@ -366,9 +372,15 @@ void bthresher_init(t_bthresher *x)
 			x->damping_factor[i] = x->init_damping;
 		}
 	} else {
+        x->composite_frame = (double *) sysmem_resizeptrclear((void *)x->composite_frame, (fft->N + 2) * sizeof(double));
+        x->frames_left = (int *) sysmem_resizeptrclear((void *)x->frames_left, (fft->N + 2) * sizeof(int));
 		x->list_data = (t_atom *) sysmem_resizeptrclear((void *)x->list_data, (fft->N2 + 1) * 3 * sizeof(t_atom));
 		x->move_threshold = (double *) sysmem_resizeptrclear((void *)x->move_threshold, (fft->N2+1) * sizeof(double));
 		x->damping_factor = (double *) sysmem_resizeptrclear((void *)x->damping_factor, (fft->N2+1) * sizeof(double));
+        for(i = 0; i < fft->N2+1; i++) {
+            x->move_threshold[i] = x->init_thresh;
+            x->damping_factor[i] = x->init_damping;
+        }
 	}
 
 	x->tadv = (double) fft->D / (double) fft->R;

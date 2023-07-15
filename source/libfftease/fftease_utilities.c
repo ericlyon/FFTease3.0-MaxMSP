@@ -48,13 +48,13 @@ void fftease_set_fft_buffers(t_fftease *fft)
 
 int fftease_overlap( int overlap )
 {
-	int target = 1;
+	int target = 2;
 	while( target < overlap && target < 64 ){
 		target *= 2;
 	}
 	if( target != overlap ){
 		error("fftease_overlap: %d is not a legal overlap factor",overlap);
-		return 1;
+		return -1;
 	}
 	return overlap;
 }
