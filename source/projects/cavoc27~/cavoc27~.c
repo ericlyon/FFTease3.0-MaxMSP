@@ -43,7 +43,7 @@ typedef struct _cavoc27
 	long fftsize_attr;
 	long overlap_attr;
     double density;
-    double hold_time; //hold time in seconds
+    double hold_time; //hold time in ms
 } t_cavoc27;
 
 void *cavoc27_new(t_symbol *s, int argc, t_atom *argv);
@@ -103,13 +103,14 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)cavoc27_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)cavoc27_oscbank,"oscbank",A_FLOAT,0);
 	class_addmethod(c,(method)cavoc27_transpose,"transpose",A_FLOAT,0);
-	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_cavoc27, fftsize_attr);
-	CLASS_ATTR_DEFAULT_SAVE(c, "fftsize", 0, "1024");
+    
+	CLASS_ATTR_LONG(c, "fftsize", 0, t_cavoc27, fftsize_attr);
+//	CLASS_ATTR_DEFAULT_SAVE(c, "fftsize", 0, "1024");
 	CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
 	CLASS_ATTR_LABEL(c, "fftsize", 0, "FFT Size");	
 	
-	CLASS_ATTR_FLOAT(c, "overlap", 0, t_cavoc27, overlap_attr);
-	CLASS_ATTR_DEFAULT_SAVE(c, "overlap", 0, "8");
+	CLASS_ATTR_LONG(c, "overlap", 0, t_cavoc27, overlap_attr);
+//	CLASS_ATTR_DEFAULT_SAVE(c, "overlap", 0, "8");
 	CLASS_ATTR_ACCESSORS(c, "overlap", (method)get_overlap, (method)set_overlap);
 	CLASS_ATTR_LABEL(c, "overlap", 0, "Overlap");	
 
@@ -173,10 +174,12 @@ void cavoc27_retune(t_cavoc27 *x, t_floatarg min, t_floatarg max)
 		error("bad values for min and max multipliers");
 		return;
 	}
-	if( min < .1 )
-		min = 0.1;
-	if( max > 2.0 )
-		max = 2.0;
+    if( min < .1 ){
+        min = 0.1;
+    }
+    if( max > 2.0 ){
+        max = 2.0;
+    }
 	for( i = 1; i < fft->N + 1; i += 2 ){
 		 last_frame[i] = tmpchannel[i] = fft->c_fundamental * (float) (i / 2) * fftease_randf(min, max);
 	}
@@ -228,7 +231,7 @@ void cavoc27_rule (t_cavoc27 *x, t_symbol *msg, short argc, t_atom *argv)
 void cavoc27_free( t_cavoc27 *x ){
 	dsp_free( (t_pxobject *) x);
     fftease_free(x->fft);
-    sysmem_freeptr(x->fft);
+//    sysmem_freeptr(x->fft);
 	sysmem_freeptr(x->ichannel);
 	sysmem_freeptr(x->tmpchannel);
 	sysmem_freeptr(x->last_frame);
@@ -322,35 +325,42 @@ void cavoc27_init(t_cavoc27 *x)
 	t_fftease *fft = x->fft;
 	x->x_obj.z_disabled = 1;	
 	short initialized = fft->initialized;
-	fftease_init(fft);	
+	fftease_init(fft);
+    fft->lo_bin = 0;
+    fft->hi_bin = fft->N2 - 1;
 	if(! fft->R ){
 		error("cavoc27~: zero sampling rate!");
 		return;
 	}
 	x->frame_duration = (float)fft->D/(float) fft->R;
-	x->hold_frames = (int) (x->hold_time/x->frame_duration);
+    if(x->hold_time <= 0.0){
+        x->hold_time = 150.0;
+    }
+	x->hold_frames = (int) ((x->hold_time * 0.001) / x->frame_duration);
 	x->frames_left = x->hold_frames;
 	x->trigger_value = 0;
 	x->set_count = 0;
-	
+    x->topfreq = fft->R / 2.0;
+    x->bottomfreq = 0.0;
+    
 	if(!initialized){
 		srand(time(0));
 		x->interpolate_flag = 0;
 		x->capture_lock = 0;
-		
 		x->mute = 0;
 
 		x->ichannel = (double *) sysmem_newptrclear((fft->N+2) * sizeof(double));
 		x->tmpchannel = (double *) sysmem_newptrclear((fft->N+2) * sizeof(double));
 		x->last_frame = (double *) sysmem_newptrclear((fft->N+2) * sizeof(double));
 		x->rule = (short *) sysmem_newptrclear(27 * sizeof(short));
+        cavoc27_rand_set_rule(x);
+        cavoc27_rand_set_spectrum(x);
 	} else {
-		x->ichannel = (double *)sysmem_resizeptrclear(x->ichannel,(fft->N+2)*sizeof(double));
-		x->tmpchannel = (double *)sysmem_resizeptrclear(x->tmpchannel,(fft->N+2)*sizeof(double));
-		x->last_frame = (double *)sysmem_resizeptrclear(x->last_frame,(fft->N+2)*sizeof(double));
+		x->ichannel = (double *)sysmem_resizeptrclear((void *)x->ichannel,(fft->N+2)*sizeof(double));
+		x->tmpchannel = (double *)sysmem_resizeptrclear((void *)x->tmpchannel,(fft->N+2)*sizeof(double));
+		x->last_frame = (double *)sysmem_resizeptrclear((void *)x->last_frame,(fft->N+2)*sizeof(double));
 	}
-	cavoc27_rand_set_rule(x); 
-	cavoc27_rand_set_spectrum(x);
+
 	for( i = 0; i < fft->N+2; i++ ){
 		x->last_frame[i] = fft->channel[i];
 	}
@@ -365,7 +375,7 @@ void cavoc27_rand_set_spectrum(t_cavoc27 *x)
 	double *channel = x->tmpchannel;
 	//set spectrum
 
-	for( i = 0; i < fft->N2 + 1; i++ ){
+	for( i = 0; i < fft->N2; i++ ){
 		if( fftease_randf(0.0, 1.0) > x->start_breakpoint){
 			rval = fftease_randf(0.0, 1.0);
 			if( rval < 0.5 ){
@@ -786,9 +796,10 @@ t_max_err set_holdtime(t_cavoc27 *x, void *attr, long ac, t_atom *av)
     double f;
 	if (ac && av) {
 		f = (double) atom_getfloat(av);
-        if(f <= 0)
+        if(f <= 0){
             return 0;
-        x->hold_time = f * 0.001;
+        }
+        x->hold_time = f;
         if(! x->frame_duration){
             error("%s: zero frame duration",OBJECT_NAME);
             x->frame_duration = .15;
