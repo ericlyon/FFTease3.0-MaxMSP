@@ -16,17 +16,17 @@ typedef struct _dentist
 	int tooth_count;
 	int ramp_frames;
 	int frames_left;
-	double frame_duration;
+	t_double frame_duration;
 	int max_bin;
-	double topfreq;
-	double funda;
+    t_double topfreq;
+    t_double funda;
 	void *list_outlet;
 	short direct_update;
 	short mute;
 	short bypass;
 	t_atom *list_data;
 	short interpolate_singles;
-	double sync;
+    t_double sync;
 	long fftsize_attr;
 	long overlap_attr;
 
@@ -70,7 +70,7 @@ int C74_EXPORT main(void)
 {
 
 	t_class *c;
-	c = class_new("fftz.dentist~", (method)dentist_new, (method)dsp_free, sizeof(t_dentist),0,A_GIMME,0);
+	c = class_new("fftz.dentist~", (method)dentist_new, (method)dentist_free, sizeof(t_dentist),0,A_GIMME,0);
 	class_addmethod(c,(method)dentist_dsp64, "dsp64", A_CANT, 0);
     class_addmethod(c,(method)set_switch_bins,"int",0);
 	class_addmethod(c,(method)dentist_showstate,"showstate",0);
@@ -84,7 +84,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)dentist_scramble, "scramble", 0);
 	class_addmethod(c,(method)dentist_assist,"assist",A_CANT,0);
 //	class_addmethod(c,(method)dentist_overlap, "overlap",  A_DEFFLOAT, 0);
-	class_addmethod(c,(method)dentist_winfac, "winfac",  A_DEFFLOAT, 0);
+//	class_addmethod(c,(method)dentist_winfac, "winfac",  A_DEFFLOAT, 0);
 //	class_addmethod(c,(method)dentist_fftsize, "fftsize",  A_FLOAT, 0);
 	class_addmethod(c,(method)dentist_fftinfo, "fftinfo", 0);
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_dentist, fftsize_attr);
@@ -114,8 +114,6 @@ void dentist_interpolate_singles(t_dentist *x, t_floatarg f)
 
 void dentist_free(t_dentist *x)
 {
-	/* Pd might be having difficulty freeing its memory */
-
     dsp_free((t_pxobject *)x);
 	fftease_free(x->fft);
     sysmem_freeptr(x->fft);
@@ -260,10 +258,10 @@ void dentist_init(t_dentist *x)
 
 	dentist_scramble(x);
 	
-    fft->mult = 1. / (double) fft->N;
-    x->frame_duration = (double) fft->D / (double) fft->R;
+    fft->mult = 1. / (t_double) fft->N;
+    x->frame_duration = (t_double) fft->D / (t_double) fft->R;
     x->frames_left = 0;
-    x->funda = (double) fft->R / (double) fft->N;
+    x->funda = (t_double) fft->R / (t_double) fft->N;
     x->max_bin = 1;  
 
     if(!x->funda){
@@ -271,9 +269,9 @@ void dentist_init(t_dentist *x)
     	return;
     }
     x->max_bin = (int) (x->topfreq / x->funda);
-    if(x->max_bin < 1)
-    	x->max_bin = 1;
-     
+    if(x->max_bin < 1){
+        x->max_bin = 1;
+    }
     for( i = 0; i < fft->N2; i++) {
         x->last_bin_selection[i] = x->bin_selection[i];
     }
@@ -283,9 +281,9 @@ void dentist_init(t_dentist *x)
 void do_dentist(t_dentist *x)
 {
 	int	i;
-	double oldfrac,newfrac;
+	t_double oldfrac,newfrac;
 	t_fftease *fft = x->fft;
-	double *channel = fft->channel;
+    t_double *channel = fft->channel;
 	int frames_left = x->frames_left;
 	int ramp_frames = x->ramp_frames;
 	short *bin_selection = x->bin_selection;
@@ -342,17 +340,17 @@ void dentist_perform64(t_dentist *x, t_object *dsp64, double **ins,
 {
 	int	i,j;
 	t_fftease *fft = x->fft;
-	double *MSPInputVector = ins[0];
-	double *MSPOutputVector = outs[0];
-	double *sync_vec = outs[1];
-	double *input = fft->input;
+    t_double *MSPInputVector = ins[0];
+    t_double *MSPOutputVector = outs[0];
+    t_double *sync_vec = outs[1];
+    t_double *input = fft->input;
 	int D = fft->D;
 	int Nw = fft->Nw;
-	double *output = fft->output;
-	double mult = fft->mult ;
+    t_double *output = fft->output;
+    t_double mult = fft->mult ;
 	int MSPVectorSize = fft->MSPVectorSize;
-	double *internalInputVector = fft->internalInputVector;
-	double *internalOutputVector = fft->internalOutputVector;		
+    t_double *internalInputVector = fft->internalInputVector;
+    t_double *internalOutputVector = fft->internalOutputVector;
 	int operationRepeat = fft->operationRepeat;
 	int operationCount = fft->operationCount;	
 	
@@ -451,9 +449,6 @@ void dentist_bins_pd (t_dentist *x, t_floatarg i)
 void dentist_activate_bins(t_dentist *x, t_floatarg f)
 {
     if(f < 0 || f > x->max_bin){
-#if PD
-        post("* %d bin out of range",(int)f);
-#endif        
         return;
     }
     x->tooth_count = (int)f;
@@ -659,12 +654,16 @@ t_max_err get_overlap(t_dentist *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_dentist *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		dentist_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            dentist_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 
