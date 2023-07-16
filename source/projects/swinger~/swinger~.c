@@ -24,9 +24,7 @@ void swinger_mute(t_swinger *x, t_floatarg state);
 void swinger_bypass(t_swinger *x, t_floatarg toggle);
 void swinger_init(t_swinger *x);
 void swinger_dsp_free(t_swinger *x);
-// void swinger_overlap(t_swinger *x, t_floatarg o);
 void swinger_winfac(t_swinger *x, t_floatarg o);
-// void swinger_fftsize(t_swinger *x, t_floatarg f);
 void swinger_fftinfo(t_swinger *x);
 t_max_err set_fftsize(t_swinger *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_swinger *x, void *attr, long *ac, t_atom **av);
@@ -45,7 +43,7 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)swinger_assist,"assist",A_CANT,0);
     class_addmethod(c,(method)swinger_mute,"mute",A_FLOAT,0);
 	class_addmethod(c,(method)swinger_bypass,"bypass", A_FLOAT, 0);
-	class_addmethod(c,(method)swinger_winfac,"winfac",A_FLOAT,0);
+//	class_addmethod(c,(method)swinger_winfac,"winfac",A_FLOAT,0);
 	class_addmethod(c,(method)swinger_fftinfo,"fftinfo",0);
 
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_swinger, fftsize_attr);
@@ -403,13 +401,17 @@ t_max_err get_overlap(t_swinger *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_swinger *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		x->fft2->overlap = (int) val;
-		swinger_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            x->fft2->overlap = (int) val;
+            swinger_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 void swinger_dsp64(t_swinger *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)

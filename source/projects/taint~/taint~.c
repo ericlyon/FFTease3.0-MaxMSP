@@ -51,7 +51,7 @@ void taint_mute(t_taint *x, t_floatarg toggle);
 void taint_bypass(t_taint *x, t_floatarg toggle);
 void taint_fftinfo(t_taint *x);
 void taint_tilde_setup(void);
-void taint_winfac(t_taint *x, t_floatarg o);
+//void taint_winfac(t_taint *x, t_floatarg o);
 void taint_init(t_taint *x);
 void taint_pad(t_taint *x, t_floatarg pad);
 t_max_err set_fftsize(t_taint *x, void *attr, long ac, t_atom *av);
@@ -71,7 +71,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)taint_dsp64, "dsp64", A_CANT, 0);
 	class_addmethod(c,(method)taint_assist,"assist",A_CANT,0);    
 	class_addmethod(c,(method)taint_invert,"invert", A_FLOAT, 0);  	
-	class_addmethod(c,(method)taint_winfac,"winfac", A_FLOAT, 0);
+//	class_addmethod(c,(method)taint_winfac,"winfac", A_FLOAT, 0);
 	class_addmethod(c,(method)taint_mute,"mute", A_FLOAT, 0);
 	class_addmethod(c,(method)taint_bypass,"bypass", A_FLOAT, 0);
 	class_addmethod(c,(method)taint_pad,"pad", A_FLOAT, 0);
@@ -512,13 +512,17 @@ t_max_err get_overlap(t_taint *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_taint *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		x->fft2->overlap = (int) val;
-		taint_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            x->fft2->overlap = (int) val;
+            taint_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 void taint_dsp64(t_taint *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)

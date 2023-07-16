@@ -32,7 +32,6 @@ void pvoc_mute(t_pvoc *x, t_floatarg tog);
 void pvoc_init(t_pvoc *x);
 void pvoc_winfac(t_pvoc *x, t_floatarg f);
 void pvoc_fftinfo(t_pvoc *x);
-//void pvoc_fftinfo(t_pvoc *x);
 void pvoc_version(void);
 t_max_err set_fftsize(t_pvoc *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_pvoc *x, void *attr, long *ac, t_atom **av);
@@ -60,7 +59,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)pvoc_mute,"mute",A_DEFFLOAT,0);
 
 	class_addmethod(c,(method)pvoc_fftinfo,"fftinfo",0);
-	class_addmethod(c,(method)pvoc_winfac, "winfac",  A_DEFFLOAT, 0);
+//	class_addmethod(c,(method)pvoc_winfac, "winfac",  A_DEFFLOAT, 0);
 	class_addmethod(c,(method)pvoc_version, "version", 0);
 	class_addmethod(c,(method)pvoc_float, "float",  A_FLOAT, 0);
 	
@@ -135,12 +134,16 @@ t_max_err get_overlap(t_pvoc *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_pvoc *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		pvoc_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            pvoc_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 

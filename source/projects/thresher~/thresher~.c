@@ -34,7 +34,7 @@ void thresher_float(t_thresher *x, double f);
 void thresher_mute(t_thresher *x, t_floatarg f);
 void thresher_bypass(t_thresher *x, t_floatarg f);
 void thresher_free( t_thresher *x );
-void thresher_winfac(t_thresher *x, t_floatarg f);
+//void thresher_winfac(t_thresher *x, t_floatarg f);
 void thresher_fftinfo(t_thresher *x);
 void thresher_init(t_thresher *x);
 void thresher_transpose(t_thresher *x, t_floatarg tf);
@@ -58,7 +58,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)thresher_assist,"assist",A_CANT,0);
 	class_addmethod(c,(method)thresher_mute,"mute",A_FLOAT,0);
 	class_addmethod(c,(method)thresher_bypass,"bypass",A_FLOAT,0);
-	class_addmethod(c,(method)thresher_winfac,"winfac",A_DEFFLOAT,0);
+//	class_addmethod(c,(method)thresher_winfac,"winfac",A_DEFFLOAT,0);
 	class_addmethod(c,(method)thresher_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)thresher_oscbank,"oscbank",A_FLOAT,0);
 	class_addmethod(c,(method)thresher_transpose,"transpose",A_FLOAT,0);
@@ -130,10 +130,14 @@ t_max_err get_overlap(t_thresher *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_thresher *x, void *attr, long ac, t_atom *av)
 {
+    int test_overlap;
     if (ac && av) {
         long val = atom_getlong(av);
-        x->fft->overlap = (int) val;
-        thresher_init(x);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            thresher_init(x);
+        }
     }
     return MAX_ERR_NONE;
 }

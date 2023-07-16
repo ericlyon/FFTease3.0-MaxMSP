@@ -17,8 +17,7 @@ typedef struct _resent
     double current_frame;
     long framecount;
     long last_framecount;
-    //
-    double frame_increment ;
+    double frame_increment;
     double fpos;
     double last_fpos;
     double tadv;
@@ -62,7 +61,7 @@ void resent_playthrough(t_resent *x, t_floatarg state);
 double fftease_randf(double min, double max);
 void resent_winfac(t_resent *x, t_floatarg factor);
 void resent_fftinfo(t_resent *x);
-void resent_winfac(t_resent *x, t_floatarg f);
+//void resent_winfac(t_resent *x, t_floatarg f);
 void resent_transpose(t_resent *x, t_floatarg tf);
 void resent_synthresh(t_resent *x, t_floatarg thresh);
 void resent_oscbank(t_resent *x, t_floatarg flag);
@@ -101,7 +100,7 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)resent_playthrough, "playthrough",  A_DEFFLOAT, 0);
     class_addmethod(c,(method)resent_store_incr, "store_incr",0);
     class_addmethod(c,(method)resent_setspeed_and_phase, "setspeed_and_phase",  A_DEFFLOAT, A_DEFFLOAT, 0);
-    class_addmethod(c,(method)resent_winfac,"winfac",A_DEFFLOAT,0);
+//    class_addmethod(c,(method)resent_winfac,"winfac",A_DEFFLOAT,0);
     class_addmethod(c,(method)resent_fftinfo,"fftinfo",0);
     class_addmethod(c,(method)resent_oscbank,"oscbank",A_FLOAT,0);
     class_addmethod(c,(method)resent_transpose,"transpose",A_FLOAT,0);
@@ -767,10 +766,14 @@ t_max_err get_overlap(t_resent *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_resent *x, void *attr, long ac, t_atom *av)
 {	
+    int test_overlap;
     if (ac && av) {
         long val = atom_getlong(av);
-        x->fft->overlap = (int) val;
-        resent_init(x);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            resent_init(x);
+        }
     }
     return MAX_ERR_NONE;
 }

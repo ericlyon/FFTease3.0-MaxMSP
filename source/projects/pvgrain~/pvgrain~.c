@@ -41,9 +41,7 @@ float pvgrain_randf(float min, float max);
 void pvgrain_init(t_pvgrain *x);
 void pvgrain_free(t_pvgrain *x);
 void pvgrain_winfac(t_pvgrain *x, t_floatarg factor);
-//void pvgrain_overlap(t_pvgrain *x, t_floatarg o);
 void pvgrain_fftinfo(t_pvgrain *x) ;
-//void pvgrain_fftsize(t_pvgrain *x, t_floatarg f);
 t_max_err set_fftsize(t_pvgrain *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_pvgrain *x, void *attr, long *ac, t_atom **av);
 t_max_err set_overlap(t_pvgrain *x, void *attr, long ac, t_atom *av);
@@ -66,7 +64,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)pvgrain_framegrains,"framegrains",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pvgrain_topfreq,"topfreq",A_FLOAT,0);
 	class_addmethod(c,(method)pvgrain_basefreq,"basefreq",A_FLOAT,0);
-	class_addmethod(c,(method)pvgrain_winfac, "winfac",  A_FLOAT, 0);
+//	class_addmethod(c,(method)pvgrain_winfac, "winfac",  A_FLOAT, 0);
 	class_addmethod(c,(method)pvgrain_fftinfo, "fftinfo", 0);
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_pvgrain, fftsize_attr);
 	CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
@@ -429,12 +427,16 @@ t_max_err get_overlap(t_pvgrain *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_pvgrain *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		pvgrain_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            pvgrain_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 void pvgrain_dsp64(t_pvgrain *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)

@@ -38,7 +38,6 @@ void pvwarp_assist(t_pvwarp *x, void *b, long m, long a, char *s);
 void pvwarp_bypass(t_pvwarp *x, t_floatarg state);
 void pvwarp_mute(t_pvwarp *x, t_floatarg state);
 void pvwarp_verbose(t_pvwarp *x, t_floatarg state);
-//void pvwarp_overlap(t_pvwarp *x, t_floatarg o);
 void pvwarp_automate(t_pvwarp *x, t_floatarg state);
 void pvwarp_autofunc(t_pvwarp *x, t_floatarg minval, t_floatarg maxval);
 void pvwarp_float(t_pvwarp *x, double f); // Look at floats at inlets
@@ -51,9 +50,7 @@ void pvwarp_init(t_pvwarp *x);
 void pvwarp_bottomfreq(t_pvwarp *x, t_floatarg f);
 void pvwarp_topfreq(t_pvwarp *x, t_floatarg f);
 void pvwarp_fftinfo(t_pvwarp *x);
-//void pvwarp_overlap(t_pvwarp *x, t_floatarg f);
 void pvwarp_winfac(t_pvwarp *x, t_floatarg f);;
-//void pvwarp_fftsize(t_pvwarp *x, t_floatarg f);
 t_max_err set_fftsize(t_pvwarp *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_pvwarp *x, void *attr, long *ac, t_atom **av);
 t_max_err set_overlap(t_pvwarp *x, void *attr, long ac, t_atom *av);
@@ -73,14 +70,11 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)pvwarp_bypass,"bypass",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pvwarp_mute,"mute",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pvwarp_verbose,"verbose",A_DEFFLOAT,0);
-//	class_addmethod(c,(method)pvwarp_overlap,"overlap",A_FLOAT,0);
 	class_addmethod(c,(method)pvwarp_bottomfreq,"bottomfreq",A_FLOAT,0);
 	class_addmethod(c,(method)pvwarp_topfreq,"topfreq",A_FLOAT,0);
 	class_addmethod(c,(method)pvwarp_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)pvwarp_autofunc,"autofunc",A_DEFFLOAT, A_DEFFLOAT,0);
-//	class_addmethod(c,(method)pvwarp_overlap,"overlap",A_DEFFLOAT,0);
-	class_addmethod(c,(method)pvwarp_winfac,"winfac",A_DEFFLOAT,0);
-//	class_addmethod(c,(method)pvwarp_fftsize,"fftsize",A_FLOAT,0);
+//	class_addmethod(c,(method)pvwarp_winfac,"winfac",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pvwarp_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)pvwarp_float,"float",A_FLOAT, 0);
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_pvwarp, fftsize_attr);
@@ -623,12 +617,16 @@ t_max_err get_overlap(t_pvwarp *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_pvwarp *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		pvwarp_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            pvwarp_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 void pvwarp_dsp64(t_pvwarp *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)

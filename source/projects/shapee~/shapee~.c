@@ -6,7 +6,6 @@ static t_class *shapee_class;
 
 typedef struct _shapee
 {
-
 	t_pxobject x_obj;
 	t_fftease *fft,*fft2;
     int widthConnected;    
@@ -27,10 +26,7 @@ void shapee_init(t_shapee *x);
 void shapee_mute(t_shapee *x, t_floatarg state);
 void shapee_bypass(t_shapee *x, t_floatarg toggle);
 void shapee_free(t_shapee *x);
-// void shapee_overlap(t_shapee *x, t_floatarg o);
-void shapee_winfac(t_shapee *x, t_floatarg wf);
 void shapee_fftinfo(t_shapee *x);
-// void shapee_fftsize(t_shapee *x, t_floatarg f);
 t_max_err set_fftsize(t_shapee *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_shapee *x, void *attr, long *ac, t_atom **av);
 t_max_err set_overlap(t_shapee *x, void *attr, long ac, t_atom *av);
@@ -45,7 +41,6 @@ void shapee_perform64(t_shapee *x, t_object *dsp64, double **ins,
 
 void shapee_float( t_shapee *x, double myFloat )
 {
-	
 	if ( x->x_obj.z_in == 2 ) {
 		
 		if ( myFloat >= 1. && myFloat <= (double) x->fft->N )
@@ -63,7 +58,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)shapee_float,"float",A_FLOAT,0);
     class_addmethod(c,(method)shapee_mute,"mute",A_FLOAT,0);
 	class_addmethod(c,(method)shapee_bypass,"bypass", A_FLOAT, 0);	
-	class_addmethod(c,(method)shapee_winfac,"winfac",A_FLOAT,0);
+//	class_addmethod(c,(method)shapee_winfac,"winfac",A_FLOAT,0);
 	class_addmethod(c,(method)shapee_fftinfo,"fftinfo",0);
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_shapee, fftsize_attr);
 	CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
@@ -481,13 +476,17 @@ t_max_err get_overlap(t_shapee *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_shapee *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		x->fft2->overlap = (int) val;
-		shapee_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            x->fft2->overlap = (int) val;
+            shapee_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 

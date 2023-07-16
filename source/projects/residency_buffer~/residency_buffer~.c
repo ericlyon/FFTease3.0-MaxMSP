@@ -17,7 +17,6 @@ typedef struct _resident
     long b_valid;
 	double current_frame;
 	int framecount;
-	//
 	double frame_increment ;
 	double fpos;
 	double last_fpos;
@@ -39,7 +38,6 @@ typedef struct _resident
     long interpolation_attr;
     t_symbol *buffername_attr;
 	void *size_outlet; // will send desired size in samples
-    
 } t_resident;
 
 void *resident_new(t_symbol *msg, short argc, t_atom *argv);
@@ -51,10 +49,8 @@ void resident_mute(t_resident *x, long toggle);
 void resident_calcbuf(t_resident *x, t_floatarg desired_duration);
 void resident_dsp_free( t_resident *x );
 void resident_fftinfo(t_resident *x);
-void resident_winfac(t_resident *x, t_floatarg f);
+//void resident_winfac(t_resident *x, t_floatarg f);
 void resident_playthrough(t_resident *x, t_floatarg f);
-//void resident_overlap(t_resident *x, t_floatarg f);
-//void resident_fftsize(t_resident *x, t_floatarg f);
 void resident_init(t_resident *x);
 void resident_transpose(t_resident *x, t_floatarg tf);
 void resident_synthresh(t_resident *x, t_floatarg thresh);
@@ -82,9 +78,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)resident_mute, "mute", A_LONG, 0);
 	class_addmethod(c,(method)resident_meminfo, "meminfo", 0);
 	class_addmethod(c,(method)resident_calcbuf, "calcbuf", A_FLOAT, 0);
-	class_addmethod(c,(method)resident_winfac, "winfac", A_FLOAT, 0);
-//	class_addmethod(c,(method)resident_overlap, "overlap", A_FLOAT, 0);
-//	class_addmethod(c,(method)resident_fftsize, "fftsize", A_FLOAT, 0);
+//	class_addmethod(c,(method)resident_winfac, "winfac", A_FLOAT, 0);
 	class_addmethod(c,(method)resident_playthrough, "playthrough", A_FLOAT, 0);
 	class_addmethod(c,(method)resident_acquire_sample, "acquire_sample", 0);
 	class_addmethod(c,(method)resident_fftinfo, "fftinfo", 0);
@@ -628,12 +622,16 @@ t_max_err get_overlap(t_resident *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_resident *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		resident_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            resident_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 void resident_dsp64(t_resident *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)

@@ -34,8 +34,7 @@ void vacancy_free(t_vacancy *x);
 void vacancy_mute(t_vacancy *x, t_floatarg toggle);
 void vacancy_fftinfo(t_vacancy *x);
 void vacancy_tilde_setup(void);
-//void vacancy_overlap(t_vacancy *x, t_floatarg o);
-void vacancy_winfac(t_vacancy *x, t_floatarg o);
+// void vacancy_winfac(t_vacancy *x, t_floatarg o);
 void vacancy_init(t_vacancy *x);
 t_max_err set_fftsize(t_vacancy *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_vacancy *x, void *attr, long *ac, t_atom **av);
@@ -57,8 +56,6 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)vacancy_swapphase,"swapphase", A_FLOAT, 0);
 	class_addmethod(c,(method)vacancy_mute,"mute", A_FLOAT, 0);
 	class_addmethod(c,(method)vacancy_bypass,"bypass", A_FLOAT, 0);
-//	class_addmethod(c,(method)vacancy_overlap,"overlap", A_FLOAT, 0);
-	class_addmethod(c,(method)vacancy_winfac,"winfac", A_FLOAT, 0);
 	class_addmethod(c,(method)vacancy_fftinfo,"fftinfo", 0);
 	class_addmethod(c,(method)vacancy_float,"float",A_FLOAT,0);
 	post("%s%s", FFTEASE_ANNOUNCEMENT, OBJECT_NAME);
@@ -505,13 +502,17 @@ t_max_err get_overlap(t_vacancy *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_vacancy *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		x->fft2->overlap = (int) val;
-		vacancy_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            x->fft2->overlap = (int) val;
+            vacancy_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 void vacancy_dsp64(t_vacancy *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)

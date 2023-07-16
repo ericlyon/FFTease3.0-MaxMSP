@@ -84,7 +84,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)pvwarpb_topfreq,"topfreq",A_FLOAT,0);
 	class_addmethod(c,(method)pvwarpb_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)pvwarpb_autofunc,"autofunc",A_DEFFLOAT, A_DEFFLOAT,0);
-	class_addmethod(c,(method)pvwarpb_winfac,"winfac",A_DEFFLOAT,0);
+//	class_addmethod(c,(method)pvwarpb_winfac,"winfac",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pvwarpb_fftinfo,"fftinfo",0);
     class_addmethod(c,(method)pvwarpb_dblclick,"dblclick", A_CANT, 0);
 	class_addmethod(c,(method)pvwarpb_float,"float",A_FLOAT,0);
@@ -774,12 +774,16 @@ t_max_err get_overlap(t_pvwarpb *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_pvwarpb *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		pvwarpb_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            pvwarpb_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 t_max_err get_buffername(t_pvwarpb *x, void *attr, long *ac, t_atom **av)

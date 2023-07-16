@@ -33,9 +33,7 @@ void mindwarp_init(t_mindwarp *x);
 void mindwarp_free(t_mindwarp *x);
 void mindwarp_mute(t_mindwarp *x, t_floatarg toggle);
 void mindwarp_fftinfo(t_mindwarp *x);
-//void mindwarp_overlap(t_mindwarp *x, t_floatarg o);
 void mindwarp_winfac(t_mindwarp *x, t_floatarg o);
-//void mindwarp_fftsize(t_mindwarp *x, t_floatarg f);
 void mindwarp_bypass(t_mindwarp *x, t_floatarg toggle);
 void mindwarp_tilde_setup(void);
 t_max_err set_fftsize(t_mindwarp *x, void *attr, long ac, t_atom *av);
@@ -85,10 +83,8 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)mindwarp_assist,"assist",A_CANT,0);
     class_addmethod(c,(method)mindwarp_mute,"mute", A_FLOAT, 0);
 	class_addmethod(c,(method)mindwarp_bypass,"bypass", A_FLOAT, 0);
-//	class_addmethod(c,(method)mindwarp_overlap,"overlap", A_FLOAT, 0);
-	class_addmethod(c,(method)mindwarp_winfac,"winfac", A_FLOAT, 0);
-//	class_addmethod(c,(method)mindwarp_fftsize,"fftsize", A_FLOAT, 0);
-	class_addmethod(c,(method)mindwarp_fftinfo,"fftinfo", 0); 
+//	class_addmethod(c,(method)mindwarp_winfac,"winfac", A_FLOAT, 0);
+	class_addmethod(c,(method)mindwarp_fftinfo,"fftinfo", 0);
 	class_addmethod(c,(method)mindwarp_float,"float",A_FLOAT,0); 
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_mindwarp, fftsize_attr);
 	CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
@@ -541,12 +537,16 @@ t_max_err get_overlap(t_mindwarp *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_mindwarp *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		mindwarp_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            mindwarp_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 void mindwarp_dsp64(t_mindwarp *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)

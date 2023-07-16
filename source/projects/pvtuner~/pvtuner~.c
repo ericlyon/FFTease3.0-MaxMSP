@@ -42,8 +42,6 @@ typedef struct _pvtuner
 	int hi_tune_bin;
 	double topfreq;
 	double curfreq;
-
-	//
 	int bypass;
 	int pitch_connected;
 	int synt_connected;
@@ -54,7 +52,6 @@ typedef struct _pvtuner
 	int scale_steps;
 	short current_scale;
 	short mute;
-	//
 	double lofreq;
 	double hifreq;
 	double tabscale;
@@ -103,7 +100,6 @@ void pvtuner_assist (t_pvtuner *x, void *b, long msg, long arg, char *dst);
 void pvtuner_bypass(t_pvtuner *x, t_floatarg state);
 void pvtuner_mute(t_pvtuner *x, t_floatarg state);
 void pvtuner_float(t_pvtuner *x, double f) ;
-// void pvtuner_toptune(t_pvtuner *x, t_floatarg f);
 void pvtuner_list (t_pvtuner *x, t_symbol *msg, short argc, t_atom *argv);
 void pvtuner_fftinfo(t_pvtuner *x);
 void pvtuner_winfac(t_pvtuner *x, t_floatarg f);
@@ -149,9 +145,8 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)pvtuner_slendro,"slendro",0);
 	class_addmethod(c,(method)pvtuner_pelog,"pelog",0); 
 	class_addmethod(c,(method)pvtuner_list,"list",A_GIMME,0);    
-//	class_addmethod(c,(method)pvtuner_toptune,"toptune",A_DEFFLOAT,0);
-	class_addmethod(c,(method)pvtuner_frequency_range,"frequency_range",A_FLOAT,A_FLOAT, 0);    
-	class_addmethod(c,(method)pvtuner_winfac,"winfac",A_DEFFLOAT,0);
+	class_addmethod(c,(method)pvtuner_frequency_range,"frequency_range",A_FLOAT,A_FLOAT, 0);
+//	class_addmethod(c,(method)pvtuner_winfac,"winfac",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pvtuner_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)pvtuner_binfo,"binfo",0);
 	class_addmethod(c,(method)pvtuner_float,"float",A_FLOAT,0);
@@ -1183,12 +1178,16 @@ t_max_err get_overlap(t_pvtuner *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_pvtuner *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		pvtuner_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            pvtuner_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 

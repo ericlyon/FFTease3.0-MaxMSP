@@ -69,7 +69,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)pvharm_mute,"mute",A_FLOAT,0);
 	class_addmethod(c,(method)pvharm_bypass,"bypass", A_FLOAT, 0);
 	class_addmethod(c,(method)pvharm_rel2peak,"rel2peak",A_FLOAT,0);
- 	class_addmethod(c,(method)pvharm_winfac,"winfac",A_DEFFLOAT,0);
+// 	class_addmethod(c,(method)pvharm_winfac,"winfac",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pvharm_osclimit,"osclimit",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pvharm_threshfloor,"threshfloor",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pvharm_fftinfo,"fftinfo",0);  
@@ -135,13 +135,17 @@ t_max_err get_fftsize(t_pvharm *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_pvharm *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		x->fft2->overlap = (int) val;
-		pvharm_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            x->fft2->overlap = (int) val;
+            pvharm_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 t_max_err get_overlap(t_pvharm *x, void *attr, long *ac, t_atom **av)

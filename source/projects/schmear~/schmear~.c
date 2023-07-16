@@ -60,7 +60,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)schmear_shift,"shift",A_FLOAT,0);
 	class_addmethod(c,(method)schmear_schmimp,"schmimp",A_GIMME,0);
 	class_addmethod(c,(method)schmear_oscbank,"oscbank",A_FLOAT,0);
-	class_addmethod(c,(method)schmear_winfac,"winfac",A_FLOAT,0);
+//	class_addmethod(c,(method)schmear_winfac,"winfac",A_FLOAT,0);
 	class_addmethod(c,(method)schmear_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)schmear_float,"float",A_FLOAT,0);
 
@@ -443,12 +443,16 @@ t_max_err get_overlap(t_schmear *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_schmear *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		schmear_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            schmear_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 

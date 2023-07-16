@@ -55,10 +55,8 @@ void reanimator_free( t_reanimator *x );
 void reanimator_framecount ( t_reanimator *x );
 void reanimator_init(t_reanimator *x);
 void reanimator_fftinfo(t_reanimator *x);
-//void reanimator_overlap(t_reanimator *x, t_floatarg f);
 void reanimator_winfac(t_reanimator *x, t_floatarg f);
 void reanimator_meminfo(t_reanimator *x);
-//void reanimator_fftsize(t_reanimator *x, t_floatarg f);
 void reanimator_transpose(t_reanimator *x, t_floatarg tf);
 void reanimator_synthresh(t_reanimator *x, t_floatarg thresh);
 void reanimator_oscbank(t_reanimator *x, t_floatarg flag);
@@ -89,9 +87,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)reanimator_framecount, "framecount", 0);
 	class_addmethod(c,(method)reanimator_freeze_and_march, "freeze_and_march", A_FLOAT, 0);
 	class_addmethod(c,(method)reanimator_resume, "resume", 0);
-//	class_addmethod(c,(method)reanimator_fftsize,"fftsize",A_FLOAT,0);
-//	class_addmethod(c,(method)reanimator_overlap,"overlap",A_DEFFLOAT,0);
-	class_addmethod(c,(method)reanimator_winfac,"winfac",A_DEFFLOAT,0);
+//	class_addmethod(c,(method)reanimator_winfac,"winfac",A_DEFFLOAT,0);
 	class_addmethod(c,(method)reanimator_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)reanimator_meminfo,"meminfo",0);
 	class_addmethod(c,(method)reanimator_oscbank,"oscbank",A_FLOAT,0);
@@ -712,12 +708,16 @@ t_max_err get_overlap(t_reanimator *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_reanimator *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		reanimator_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            reanimator_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 

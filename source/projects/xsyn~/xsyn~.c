@@ -23,9 +23,7 @@ void xsyn_init(t_xsyn *x);
 void xsyn_mute(t_xsyn *x, t_floatarg toggle);
 void xsyn_bypass(t_xsyn *x, t_floatarg toggle);
 void xsyn_fftinfo(t_xsyn *x);
-// void xsyn_overlap(t_xsyn *x, t_floatarg f);
-void xsyn_winfac(t_xsyn *x, t_floatarg f);
-// void xsyn_fftsize(t_xsyn *x, t_floatarg f);
+//void xsyn_winfac(t_xsyn *x, t_floatarg f);
 t_max_err set_fftsize(t_xsyn *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_xsyn *x, void *attr, long *ac, t_atom **av);
 t_max_err set_overlap(t_xsyn *x, void *attr, long ac, t_atom *av);
@@ -44,7 +42,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)xsyn_assist,"assist",A_CANT,0);
 	class_addmethod(c,(method)xsyn_mute,"mute",A_FLOAT,0);
 	class_addmethod(c,(method)xsyn_bypass,"bypass", A_FLOAT, 0);
-	class_addmethod(c,(method)xsyn_winfac,"winfac",A_DEFFLOAT,0);
+//	class_addmethod(c,(method)xsyn_winfac,"winfac",A_DEFFLOAT,0);
     //	class_addmethod(c,(method)xsyn_fftsize,"fftsize",A_FLOAT,0);
 	class_addmethod(c,(method)xsyn_fftinfo,"fftinfo",0);
     
@@ -372,16 +370,18 @@ t_max_err get_overlap(t_xsyn *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_xsyn *x, void *attr, long ac, t_atom *av)
 {
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		x->fft2->overlap = (int) val;
-        // post("setting overlap to: %d", val);
-		xsyn_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            x->fft2->overlap = (int) val;
+            xsyn_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
-
 
 void xsyn_dsp64(t_xsyn *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {

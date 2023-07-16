@@ -33,7 +33,7 @@ void scrape_free( t_scrape *x );
 void update_thresh_function( t_scrape *x );
 void scrape_init(t_scrape *x);
 void scrape_fftinfo(t_scrape *x);
-void scrape_winfac(t_scrape *x, t_floatarg f);
+// void scrape_winfac(t_scrape *x, t_floatarg f);
 t_max_err set_fftsize(t_scrape *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_scrape *x, void *attr, long *ac, t_atom **av);
 t_max_err set_overlap(t_scrape *x, void *attr, long ac, t_atom *av);
@@ -52,7 +52,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)scrape_assist,"assist",A_CANT,0);
 	class_addmethod(c,(method)scrape_mute, "mute", A_FLOAT, 0);
 	class_addmethod(c,(method)scrape_bypass, "bypass", A_FLOAT, 0);
-	class_addmethod(c,(method)scrape_winfac,"winfac",A_DEFFLOAT,0);
+//	class_addmethod(c,(method)scrape_winfac,"winfac",A_DEFFLOAT,0);
 	class_addmethod(c,(method)scrape_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)scrape_float,"float",A_FLOAT,0);
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_scrape, fftsize_attr);
@@ -442,12 +442,16 @@ t_max_err get_overlap(t_scrape *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_scrape *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		scrape_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            scrape_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 

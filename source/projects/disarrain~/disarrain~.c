@@ -742,34 +742,18 @@ t_max_err get_overlap(t_disarrain *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_disarrain *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		disarrain_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            disarrain_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
-/*
-void disarrain_dsp64(t_disarrain *x, t_object *dsp64, double **ins,
-                     long numins, double **outs,long numouts, long vectorsize,
-                     long flags, void *userparam)
-{
-	t_fftease *fft = x->fft;
-	if(fft->MSPVectorSize != sp[0]->s_n){
-		fft->MSPVectorSize = sp[0]->s_n;
-		fftease_set_fft_buffers(fft);
-	}
-	
-	if(fft->R != sp[0]->s_sr){
-		fft->R = sp[0]->s_sr;
-		disarrain_init(x);
-	}
-	if(fftease_msp_sanity_check(fft,OBJECT_NAME))	
-		dsp_add(disarrain_perform, 4, x, sp[0]->s_vec, sp[1]->s_vec, sp[2]->s_vec);
-	
-}
-*/
 // ENTER STORED SHUFFLE
 void disarrain_list (t_disarrain *x, t_symbol *msg, short argc, t_atom *argv) {
 	short i;
@@ -797,14 +781,10 @@ void disarrain_isetstate (t_disarrain *x, t_symbol *msg, short argc, t_atom *arg
 	short i;
 	int ival;
 	int N2 = x->fft->N2;
-	//  x->last_shuffle_count = x->shuffle_count;
 	
 	copy_shuffle_array(x);
 	x->shuffle_count = argc;
 	
-	
-	//  x->lock = 1;
-    
 	for (i=0; i < argc; i++) {
 		ival = 2 * atom_getfloatarg(i,argc,argv);
 		
@@ -814,8 +794,6 @@ void disarrain_isetstate (t_disarrain *x, t_symbol *msg, short argc, t_atom *arg
 			error("%s: %d is out of range",OBJECT_NAME, ival);
 		}
 	}
-	
-	//  x->lock = 0;
 	x->frame_countdown = x->interpolation_frames;
 	
 	return;

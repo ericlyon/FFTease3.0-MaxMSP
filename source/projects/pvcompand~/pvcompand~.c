@@ -28,7 +28,6 @@ typedef struct _pvcompand
 } t_pvcompand;
 
 void *pvcompand_new(t_symbol *s, int argc, t_atom *argv);
-//void pvcompand_dsp(t_pvcompand *x, t_signal **sp, short *count);
 void pvcompand_assist(t_pvcompand *x, void *b, long m, long a, char *s);
 void update_thresholds(t_pvcompand *x);
 void pvcompand_normalize(t_pvcompand *x, t_floatarg val);
@@ -37,11 +36,9 @@ void pvcompand_free(t_pvcompand *x);
 float pvcompand_ampdb(float db);
 void pvcompand_init(t_pvcompand *x);
 void pvcompand_fftinfo(t_pvcompand *x);
-//void pvcompand_overlap(t_pvcompand *x, t_floatarg f);
 void pvcompand_winfac(t_pvcompand *x, t_floatarg f);
 void pvcompand_bypass(t_pvcompand *x, t_floatarg f);
 void pvcompand_mute(t_pvcompand *x, t_floatarg f);
-//void pvcompand_fftsize(t_pvcompand *x, t_floatarg f);
 t_max_err set_fftsize(t_pvcompand *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_pvcompand *x, void *attr, long *ac, t_atom **av);
 t_max_err set_overlap(t_pvcompand *x, void *attr, long ac, t_atom *av);
@@ -57,7 +54,7 @@ int C74_EXPORT main(void)
 	c = class_new("fftz.pvcompand~", (method)pvcompand_new, (method)pvcompand_free, sizeof(t_pvcompand),0,A_GIMME,0);
 	class_addmethod(c,(method)pvcompand_dsp64, "dsp64", A_CANT, 0);
 	class_addmethod(c,(method)pvcompand_normalize, "normalize", A_FLOAT, 0);
-	class_addmethod(c,(method)pvcompand_winfac,"winfac", A_FLOAT, 0);
+//	class_addmethod(c,(method)pvcompand_winfac,"winfac", A_FLOAT, 0);
 	class_addmethod(c,(method)pvcompand_fftinfo,"fftinfo", 0);
 	class_addmethod(c,(method)pvcompand_bypass,"bypass", A_FLOAT, 0);
 	class_addmethod(c,(method)pvcompand_mute,"mute", A_FLOAT, 0);
@@ -449,12 +446,16 @@ t_max_err get_overlap(t_pvcompand *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_pvcompand *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		pvcompand_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            pvcompand_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 

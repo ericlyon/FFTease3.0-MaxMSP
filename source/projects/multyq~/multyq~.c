@@ -43,9 +43,7 @@ void filtyQ( float *S, float *C, float *filtfunc, int N2 );
 void multyq_init(t_multyq *x);
 void multyq_free(t_multyq *x);
 void multyq_fftinfo(t_multyq *x);
-//void multyq_overlap(t_multyq *x, t_floatarg f);
 void multyq_winfac(t_multyq *x, t_floatarg f);
-//void multyq_fftsize(t_multyq *x, t_floatarg f);
 t_max_err set_fftsize(t_multyq *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_multyq *x, void *attr, long *ac, t_atom **av);
 t_max_err set_overlap(t_multyq *x, void *attr, long ac, t_atom *av);
@@ -672,10 +670,14 @@ t_max_err get_overlap(t_multyq *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_multyq *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		multyq_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            multyq_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }

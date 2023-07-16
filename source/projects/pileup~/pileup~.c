@@ -33,14 +33,12 @@ void pileup_mute(t_pileup *x, t_floatarg f);
 void pileup_bypass(t_pileup *x, t_floatarg f);
 void pileup_free( t_pileup *x );
 void pileup_clear( t_pileup *x );
-//void pileup_overlap(t_pileup *x, t_floatarg f);
 void pileup_winfac(t_pileup *x, t_floatarg f);
 void pileup_fftinfo(t_pileup *x);
 void pileup_init(t_pileup *x);
 void pileup_mode(t_pileup *x, t_floatarg mode);
 void pileup_inverse_gain(t_pileup *x, t_floatarg gain);
 void pileup_persistence(t_pileup *x, t_floatarg persistence);
-//void pileup_fftsize(t_pileup *x, t_floatarg f);
 void pileup_transpose(t_pileup *x, t_floatarg tf);
 void pileup_synthresh(t_pileup *x, t_floatarg thresh);
 void pileup_oscbank(t_pileup *x, t_floatarg flag);
@@ -67,9 +65,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)pileup_mode,"mode", A_FLOAT, 0);
 	class_addmethod(c,(method)pileup_inverse_gain,"inverse_gain", A_FLOAT, 0);
 	class_addmethod(c,(method)pileup_persistence,"persistence", A_FLOAT, 0);
-//	class_addmethod(c,(method)pileup_overlap,"overlap",A_DEFFLOAT,0);
-	class_addmethod(c,(method)pileup_winfac,"winfac",A_DEFFLOAT,0);
-//	class_addmethod(c,(method)pileup_fftsize,"fftsize",A_FLOAT,0);
+//	class_addmethod(c,(method)pileup_winfac,"winfac",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pileup_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)pileup_oscbank,"oscbank",A_FLOAT,0);
 	class_addmethod(c,(method)pileup_transpose,"transpose",A_FLOAT,0);
@@ -462,12 +458,16 @@ t_max_err get_overlap(t_pileup *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_pileup *x, void *attr, long ac, t_atom *av)
 {	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		pileup_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            pileup_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 

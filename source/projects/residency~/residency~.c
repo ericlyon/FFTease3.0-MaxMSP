@@ -13,7 +13,6 @@ typedef struct _residency
 	double current_frame;
 	long framecount;
     long last_framecount;
-	//
 	double frame_increment;
 	double fpos;
 	double last_fpos;
@@ -23,7 +22,6 @@ typedef struct _residency
 	int read_me;
 	int frames_read;
 	short mute;
-    //	short virgin;
 	short playthrough;
 	short in2_connected;
 	short in3_connected;
@@ -50,14 +48,12 @@ void residency_mute(t_residency *x, t_floatarg tog);
 void residency_free(t_residency *x);
 void residency_init(t_residency *x);
 void residency_size(t_residency *x, t_floatarg newsize);
-void residency_winfac(t_residency *x, t_floatarg factor);
-//void residency_overlap(t_residency *x, t_floatarg o);
+// void residency_winfac(t_residency *x, t_floatarg factor);
 void residency_verbose(t_residency *x, t_floatarg t);
 void residency_force_position(t_residency *x, t_floatarg position);
 void residency_acquire_sample(t_residency *x);
 void residency_meminfo( t_residency *x );
 void residency_acquire_stop(t_residency *x);
-//void residency_fftsize(t_residency *x, t_floatarg f);
 void residency_transpose(t_residency *x, t_floatarg tf);
 void residency_synthresh(t_residency *x, t_floatarg thresh);
 void residency_oscbank(t_residency *x, t_floatarg flag);
@@ -86,7 +82,7 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)residency_meminfo, "meminfo",  0);
 	class_addmethod(c,(method)residency_playthrough, "playthrough", A_DEFFLOAT, 0);
 	class_addmethod(c,(method)residency_force_position, "force_position", A_FLOAT, 0);
-	class_addmethod(c,(method)residency_winfac, "winfac", A_DEFFLOAT, 0);
+//	class_addmethod(c,(method)residency_winfac, "winfac", A_DEFFLOAT, 0);
 	class_addmethod(c,(method)residency_verbose, "verbose", A_DEFFLOAT, 0);
 	class_addmethod(c,(method)residency_oscbank,"oscbank",A_FLOAT,0);
 	class_addmethod(c,(method)residency_transpose,"transpose",A_FLOAT,0);
@@ -688,12 +684,16 @@ t_max_err get_overlap(t_residency *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_residency *x, void *attr, long ac, t_atom *av)
 {
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->overlap = (int) val;
-		residency_init(x);
-	}
-	return MAX_ERR_NONE;
+    int test_overlap;
+    if (ac && av) {
+        long val = atom_getlong(av);
+        test_overlap = fftease_overlap(val);
+        if(test_overlap > 0){
+            x->fft->overlap = (int) val;
+            residency_init(x);
+        }
+    }
+    return MAX_ERR_NONE;
 }
 
 
