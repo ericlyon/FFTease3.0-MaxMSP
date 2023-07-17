@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 6,
-			"revision" : 0,
+			"minor" : 5,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 690.0, 485.0 ],
+		"rect" : [ 2065.0, 1256.0, 690.0, 485.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,19 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"attr" : "fftsize",
+					"id" : "obj-2",
+					"maxclass" : "attrui",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 504.0, 104.0, 150.0, 22.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-1",
 					"maxclass" : "ezdac~",
@@ -96,7 +109,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 414.0, 179.0, 97.0, 21.0 ],
+					"patching_rect" : [ 398.0, 180.0, 97.0, 21.0 ],
 					"text" : "Switch buffers:"
 				}
 
@@ -164,7 +177,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 427.5, 248.0, 113.0, 23.0 ],
+					"patching_rect" : [ 411.5, 249.0, 113.0, 23.0 ],
 					"text" : "buffername wakki"
 				}
 
@@ -178,7 +191,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 409.5, 213.0, 113.0, 23.0 ],
+					"patching_rect" : [ 393.5, 214.0, 113.0, 23.0 ],
 					"text" : "buffername richer"
 				}
 
@@ -267,8 +280,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 6,
-							"revision" : 0,
+							"minor" : 5,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -867,7 +880,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
-					"midpoints" : [ 419.0, 266.0, 333.0, 266.0 ],
+					"midpoints" : [ 403.0, 266.0, 333.0, 266.0 ],
 					"source" : [ "obj-11", 0 ]
 				}
 
@@ -875,7 +888,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
-					"midpoints" : [ 437.0, 283.5, 333.0, 283.5 ],
+					"midpoints" : [ 421.0, 283.5, 333.0, 283.5 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -884,6 +897,14 @@
 				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
 					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"midpoints" : [ 513.5, 291.0, 333.0, 291.0 ],
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
