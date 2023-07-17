@@ -187,7 +187,7 @@ Energy feeds back with damping inside each bin of an FFT analysis.
 	<attributelist>
 		<attribute name="fftsize" get="1" set="1" type="int" size="10">
 			<digest>
-				Attack Time
+				FFT size (must be a power of 2)
 			</digest>
 			<description>
 				FFT size (default is 1024)
@@ -195,7 +195,7 @@ Energy feeds back with damping inside each bin of an FFT analysis.
 		</attribute>
 		<attribute name="overlap" get="1" set="1" type="int" size="10">
 			<digest>
-				Attack Time
+				Overlap factor (must be a power of 2)
 			</digest>
 			<description>
 				Overlap factor (default is 8)
