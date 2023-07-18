@@ -49,7 +49,6 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)leaker_randsieve, "randsieve", 0);
 	class_addmethod(c,(method)leaker_bypass,"bypass",A_DEFFLOAT,0);
 	class_addmethod(c,(method)leaker_mute,"mute",A_DEFFLOAT,0);
-	class_addmethod(c,(method)leaker_winfac,"winfac",A_DEFFLOAT,0);
 	class_addmethod(c,(method)leaker_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)leaker_float,"float", A_FLOAT, 0);
 
@@ -101,8 +100,8 @@ void leaker_free( t_leaker *x ){
 	dsp_free((t_pxobject *)x);
 	fftease_free(x->fft);
 	fftease_free(x->fft2);
-    sysmem_freeptr(x->fft);
-    sysmem_freeptr(x->fft2);
+//    sysmem_freeptr(x->fft);
+//    sysmem_freeptr(x->fft2);
 	sysmem_freeptr(x->sieve);
 }
 
@@ -143,15 +142,6 @@ void leaker_randsieve(t_leaker *x) {
         sieve[pos2] = temp;
         --maxswap;
     }
-    /*
-	for( i = 0; i < NSwitch; i++ ){
-		pos1 = rand() % N2;
-		pos2 = rand() % N2;
-		temp = x->sieve[pos2];
-		sieve[pos2] = sieve[pos1];
-		sieve[pos1] = temp ;
-	}
-    */
 }
 
 void leaker_bypass(t_leaker *x, t_floatarg state)
@@ -230,14 +220,7 @@ void leaker_init(t_leaker *x)
 		x->fade_value = 0;
 		x->sieve = (int *) sysmem_newptrclear((fft->N2 + 1) * sizeof(int));
 	}  else {
-		/*
-		memset((char *)fft->input,0,fft->Nw);
-		memset((char *)fft2->input,0,fft->Nw);
-		memset((char *)fft->output,0,fft->Nw);
-		memset((char *)fft->c_lastphase_in,0,(fft->N2+1) * sizeof(float));
-		memset((char *)fft2->c_lastphase_in,0,(fft->N2+1) * sizeof(float));
-		memset((char *)fft->c_lastphase_out,0,(fft->N2+1) * sizeof(float));
-		*/
+        x->sieve = (int *) sysmem_resizeptrclear((void *)x->sieve, (fft->N2 + 1) * sizeof(int));
 	}
     
 	if(initialized != 2){

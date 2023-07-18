@@ -55,7 +55,7 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)ether_invert,"invert", A_FLOAT, 0);
     class_addmethod(c,(method)ether_mute,"mute", A_FLOAT, 0);
 	class_addmethod(c,(method)ether_bypass,"bypass", A_FLOAT, 0);
-	class_addmethod(c,(method)ether_winfac,"winfac", A_FLOAT, 0);
+//	class_addmethod(c,(method)ether_winfac,"winfac", A_FLOAT, 0);
 	class_addmethod(c,(method)ether_fftinfo,"fftinfo",  0);
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_ether, fftsize_attr);
 	CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
@@ -189,11 +189,11 @@ void ether_init(t_ether *x)
 		x->threshMult = 0.;
 	} else {
         // clear memory
-        
+        /*
         x->fft->input = (double *) sysmem_resizeptrclear(fft->input,fft->Nw * sizeof(double));
         x->fft2->input = (double *) sysmem_resizeptrclear(fft2->input,fft2->Nw * sizeof(double));
         x->fft->output = (double *) sysmem_resizeptrclear(fft->output,fft->Nw * sizeof(double));
-
+*/
 	}
 	x->x_obj.z_disabled = 0;
 }
