@@ -138,12 +138,10 @@ void *morphine_new(t_symbol *s, int argc, t_atom *argv)
 	outlet_new((t_pxobject *)x, "signal");
 	x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
 	x->fft2 = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
-	//fft = x->fft;
-	//fft2 = x->fft2;
 	x->fft->initialized = 0;
 	x->fft2->initialized = 0;
-	x->exponScale = -5.0;	
-	atom_arg_getdouble(&x->exponScale, 0, argc, argv);
+	x->exponScale = -1.0;
+//	atom_arg_getdouble(&x->exponScale, 0, argc, argv);
 	x->fft->N = FFTEASE_DEFAULT_FFTSIZE;
 	x->fft->overlap = FFTEASE_DEFAULT_OVERLAP;
 	x->fft->winfac = FFTEASE_DEFAULT_WINFAC;

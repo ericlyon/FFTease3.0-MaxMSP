@@ -292,8 +292,8 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 107.0, 400.0, 189.0, 23.0 ],
-					"text" : "fftz.morphine~ -1 @fftsize 4096"
+					"patching_rect" : [ 107.0, 400.0, 174.0, 23.0 ],
+					"text" : "fftz.morphine~ @fftsize 4096"
 				}
 
 			}
@@ -344,7 +344,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-14", 2 ],
-					"midpoints" : [ 338.5, 378.0, 286.5, 378.0 ],
+					"midpoints" : [ 338.5, 378.0, 271.5, 378.0 ],
 					"source" : [ "obj-19", 0 ]
 				}
 
@@ -376,7 +376,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-14", 0 ],
-					"midpoints" : [ 418.5, 448.0, 267.5, 448.0, 267.5, 389.0, 116.5, 389.0 ],
+					"midpoints" : [ 418.5, 448.0, 356.5, 448.0, 356.5, 389.0, 116.5, 389.0 ],
 					"source" : [ "obj-4", 0 ]
 				}
 
@@ -415,7 +415,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-14", 1 ],
-					"midpoints" : [ 244.5, 377.0, 201.5, 377.0 ],
+					"midpoints" : [ 244.5, 377.0, 194.0, 377.0 ],
 					"source" : [ "obj-9", 0 ]
 				}
 
