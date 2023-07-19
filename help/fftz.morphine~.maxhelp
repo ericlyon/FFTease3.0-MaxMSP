@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 6,
-			"revision" : 0,
+			"minor" : 5,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 540.0, 589.0 ],
+		"rect" : [ 1515.0, 1269.0, 678.0, 589.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -39,6 +39,19 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"attr" : "fftsize",
+					"id" : "obj-4",
+					"maxclass" : "attrui",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 409.0, 415.0, 194.0, 23.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"format" : 6,
 					"id" : "obj-19",
@@ -83,7 +96,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 18.0, 98.0, 509.0, 79.0 ],
+					"patching_rect" : [ 18.0, 98.0, 512.0, 79.0 ],
 					"text" : "fftz.morphine~ performs spectral morphing, creating a new spectrum from its two inputs. Values between 0 and 1 are the useful range for the morph index. The progression depends upon the exponential transition scaling value. Progressively smaller negative values will widen the transition space between the two sounds. Larger FFT sizes, such as 4096, produce smoother results.",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
@@ -357,6 +370,14 @@
 					"destination" : [ "obj-12", 0 ],
 					"order" : 1,
 					"source" : [ "obj-36", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"midpoints" : [ 418.5, 448.0, 267.5, 448.0, 267.5, 389.0, 116.5, 389.0 ],
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}

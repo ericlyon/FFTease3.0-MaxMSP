@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 6,
-			"revision" : 0,
+			"minor" : 5,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 657.0, 711.0 ],
+		"rect" : [ 2301.0, 1070.0, 657.0, 711.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -61,8 +61,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 6,
-							"revision" : 0,
+							"minor" : 5,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -604,8 +604,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 6,
-							"revision" : 0,
+							"minor" : 5,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1027,8 +1027,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 6,
-							"revision" : 0,
+							"minor" : 5,
+							"revision" : 5,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1193,7 +1193,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 20.0, 105.0, 364.0, 65.0 ],
+					"patching_rect" : [ 20.0, 105.0, 368.0, 65.0 ],
 					"text" : "fftz.loopsea~ stores a spectral recording of a sound, and then creates loops on a per-bin basis, with each loop having its own length, speed of playback, and transposition factor (when in oscillator bank mode). ",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
@@ -1428,8 +1428,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "list" ],
-					"patching_rect" : [ 46.0, 421.0, 122.0, 23.0 ],
-					"text" : "fftz.loopsea~ 10000"
+					"patching_rect" : [ 46.0, 421.0, 275.0, 23.0 ],
+					"text" : "fftz.loopsea~ 10000 @fftsize 2048 @overlap 8"
 				}
 
 			}
@@ -1450,7 +1450,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-19", 0 ],
-					"midpoints" : [ 107.0, 457.0, 143.5, 457.0 ],
+					"midpoints" : [ 183.5, 457.0, 143.5, 457.0 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -1458,7 +1458,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
-					"midpoints" : [ 158.5, 457.0, 280.5, 457.0 ],
+					"midpoints" : [ 311.5, 457.0, 280.5, 457.0 ],
 					"source" : [ "obj-1", 2 ]
 				}
 

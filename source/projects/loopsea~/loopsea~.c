@@ -32,6 +32,7 @@ typedef struct _loopsea
     int restart_loops_flag; // indicator to reset all loops from their start frames
     int tbank_flag; // indicator that we are using bin-level transposition factors
     int read_me;
+    int attr_reset_flag; // only allow FFT size and overlap to be set once
     long frames_read;
     short mute;
     short playthrough;
@@ -73,7 +74,6 @@ t_max_err set_overlap(t_loopsea *x, void *attr, long ac, t_atom *av);
 t_max_err get_overlap(t_loopsea *x, void *attr, long *ac, t_atom **av);
 void loopsea_dsp64(t_loopsea *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
 
-
 int C74_EXPORT main(void)
 {
     
@@ -89,7 +89,6 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)loopsea_randtransp, "randtransp", A_GIMME, 0);
     class_addmethod(c,(method)loopsea_transp_choose, "transp_choose", A_GIMME, 0);
     class_addmethod(c,(method)loopsea_setspeed, "setspeed",  A_FLOAT, 0);
-//    class_addmethod(c,(method)loopsea_playthrough,"playthrough",  A_DEFFLOAT, 0);
     class_addmethod(c,(method)loopsea_setloops,"setloops",  A_FLOAT, A_FLOAT, 0);
     class_addmethod(c,(method)loopsea_restart_loops,"restart_loops", 0);
     class_addmethod(c,(method)loopsea_flat_transpose,"flat_transpose",0);
@@ -97,12 +96,15 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)loopsea_readloops,"readloops",A_GIMME,0);
     class_addmethod(c,(method)loopsea_mute,"mute",A_FLOAT,0);
     class_addmethod(c,(method)loopsea_fftinfo,"fftinfo",0);
+    
     CLASS_ATTR_LONG(c, "fftsize", 0, t_loopsea, fftsize_attr);
     CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
     CLASS_ATTR_LABEL(c, "fftsize", 0, "FFT Size");
+    
     CLASS_ATTR_LONG(c, "overlap", 0, t_loopsea, overlap_attr);
     CLASS_ATTR_ACCESSORS(c, "overlap", (method)get_overlap, (method)set_overlap);
     CLASS_ATTR_LABEL(c, "overlap", 0, "Overlap");
+    
     CLASS_ATTR_ORDER(c, "fftsize",    0, "1");
     CLASS_ATTR_ORDER(c, "overlap",    0, "2");
     
@@ -217,24 +219,26 @@ void loopsea_init(t_loopsea *x)
 {
     int i;
     short initialized = x->fft->initialized;
+    x->x_obj.z_disabled = 1;
+    t_double **loveboat = x->loveboat;
+    t_double *tmpframe;
     t_fftease  *fft = x->fft;
-    fftease_init(fft);
-    if(!fftease_msp_sanity_check(fft,OBJECT_NAME)){
-        return;
-    }
-
-    x->current_frame = x->framecount = 0;
-    x->fpos = x->last_fpos = 0;
-    x->tadv = (float)fft->D/(float)fft->R;
-    if(x->duration < 0.1){
-        x->duration = 0.1;
-    }
-    x->framecount =  x->duration/x->tadv;
-    x->read_me = 0;
-
-    // post("running init function. Framecount is %d", x->framecount);
+    
     if(! initialized ){
-       // post("startup init");
+        fftease_init(fft);
+        if(!fftease_msp_sanity_check(fft,OBJECT_NAME)){
+            return;
+        }
+        x->current_frame = x->framecount = 0;
+        x->fpos = x->last_fpos = 0;
+        x->tadv = (float)fft->D/(float)fft->R;
+        if(x->duration < 0.1){
+            x->duration = 0.1;
+        }
+        x->framecount =  x->duration/x->tadv;
+        x->read_me = 0;
+
+    
         x->frame_increment = 1.0 ;
         x->mute = 0;
         x->playthrough = 0;
@@ -247,49 +251,30 @@ void loopsea_init(t_loopsea *x)
         x->start_frames = (long *) sysmem_newptrclear(fft->N2 * sizeof(long));
         x->end_frames = (long *) sysmem_newptrclear(fft->N2 * sizeof(long));
         x->interval_bank = (t_double *) sysmem_newptrclear(128 * sizeof(t_double));
-        x->loveboat = (t_double **) sysmem_newptrclear(x->framecount * sizeof(t_double *));
         x->data = (t_atom *) sysmem_newptrclear(((fft->N2 * 3) + 1) * sizeof(t_atom));
+        loveboat = (t_double **) sysmem_newptrclear(x->framecount * sizeof(t_double *));
         for(i=0; i < x->framecount; i++){
-            x->loveboat[i] = (t_double *) sysmem_newptrclear((fft->N+2) * sizeof(t_double));
-            if(x->loveboat[i] == NULL){
+            tmpframe = (t_double *) sysmem_newptrclear((fft->N+2) * sizeof(t_double));
+            if(tmpframe == NULL){
                 error("%s: Insufficient Memory!",OBJECT_NAME);
                 return;
             }
+            loveboat[i] = tmpframe;
         }
-    }
-    else {
-      //  post("recap init");
-        x->frame_incr = (t_double *) sysmem_resizeptrclear(x->frame_incr, fft->N2 * sizeof(t_double));
-        x->store_incr = (t_double *) sysmem_resizeptrclear(x->store_incr, fft->N2 * sizeof(t_double));
-        x->frame_phase = (t_double *) sysmem_resizeptrclear(x->frame_phase, fft->N2 * sizeof(t_double));
-        x->tbank = (t_double *) sysmem_resizeptrclear(x->tbank, fft->N2 * sizeof(t_double));
-        x->start_frames = (long *) sysmem_resizeptrclear(x->start_frames, fft->N2 * sizeof(long));
-        x->end_frames = (long *) sysmem_resizeptrclear(x->end_frames, fft->N2 * sizeof(long));
+        x->loveboat = loveboat;
+
+        loopsea_setloops(x, 50.0, x->duration * 1000.0);
+        x->last_framecount = x->framecount;
         
-        for(i = 0; i < x->last_framecount; i++){
-            sysmem_freeptr(x->loveboat[i]);
-        }
-        x->loveboat = (t_double **)sysmem_resizeptrclear(x->loveboat, x->framecount * sizeof(t_double*));
-        for(i=0; i < x->framecount; i++){
-            x->loveboat[i] = (t_double *) sysmem_newptrclear((fft->N+2) * sizeof(t_double));
-            if(x->loveboat[i] == NULL){
-                error("%s: Insufficient Memory!",OBJECT_NAME);
-                return;
-            }
+        for(i = 0; i < fft->N2; i++){
+            x->tbank[i] = 1.0;
         }
     }
-    loopsea_setloops(x, 50.0, x->duration * 1000.0);
-    x->last_framecount = x->framecount;
-    // safety, probably not necessary:
-    for(i = 0; i < fft->N2; i++){
-        x->tbank[i] = 1.0;
-    }
-    //post("new init status: %d",x->fft->initialized);
+    x->x_obj.z_disabled = 0;
 }
 
 void *loopsea_new(t_symbol *msg, short argc, t_atom *argv)
 {
-// t_fftease *fft;
     t_loopsea *x = (t_loopsea *)object_alloc(loopsea_class);
 
     x->listo = listout((t_pxobject *)x);
@@ -300,10 +285,9 @@ void *loopsea_new(t_symbol *msg, short argc, t_atom *argv)
     x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
     x->fft->R = sys_getsr();
     x->fft->MSPVectorSize = sys_getblksize();
-    // fft = x->fft;
     x->fft->initialized = 0;
 
-    srand(clock()); // needed ?
+    srand(clock());
     x->restart_loops_flag = 0;
     x->fft->N = FFTEASE_DEFAULT_FFTSIZE;
     x->fft->overlap = FFTEASE_DEFAULT_OVERLAP;
@@ -313,8 +297,10 @@ void *loopsea_new(t_symbol *msg, short argc, t_atom *argv)
         post("%s: no duration given, using a default of 5000 ms",OBJECT_NAME);
         x->duration = 5.0;
     }
-    attr_args_process(x, argc, argv);
+    x->attr_reset_flag = 0;
+    attr_args_process(x, argc, argv);x->attr_reset_flag = 1;
     loopsea_init(x);
+    x->attr_reset_flag = 1;
     return x;
 }
 
@@ -709,16 +695,22 @@ t_max_err get_fftsize(t_loopsea *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_fftsize(t_loopsea *x, void *attr, long ac, t_atom *av)
 {
-    
-    if (ac && av) {
-        long val = atom_getlong(av);
-        x->fft->N = (int) val;
-        loopsea_init(x);
+    short initialized = x->attr_reset_flag;
+    if(! initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+           // post("setting FFT size attribute to %d",val);
+            x->fft->N = (int) val;
+            loopsea_init(x);
+        }
+    } else {
+        post("fftz.loopsea~: FFT size cannot be reset for this object\n");
     }
     return MAX_ERR_NONE;
 }
 
 t_max_err get_overlap(t_loopsea *x, void *attr, long *ac, t_atom **av)
+
 {
     if (ac && av) {
         char alloc;
@@ -736,13 +728,18 @@ t_max_err get_overlap(t_loopsea *x, void *attr, long *ac, t_atom **av)
 t_max_err set_overlap(t_loopsea *x, void *attr, long ac, t_atom *av)
 {
     int test_overlap;
-    if (ac && av) {
-        long val = atom_getlong(av);
-        test_overlap = fftease_overlap(val);
-        if(test_overlap > 0){
-            x->fft->overlap = (int) val;
-            loopsea_init(x);
+    short initialized = x->attr_reset_flag;
+    if(! initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            test_overlap = fftease_overlap(val);
+            if(test_overlap > 0){
+                x->fft->overlap = (int) val;
+                loopsea_init(x);
+            }
         }
+    } else {
+        post("fftz.loopsea~: overlap factor cannot be reset for this object\n");
     }
     return MAX_ERR_NONE;
 }
