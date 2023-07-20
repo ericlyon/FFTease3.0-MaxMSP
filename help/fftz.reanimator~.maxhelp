@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 6,
-			"revision" : 0,
+			"minor" : 5,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 543.0, 526.0 ],
+		"rect" : [ 1730.0, 597.0, 543.0, 526.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -39,6 +39,19 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"attr" : "overlap",
+					"id" : "obj-11",
+					"maxclass" : "attrui",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 48.0, 354.0, 150.0, 23.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
@@ -311,8 +324,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 3,
 					"outlettype" : [ "signal", "signal", "signal" ],
-					"patching_rect" : [ 216.0, 300.0, 288.0, 23.0 ],
-					"text" : "fftz.reanimator~ 2000 @fftsize 1024 @overlap 8"
+					"patching_rect" : [ 216.0, 300.0, 285.0, 23.0 ],
+					"text" : "fftz.reanimator~ 2000 @fftsize 2048 @overlap 8"
 				}
 
 			}
@@ -334,7 +347,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 360.0, 333.5, 278.5, 333.5 ],
+					"midpoints" : [ 358.5, 333.5, 278.5, 333.5 ],
 					"source" : [ "obj-1", 1 ]
 				}
 
@@ -349,7 +362,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
-					"midpoints" : [ 494.5, 333.5, 378.5, 333.5 ],
+					"midpoints" : [ 491.5, 333.5, 378.5, 333.5 ],
 					"source" : [ "obj-1", 2 ]
 				}
 
@@ -357,8 +370,16 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 1 ],
-					"midpoints" : [ 330.5, 274.5, 494.5, 274.5 ],
+					"midpoints" : [ 330.5, 274.5, 491.5, 274.5 ],
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 57.5, 387.0, 141.5, 387.0, 141.5, 289.0, 225.5, 289.0 ],
+					"source" : [ "obj-11", 0 ]
 				}
 
 			}

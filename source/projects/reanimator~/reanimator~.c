@@ -11,7 +11,7 @@ typedef struct _reanimator
 	t_pxobject x_obj;
 	t_fftease *fft;
 	double **framebank;
-	double *normalized_frame;
+//	double *normalized_frame;
 	double current_frame;
 	int framecount;
 	double frame_increment ;
@@ -32,6 +32,7 @@ typedef struct _reanimator
 	double sample_len; /*duration of texture sample */
 	double sync;
 	int megs;
+    int attr_reset_flag; // only allow FFT size and overlap to be set once
 	long fftsize_attr;
 	long overlap_attr;
 } t_reanimator;
@@ -181,7 +182,7 @@ void reanimator_free( t_reanimator *x ){
             sysmem_freeptr(x->framebank[i]) ;
         }
         sysmem_freeptr((char**)x->framebank);
-        sysmem_freeptr(x->normalized_frame);
+        // sysmem_freeptr(x->normalized_frame);
     }
 }
 
@@ -238,8 +239,10 @@ void *reanimator_new(t_symbol *msg, short argc, t_atom *argv)
 	fft->N = FFTEASE_DEFAULT_FFTSIZE;
 	fft->overlap = FFTEASE_DEFAULT_OVERLAP;
 	fft->winfac = FFTEASE_DEFAULT_WINFAC;
+    x->attr_reset_flag = 0;
 	attr_args_process(x, argc, argv);
-	reanimator_init(x);	
+	reanimator_init(x);
+    x->attr_reset_flag = 1;
 	return x;
 }
 
@@ -256,13 +259,13 @@ void reanimator_init(t_reanimator *x )
 		return;
 	}
 	// sanity check here	
-	x->tadv = (float)fft->D/(float)fft->R;
-	x->current_frame = framecount = 0;
-	x->fpos = x->last_fpos = 0;
-	x->total_frames =  x->sample_len / x->tadv;	
 
 	
 	if(!initialized){
+        x->tadv = (float)fft->D/(float)fft->R;
+        x->current_frame = framecount = 0;
+        x->fpos = x->last_fpos = 0;
+        x->total_frames =  x->sample_len / x->tadv;
 		x->sync = 0.0;
 		x->inverse = 0;
 		x->initialized = 0; // for perform
@@ -274,7 +277,6 @@ void reanimator_init(t_reanimator *x )
 		x->bypass = 0;
 		x->readme = 0;		
 		x->total_frames =  x->sample_len / x->tadv;
-//		x->normalized_frame = (float *) calloc((fft->N + 2), sizeof(float));
 		x->framebank = (double **) sysmem_newptrclear(x->total_frames * sizeof(double *));
 		// post("tot frames: %d", x->total_frames);
 		
@@ -282,20 +284,18 @@ void reanimator_init(t_reanimator *x )
 			x->framebank[framecount] = (double *) sysmem_newptrclear((fft->N+2)*sizeof(double));
 			++framecount;
 		}
-		
+        x->framecount = framecount;
+        x->megs = sizeof(double) * x->framecount * (fft->N+2);
 	}
+    /*
     else if(initialized == 1){
-	//		post("doing reinit! tot frames: %d", x->total_frames);
-
-	// danger: could be more frames this time!!!
 		while(framecount < x->total_frames ){
 			x->framebank[framecount] = (double *) sysmem_resizeptrclear(framebank[framecount], (fft->N+2) * sizeof(double));
 			++framecount;
 		}
 	}
+*/
 
-	x->framecount = framecount;
-	x->megs = sizeof(double) * x->framecount * (fft->N+2);
 	x->x_obj.z_disabled = 0;
 }
 
@@ -682,12 +682,16 @@ t_max_err get_fftsize(t_reanimator *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_fftsize(t_reanimator *x, void *attr, long ac, t_atom *av)
 {
-	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->N = (int) val;
-		reanimator_init(x);
-	}
+    int initialized = x->attr_reset_flag;
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            x->fft->N = (int) val;
+            reanimator_init(x);
+        }
+    } else {
+        post("%s: FFT size cannot be reset for this object\n",OBJECT_NAME);
+    }
 	return MAX_ERR_NONE;
 }
 
@@ -707,15 +711,20 @@ t_max_err get_overlap(t_reanimator *x, void *attr, long *ac, t_atom **av)
 
 
 t_max_err set_overlap(t_reanimator *x, void *attr, long ac, t_atom *av)
-{	
+{
+    int initialized = x->attr_reset_flag;
     int test_overlap;
-    if (ac && av) {
-        long val = atom_getlong(av);
-        test_overlap = fftease_overlap(val);
-        if(test_overlap > 0){
-            x->fft->overlap = (int) val;
-            reanimator_init(x);
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            test_overlap = fftease_overlap(val);
+            if(test_overlap > 0){
+                x->fft->overlap = (int) val;
+                reanimator_init(x);
+            }
         }
+    } else {
+        post("%s: overlap cannot be reset for this object\n",OBJECT_NAME);
     }
     return MAX_ERR_NONE;
 }
