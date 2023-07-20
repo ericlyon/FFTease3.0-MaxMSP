@@ -31,6 +31,7 @@ typedef struct _resent
     double duration;
     short verbose;
     double sync;
+    int attr_reset_flag; // only allow FFT size and overlap to be set once
     long fftsize_attr;
     long overlap_attr;
     double size_attr;
@@ -100,7 +101,6 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)resent_playthrough, "playthrough",  A_DEFFLOAT, 0);
     class_addmethod(c,(method)resent_store_incr, "store_incr",0);
     class_addmethod(c,(method)resent_setspeed_and_phase, "setspeed_and_phase",  A_DEFFLOAT, A_DEFFLOAT, 0);
-//    class_addmethod(c,(method)resent_winfac,"winfac",A_DEFFLOAT,0);
     class_addmethod(c,(method)resent_fftinfo,"fftinfo",0);
     class_addmethod(c,(method)resent_oscbank,"oscbank",A_FLOAT,0);
     class_addmethod(c,(method)resent_transpose,"transpose",A_FLOAT,0);
@@ -345,21 +345,20 @@ void resent_init(t_resent *x)
     short initialized = x->fft->initialized;
     t_fftease  *fft = x->fft;
     x->x_obj.z_disabled = 1;
-    fftease_init(fft);
-    if(!fftease_msp_sanity_check(fft,OBJECT_NAME)){
-        return;
-    }
-    
-    x->current_frame = x->framecount = 0;
-    x->fpos = x->last_fpos = 0;
-    x->tadv = (float)fft->D/(float)fft->R;
-    if(x->duration < 0.1){
-        x->duration = 0.1;
-    }
-    x->framecount =  x->duration/x->tadv ;
-    x->read_me = 0;
-    
     if(! initialized ){
+        fftease_init(fft);
+        if(!fftease_msp_sanity_check(fft,OBJECT_NAME)){
+            return;
+        }
+        
+        x->current_frame = x->framecount = 0;
+        x->fpos = x->last_fpos = 0;
+        x->tadv = (float)fft->D/(float)fft->R;
+        if(x->duration < 0.1){
+            x->duration = 0.1;
+        }
+        x->framecount =  x->duration/x->tadv ;
+        x->read_me = 0;
         x->frame_increment = 1.0 ;
         x->mute = 0;
         x->playthrough = 0;
@@ -369,30 +368,6 @@ void resent_init(t_resent *x)
         x->store_incr = (double *) sysmem_newptrclear(fft->N2 * sizeof(double));
         x->frame_phase = (double *) sysmem_newptrclear(fft->N2 * sizeof(double));
         x->loveboat = (double **) sysmem_newptrclear(x->framecount * sizeof(double *));
-        for(i=0; i < x->framecount; i++){
-            x->loveboat[i] = (double *) sysmem_newptrclear((fft->N+2) * sizeof(double));
-            if(x->loveboat[i] == NULL){
-                error("%s: Insufficient Memory!",OBJECT_NAME);
-                return;
-            }
-        }
-    }
-    else { /* this could fail or might not actually release memory - test it!! */
-        //		post("running memory reinit");
-        x->frame_incr = (double *) sysmem_resizeptrclear(x->frame_incr, fft->N2 * sizeof(double));
-        x->store_incr = (double *) sysmem_resizeptrclear(x->store_incr, fft->N2 * sizeof(double));
-        x->frame_phase = (double *) sysmem_resizeptrclear(x->frame_phase, fft->N2 * sizeof(double));
-        /*
-         for(i = 0; i < x->framecount; i++){
-         free(x->loveboat[i]) ;
-         }
-         free(x->loveboat);
-         x->loveboat = (float **) calloc(x->framecount, sizeof(float *));
-         */
-        for(i = 0; i < x->last_framecount; i++){
-            sysmem_freeptr(x->loveboat[i]) ;
-        }
-        x->loveboat = (double **)sysmem_resizeptrclear(x->loveboat, x->framecount * sizeof(double*));
         for(i=0; i < x->framecount; i++){
             x->loveboat[i] = (double *) sysmem_newptrclear((fft->N+2) * sizeof(double));
             if(x->loveboat[i] == NULL){
@@ -426,8 +401,10 @@ void *resent_new(t_symbol *msg, short argc, t_atom *argv)
     fft->overlap = FFTEASE_DEFAULT_OVERLAP;
     fft->winfac = FFTEASE_DEFAULT_WINFAC;
     x->interpolation_attr = 0; // off by default
+    x->attr_reset_flag = 0;
     attr_args_process(x, argc, argv);
     resent_init(x);
+    x->attr_reset_flag = 1;
     return x;
 }
 
@@ -740,11 +717,15 @@ t_max_err get_fftsize(t_resent *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_fftsize(t_resent *x, void *attr, long ac, t_atom *av)
 {
-    
-    if (ac && av) {
-        long val = atom_getlong(av);
-        x->fft->N = (int) val;
-        resent_init(x);
+    int initialized = x->attr_reset_flag;
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            x->fft->N = (int) val;
+ //           resent_init(x);
+        }
+    } else {
+        post("%s: FFT size cannot be reset for this object\n",OBJECT_NAME);
     }
     return MAX_ERR_NONE;
 }
@@ -765,15 +746,20 @@ t_max_err get_overlap(t_resent *x, void *attr, long *ac, t_atom **av)
 
 
 t_max_err set_overlap(t_resent *x, void *attr, long ac, t_atom *av)
-{	
+{
+    int initialized = x->attr_reset_flag;
     int test_overlap;
-    if (ac && av) {
-        long val = atom_getlong(av);
-        test_overlap = fftease_overlap(val);
-        if(test_overlap > 0){
-            x->fft->overlap = (int) val;
-            resent_init(x);
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            test_overlap = fftease_overlap(val);
+            if(test_overlap > 0){
+                x->fft->overlap = (int) val;
+    //            resent_init(x);
+            }
         }
+    } else {
+        post("%s: overlap cannot be reset for this object\n",OBJECT_NAME);
     }
     return MAX_ERR_NONE;
 }
@@ -804,26 +790,32 @@ t_max_err set_interpolation(t_resent *x, void *attr, long ac, t_atom *av)
 
 t_max_err get_size(t_resent *x, void *attr, long *ac, t_atom **av)
 {
-    if (ac && av) {
-        char alloc;
-        
-        if (atom_alloc(ac, av, &alloc)) {
-            return MAX_ERR_GENERIC;
+    
+    
+        if (ac && av) {
+            char alloc;
+            
+            if (atom_alloc(ac, av, &alloc)) {
+                return MAX_ERR_GENERIC;
+            }
+            x->size_attr =x->duration * 1000.0;
+            atom_setfloat(*av, x->size_attr);
         }
-        x->size_attr =x->duration * 1000.0;
-        atom_setfloat(*av, x->size_attr);
-    }
+
     return MAX_ERR_NONE;
 }
 
 t_max_err set_size(t_resent *x, void *attr, long ac, t_atom *av)
 {
-    
-    if (ac && av) {
-        long val = atom_getlong(av);
-        x->duration = (double)val/1000.0;
-        //        post("duration set to %f", x->duration);
-        resent_init(x);
+    int initialized = x->attr_reset_flag;
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            x->duration = (double)val/1000.0;
+//            resent_init(x);
+        }
+    } else {
+        post("%s: spectral buffer size cannot be reset for this object\n",OBJECT_NAME);
     }
     return MAX_ERR_NONE;
 }
