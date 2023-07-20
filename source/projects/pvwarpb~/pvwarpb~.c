@@ -32,6 +32,7 @@ typedef struct _pvwarpb
 	short automate;
 	long fftsize_attr;
 	long overlap_attr;
+    int attr_reset_flag; // only allow FFT size to be set once
     t_symbol *buffername_attr;
     t_double *warpfunc; // workspace to create a new function
 	short initialized; // state for object
@@ -401,8 +402,10 @@ void *pvwarpb_new(t_symbol *s, int argc, t_atom *argv)
     x->buffername = NULL;
     // atom_arg_getsym(&x->buffername,0,argc,argv);
     x->warpfunc = (t_double *) sysmem_newptrclear(8192);
+    x->attr_reset_flag = 0;
 	attr_args_process(x, argc, argv);
 	pvwarpb_init(x);
+    x->attr_reset_flag = 1;
 	return x;
 }
 
@@ -748,12 +751,16 @@ t_max_err get_fftsize(t_pvwarpb *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_fftsize(t_pvwarpb *x, void *attr, long ac, t_atom *av)
 {
-	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->N = (int) val;
-		pvwarpb_init(x);
-	}
+    int initialized = x->attr_reset_flag;
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            x->fft->N = (int) val;
+            pvwarpb_init(x);
+        }
+    } else {
+        post("%s: FFT size cannot be reset for this object\n",OBJECT_NAME);
+    }
 	return MAX_ERR_NONE;
 }
 
