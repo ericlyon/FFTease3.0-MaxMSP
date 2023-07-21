@@ -43,7 +43,6 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)swinger_assist,"assist",A_CANT,0);
     class_addmethod(c,(method)swinger_mute,"mute",A_FLOAT,0);
 	class_addmethod(c,(method)swinger_bypass,"bypass", A_FLOAT, 0);
-//	class_addmethod(c,(method)swinger_winfac,"winfac",A_FLOAT,0);
 	class_addmethod(c,(method)swinger_fftinfo,"fftinfo",0);
 
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_swinger, fftsize_attr);
@@ -63,7 +62,6 @@ int C74_EXPORT main(void)
 	
 	post("%s%s", FFTEASE_ANNOUNCEMENT, OBJECT_NAME);
 	return 0;
-	
 }
 
 /* diagnostic messages for Max */
@@ -84,7 +82,6 @@ void swinger_mute(t_swinger *x, t_floatarg state)
 
 void swinger_assist (t_swinger *x, void *b, long msg, long arg, char *dst)
 {
-	
 	if (msg == 1) {
 		
 		switch (arg) {
@@ -99,23 +96,22 @@ void swinger_assist (t_swinger *x, void *b, long msg, long arg, char *dst)
 	
 	else {
 		
-		if (msg == 2)
-			sprintf(dst,"(signal) Swinger Output");
-		
+        if (msg == 2) {
+            sprintf(dst,"(signal) Swinger Output");
+        }
 	}
 }
 
 
 void *swinger_new(t_symbol *s, int argc, t_atom *argv)
 {
-
 	t_fftease *fft, *fft2;	
 
 	t_swinger *x = (t_swinger *)object_alloc(swinger_class);
 	dsp_setup((t_pxobject *)x,2);
 	outlet_new((t_pxobject *)x, "signal");
 	/* make sure that signal inlets and outlets have their own memory */
-	x->x_obj.z_misc |= Z_NO_INPLACE;
+//	x->x_obj.z_misc |= Z_NO_INPLACE;
 	
 	x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
 	x->fft2 = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
@@ -379,6 +375,7 @@ t_max_err set_fftsize(t_swinger *x, void *attr, long ac, t_atom *av)
 	if (ac && av) {
 		long val = atom_getlong(av);
 		x->fft->N = (int) val;
+        x->fft2->N = (int) val;
 		swinger_init(x);
 	}
 	return MAX_ERR_NONE;
@@ -397,7 +394,6 @@ t_max_err get_overlap(t_swinger *x, void *attr, long *ac, t_atom **av)
 	}	
 	return MAX_ERR_NONE;
 } 
-
 
 t_max_err set_overlap(t_swinger *x, void *attr, long ac, t_atom *av)
 {	

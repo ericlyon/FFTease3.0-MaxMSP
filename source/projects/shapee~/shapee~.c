@@ -58,7 +58,6 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)shapee_float,"float",A_FLOAT,0);
     class_addmethod(c,(method)shapee_mute,"mute",A_FLOAT,0);
 	class_addmethod(c,(method)shapee_bypass,"bypass", A_FLOAT, 0);	
-//	class_addmethod(c,(method)shapee_winfac,"winfac",A_FLOAT,0);
 	class_addmethod(c,(method)shapee_fftinfo,"fftinfo",0);
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_shapee, fftsize_attr);
 	CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
@@ -274,9 +273,10 @@ int	shapeWidth = (int) x->shapeWidth;
 		factor;
 		
 		for ( j = 0; j < shapeWidth << 1; j += 2 ) {
-			
-			amplSum += *(channelTwo+i+j);
-			freqSum += *(channelOne+i+j);
+            if(i+j < N+2){
+                amplSum += *(channelTwo+i+j);
+                freqSum += *(channelOne+i+j);
+            }
 		}
 		if(freqSum <= 0.001){
 			freqSum = 1.0;
@@ -287,8 +287,11 @@ int	shapeWidth = (int) x->shapeWidth;
 		else	
 			factor = amplSum / freqSum;
 		
-		for ( j = 0; j < shapeWidth * 2; j += 2 )
-			*(channelOne+i+j) *= factor;
+        for ( j = 0; j < shapeWidth * 2; j += 2 ){
+            if(i+j < N+2){
+                *(channelOne+i+j) *= factor;
+            }
+        }
 	}
 	
 	/* copy remaining magnitudes */
