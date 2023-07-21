@@ -33,6 +33,7 @@ typedef struct _resident
 	short playthrough;
 	double sync;
 	short buffer_is_hosed;
+    int attr_reset_flag; // only allow FFT size and overlap to be set once
 	long fftsize_attr;
 	long overlap_attr;
     long interpolation_attr;
@@ -228,43 +229,38 @@ void *resident_new(t_symbol *msg, short argc, t_atom *argv)
 	fft->N = FFTEASE_DEFAULT_FFTSIZE;
 	fft->overlap = FFTEASE_DEFAULT_OVERLAP;
 	fft->winfac = FFTEASE_DEFAULT_WINFAC;
-	
+    x->attr_reset_flag = 0;
 	attr_args_process(x, argc, argv);
-	resident_init(x);  
+	resident_init(x);
+    x->attr_reset_flag = 1;
 	return x;
 }
 
 void resident_init(t_resident *x)
 {
-// crashes if bad values
-	x->x_obj.z_disabled = 1;
-	t_fftease *fft = x->fft;
-	short initialized = x->fft->initialized;
-	if( fft->R <= 0 ){
-		post("bad SR");
-		return;
-	}
-	if( fft->MSPVectorSize <= 0 ){
-		post("bad vectorsize");
-		return;
-	}	
-
-//	post("runinng init");
-	
-	fftease_init(fft);	
-//	return;
-	x->tadv = (double)fft->D / (double)fft->R;
-	if(!initialized){
-		x->mute = 0;
-		x->sync = 0;
-		x->initialized = 1;
-		x->current_frame = x->framecount = 0;
-		x->frame_increment = 1.0 ;
-		x->fpos = x->last_fpos = 0;
-		// safety
-	}
-	x->x_obj.z_disabled = 0;
-
+    // crashes if bad values
+    x->x_obj.z_disabled = 1;
+    t_fftease *fft = x->fft;
+    short initialized = x->fft->initialized;
+    if(!initialized){
+        if( fft->R <= 0 ){
+            post("bad SR");
+            return;
+        }
+        if( fft->MSPVectorSize <= 0 ){
+            post("bad vectorsize");
+            return;
+        }
+        fftease_init(fft);
+        x->tadv = (double)fft->D / (double)fft->R;
+        x->mute = 0;
+        x->sync = 0;
+        x->initialized = 1;
+        x->current_frame = x->framecount = 0;
+        x->frame_increment = 1.0 ;
+        x->fpos = x->last_fpos = 0;
+    }
+    x->x_obj.z_disabled = 0;
 }
 
 void do_resident(t_resident *x)
@@ -596,12 +592,16 @@ t_max_err get_fftsize(t_resident *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_fftsize(t_resident *x, void *attr, long ac, t_atom *av)
 {
-	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->N = (int) val;
-		resident_init(x);
-	}
+    int initialized = x->attr_reset_flag;
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            x->fft->N = (int) val;
+           // resident_init(x);
+        }
+    } else {
+        post("%s: FFT size cannot be reset for this object\n",OBJECT_NAME);
+    }
 	return MAX_ERR_NONE;
 }
 
@@ -623,13 +623,18 @@ t_max_err get_overlap(t_resident *x, void *attr, long *ac, t_atom **av)
 t_max_err set_overlap(t_resident *x, void *attr, long ac, t_atom *av)
 {	
     int test_overlap;
-    if (ac && av) {
-        long val = atom_getlong(av);
-        test_overlap = fftease_overlap(val);
-        if(test_overlap > 0){
-            x->fft->overlap = (int) val;
-            resident_init(x);
+    int initialized = x->attr_reset_flag;
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            test_overlap = fftease_overlap(val);
+            if(test_overlap > 0){
+                x->fft->overlap = (int) val;
+            //    resident_init(x);
+            }
         }
+    } else {
+        post("%s: overlap cannot be reset for this object\n",OBJECT_NAME);
     }
     return MAX_ERR_NONE;
 }

@@ -32,6 +32,7 @@ typedef struct _residency
 	double *input_vec;
 	double sync;
 	short failed_init; // flag to check if init failed due to bad data from Max
+    int attr_reset_flag; // only allow FFT size and overlap to be set once
 	long fftsize_attr;
 	long overlap_attr;
     double size_attr;
@@ -226,133 +227,82 @@ void *residency_new(t_symbol *s, int argc, t_atom *argv)
 	x->fft->overlap = FFTEASE_DEFAULT_OVERLAP;
 	x->fft->winfac = FFTEASE_DEFAULT_WINFAC;
     x->last_framecount = x->framecount = 0;
-	
+    x->attr_reset_flag = 0;
 	attr_args_process(x, argc, argv);
     x->fft->initialized = 0;
 	residency_init(x);
+    x->attr_reset_flag = 1;
 	return x;
 }
 
 void residency_init(t_residency *x)
 {
-	int i;
-	t_fftease *fft = x->fft;
+    int i;
+    t_fftease *fft = x->fft;
     if(!fft->R){
-       // post("zero sample rate in init routine");
         return;
     }
-   //  residency_fftinfo(x);
-   // post("initialization status: %d", fft->initialized);
-	if(fft->initialized == -1){
-       // post("initialization blocked");
-		return;
-	}
-    
-    fftease_init(x->fft);
-	x->x_obj.z_disabled = 1;
-	
-	// int last_framecount = x->framecount;
-	x->tadv = (double)fft->D/(double)fft->R;
-	if( x->duration <= 0 ){
-		x->duration = 1.0;
-	}
-    if(!x->tadv){
-      //  post("zero tadv in init routine");
+    if(fft->initialized == -1){
+        // post("initialization blocked");
         return;
     }
-	x->framecount =  x->duration / x->tadv;
-   // post("framecount %d last framecount %d",x->framecount, x->last_framecount);
-	x->read_me = 0;
-	x->acquire_stop = 0;
-	if(x->verbose){
-		post("%s: will allocate %d frames",OBJECT_NAME, x->framecount);
-	}
-	// could probably improve memory management here
-    if(x->framecount <= 0){
-      //  post("bad framecount:%s",x->framecount);
-        return;
-    }
-	if(fft->initialized == 0){
-        // x->virgin = 1;
+    x->x_obj.z_disabled = 1;
+    if(fft->initialized == 0){
+        fftease_init(x->fft);
+        x->tadv = (double)fft->D/(double)fft->R;
+        if( x->duration <= 0 ){
+            x->duration = 1.0;
+        }
+        if(!x->tadv){
+            return;
+        }
+        x->framecount =  x->duration / x->tadv;
+        x->read_me = 0;
+        x->acquire_stop = 0;
+        if(x->verbose){
+            post("%s: will allocate %d frames",OBJECT_NAME, x->framecount);
+        }
+        if(x->framecount <= 0){
+            //  post("bad framecount:%s",x->framecount);
+            return;
+        }
         x->force_pos = -1.0;
         x->current_frame = 0;
         x->fpos = x->last_fpos = 0;
         
-		x->sync = 0;
-		x->mute = 0;
-		x->in2_connected = 0;
-		x->in3_connected = 0;
-		x->playthrough = 0;
-		x->frame_increment = 0.0; // frozen by default
-		x->verbose = 0;
-		//post("setting memory FIRST TIME ONLY");
-       // post("frame count here is: %d", x->framecount);
-       // post("N here is %d", fft->N);
-		//x->loveboat = (double **) sysmem_newhandleclear(x->framecount * sizeof(double *));
+        x->sync = 0;
+        x->mute = 0;
+        x->in2_connected = 0;
+        x->in3_connected = 0;
+        x->playthrough = 0;
+        x->frame_increment = 0.0; // frozen by default
+        x->verbose = 0;
         x->loveboat = (double **) sysmem_newptrclear(x->framecount * sizeof(double *));
-		for(i=0;i < x->framecount; i++){
-			x->loveboat[i] = (double *) sysmem_newptrclear((fft->N + 2) * sizeof(double));
-			if(x->loveboat[i] == NULL){
-				error("%s: memory error",OBJECT_NAME);
-				return;
-			}
-		}
-	}
-    else if((x->framecount == x->last_framecount) && (fft->initialized != 0)){
-        //post("our frame count here is: %d", x->framecount);
-        //post("no change in framecount size, so no memory realloc");
-        x->x_obj.z_disabled = 0;
-        return;
-    }
-    else if(fft->initialized == 1) {
-        //post("setting memory after already initialized");
-        //post("frame count: %d last frame count: %d", x->framecount, x->last_framecount);
-        //post("N here is %d", fft->N);
-        /*
-         x->loveboat = (double **) sysmem_newhandleclear(x->framecount * sizeof(double *));
-         */
-        
-        
-        if(x->framecount != x->last_framecount) {
-            // free individual oldies
-            for(i = 0; i < x->last_framecount; i++){
-                sysmem_freeptr(x->loveboat[i]);
+        for(i=0;i < x->framecount; i++){
+            x->loveboat[i] = (double *) sysmem_newptrclear((fft->N + 2) * sizeof(double));
+            if(x->loveboat[i] == NULL){
+                error("%s: memory error",OBJECT_NAME);
+                return;
             }
-            x->loveboat = (double**)sysmem_resizeptrclear(x->loveboat, x->framecount * sizeof(double *));
-            
-            for(i=0;i < x->framecount; i++){
-                x->loveboat[i] = (double *) sysmem_newptrclear((fft->N + 2) * sizeof(double));
-                if(x->loveboat[i] == NULL){
-                    error("%s: memory error",OBJECT_NAME);
-                    return;
-                }
-            }
+        }
+        if(! fftease_msp_sanity_check(fft, OBJECT_NAME)){
+            // return 0;
+            post("residency~ failed sanity test in Init");
+            x->failed_init = 1;
         } else {
-            //post("framecount has not changed, so not resizing sample memory");
+            // post("residency~ initialized okay");
+            x->failed_init = 0;
         }
         
-	}
-	
-	if(! fftease_msp_sanity_check(fft, OBJECT_NAME)){
-		// return 0;
-		post("residency~ failed sanity test in Init");
-		x->failed_init = 1;
-	} else {
-		// post("residency~ initialized okay");
-		x->failed_init = 0;
-	}
-	
-	if (fft->D <= 0.0 || fft->R <= 0.0){
-		error("%s: bad decimation size or bad sampling rate - cannot proceed",OBJECT_NAME);
-		post("D: %d R: %d",fft->D, fft->R);
-		return;
-	}
-    x->last_framecount = x->framecount;
+        if (fft->D <= 0.0 || fft->R <= 0.0){
+            error("%s: bad decimation size or bad sampling rate - cannot proceed",OBJECT_NAME);
+            post("D: %d R: %d",fft->D, fft->R);
+            return;
+        }
+        x->last_framecount = x->framecount;
+    }
     x->x_obj.z_disabled = 0;
 }
-
-
-
 
 void do_residency(t_residency *x)
 {
@@ -630,13 +580,16 @@ t_max_err get_size(t_residency *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_size(t_residency *x, void *attr, long ac, t_atom *av)
 {
-	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->duration = (double)val/1000.0;
-//        post("duration set to %f", x->duration);
-		residency_init(x);
-	}
+    int initialized = x->attr_reset_flag;
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            x->duration = (double)val/1000.0;
+            residency_init(x);
+        }
+    } else {
+        post("%s: spectral buffer size cannot be reset for this object\n",OBJECT_NAME);
+    }
 	return MAX_ERR_NONE;
 }
 
@@ -657,13 +610,17 @@ t_max_err get_fftsize(t_residency *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_fftsize(t_residency *x, void *attr, long ac, t_atom *av)
 {
-	
-	if (ac && av) {
-		long val = atom_getlong(av);
-		x->fft->N = (int) val;
-        x->fft->N2 = x->fft->N * x->fft->winfac;
-		residency_init(x);
-	}
+    int initialized = x->attr_reset_flag;
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            x->fft->N = (int) val;
+            x->fft->N2 = x->fft->N * x->fft->winfac;
+            residency_init(x);
+        }
+    } else {
+        post("%s: FFT size cannot be reset for this object\n",OBJECT_NAME);
+    }
 	return MAX_ERR_NONE;
 }
 
@@ -684,14 +641,19 @@ t_max_err get_overlap(t_residency *x, void *attr, long *ac, t_atom **av)
 
 t_max_err set_overlap(t_residency *x, void *attr, long ac, t_atom *av)
 {
+    int initialized = x->attr_reset_flag;
     int test_overlap;
-    if (ac && av) {
-        long val = atom_getlong(av);
-        test_overlap = fftease_overlap(val);
-        if(test_overlap > 0){
-            x->fft->overlap = (int) val;
-            residency_init(x);
+    if(!initialized){
+        if (ac && av) {
+            long val = atom_getlong(av);
+            test_overlap = fftease_overlap(val);
+            if(test_overlap > 0){
+                x->fft->overlap = (int) val;
+                residency_init(x);
+            }
         }
+    } else {
+        post("%s: overlap cannot be reset for this object\n",OBJECT_NAME);
     }
     return MAX_ERR_NONE;
 }
