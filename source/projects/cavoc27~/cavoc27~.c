@@ -105,12 +105,10 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)cavoc27_transpose,"transpose",A_FLOAT,0);
     
 	CLASS_ATTR_LONG(c, "fftsize", 0, t_cavoc27, fftsize_attr);
-//	CLASS_ATTR_DEFAULT_SAVE(c, "fftsize", 0, "1024");
 	CLASS_ATTR_ACCESSORS(c, "fftsize", (method)get_fftsize, (method)set_fftsize);
 	CLASS_ATTR_LABEL(c, "fftsize", 0, "FFT Size");	
 	
 	CLASS_ATTR_LONG(c, "overlap", 0, t_cavoc27, overlap_attr);
-//	CLASS_ATTR_DEFAULT_SAVE(c, "overlap", 0, "8");
 	CLASS_ATTR_ACCESSORS(c, "overlap", (method)get_overlap, (method)set_overlap);
 	CLASS_ATTR_LABEL(c, "overlap", 0, "Overlap");	
 
@@ -256,26 +254,22 @@ void cavoc27_assist (t_cavoc27 *x, void *b, long msg, long arg, char *dst)
 
 void *cavoc27_new(t_symbol *s, int argc, t_atom *argv)
 {
-t_fftease *fft;
-
 	t_cavoc27 *x = (t_cavoc27 *)object_alloc(cavoc27_class);
 	dsp_setup((t_pxobject *)x,1);
 	outlet_new((t_pxobject *)x, "signal");
+    x->x_obj.z_misc |= Z_NO_INPLACE;
 	x->fft = (t_fftease *) sysmem_newptrclear(sizeof(t_fftease));
-	fft = x->fft;
-	fft->R = sys_getsr();
-	fft->MSPVectorSize = sys_getblksize();
-	fft->initialized = 0;
+	x->fft->R = sys_getsr();
+	x->fft->MSPVectorSize = sys_getblksize();
+	x->fft->initialized = 0;
 	x->hold_time = 1000.0;
 	x->density = 0.1;
-	fft->N = FFTEASE_DEFAULT_FFTSIZE;
-	fft->overlap = FFTEASE_DEFAULT_OVERLAP;
-	fft->winfac = FFTEASE_DEFAULT_WINFAC;
+	x->fft->N = FFTEASE_DEFAULT_FFTSIZE;
+	x->fft->overlap = FFTEASE_DEFAULT_OVERLAP;
+	x->fft->winfac = FFTEASE_DEFAULT_WINFAC;
 	x->freeze = 0;
 	x->start_breakpoint = 1.0 - x->density;
-	if(!x->hold_time)
-		x->hold_time = 0.15;
-	fft->obank_flag = 0;
+	x->fft->obank_flag = 0;
     attr_args_process(x, argc, argv);
     cavoc27_init(x);
 	return x;
@@ -802,14 +796,16 @@ t_max_err set_holdtime(t_cavoc27 *x, void *attr, long ac, t_atom *av)
             return 0;
         }
         x->hold_time = f;
-        if(! x->frame_duration){
-            error("%s: zero frame duration",OBJECT_NAME);
-            x->frame_duration = .15;
+        if(x->fft->initialized){
+            if(! x->frame_duration){
+                error("%s: zero frame duration",OBJECT_NAME);
+                x->frame_duration = .15;
+            }
+            x->hold_frames = (int) ( (f/1000.0) / x->frame_duration);
+            if( x->hold_frames < 1 )
+                x->hold_frames = 1;
+            x->frames_left = x->hold_frames;
         }
-        x->hold_frames = (int) ( (f/1000.0) / x->frame_duration);
-        if( x->hold_frames < 1 )
-            x->hold_frames = 1;
-        x->frames_left = x->hold_frames;
 	}
 	return MAX_ERR_NONE;
 }

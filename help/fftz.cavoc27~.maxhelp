@@ -40,14 +40,12 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"attr" : "holdtime",
-					"id" : "obj-2",
-					"maxclass" : "attrui",
+					"id" : "obj-4",
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 78.5, 172.0, 195.0, 23.0 ]
+					"numoutlets" : 0,
+					"patching_rect" : [ 324.380858999999987, 133.999985000000009, 163.0, 21.0 ],
+					"text" : "sample incoming spectrum"
 				}
 
 			}
@@ -110,77 +108,12 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-12",
-									"maxclass" : "textbutton",
-									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "", "", "int" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 538.0, 77.473023000000012, 100.0, 20.0 ],
-									"text" : "Go There"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"hidden" : 1,
-									"id" : "obj-11",
-									"linecount" : 2,
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 489.0, 280.0, 435.0, 38.0 ],
-									"text" : ";\rmax launchbrowser https://github.com/ericlyon/LyonPotpourri3.0-MaxMSP"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-10",
-									"maxclass" : "textbutton",
-									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "", "", "int" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 538.0, 52.158875000000002, 100.0, 20.0 ],
-									"text" : "Go There"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"hidden" : 1,
-									"id" : "obj-9",
-									"linecount" : 3,
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 465.0, 218.0, 289.0, 52.0 ],
-									"text" : ";\rmax launchbrowser https://disis.music.vt.edu/eric/main/lyonpotpourri/"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-7",
+									"id" : "obj-2",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 197.0, 76.973023000000012, 337.0, 21.0 ],
-									"text" : "or: https://github.com/ericlyon/LyonPotpourri3.0-MaxMSP"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-3",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 197.0, 52.158875000000002, 317.0, 21.0 ],
-									"text" : "see: https://disis.music.vt.edu/eric/main/lyonpotpourri/"
+									"patching_rect" : [ 71.0, 69.0, 141.0, 21.0 ],
+									"text" : "click for a single trigger"
 								}
 
 							}
@@ -192,8 +125,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 367.5, 108.628296000000006, 113.0, 21.0 ],
-									"text" : "Manual Triggering"
+									"patching_rect" : [ 366.5, 89.628296000000006, 152.0, 21.0 ],
+									"text" : "enable manual triggering"
 								}
 
 							}
@@ -206,7 +139,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 424.0, 134.628296000000006, 45.0, 23.0 ],
+									"patching_rect" : [ 63.0, 96.628296000000006, 45.0, 23.0 ],
 									"text" : "trigger"
 								}
 
@@ -219,7 +152,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 343.0, 108.628296000000006, 24.0, 24.0 ]
+									"patching_rect" : [ 342.0, 89.628296000000006, 24.0, 24.0 ]
 								}
 
 							}
@@ -232,21 +165,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 343.0, 133.628296000000006, 69.0, 23.0 ],
+									"patching_rect" : [ 342.0, 133.628296000000006, 69.0, 23.0 ],
 									"text" : "manual $1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 13.0,
-									"id" : "obj-2",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 197.0, 27.344726999999999, 188.0, 21.0 ],
-									"text" : "el.rtrig~ requires LyonPotpourri"
 								}
 
 							}
@@ -263,89 +183,12 @@
 								}
 
 							}
-, 							{
-								"box" : 								{
-									"id" : "obj-42",
-									"maxclass" : "toggle",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "int" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 124.0, 73.344727000000006, 24.0, 24.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 13.0,
-									"id" : "obj-35",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 63.0, 140.844727000000006, 34.0, 23.0 ],
-									"text" : "gate"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 13.0,
-									"id" : "obj-41",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "bang", "bang" ],
-									"patching_rect" : [ 61.0, 73.344727000000006, 45.0, 23.0 ],
-									"text" : "edge~"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 13.0,
-									"id" : "obj-40",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 61.0, 27.344726999999999, 132.0, 23.0 ],
-									"text" : "el.rtrig~ 1. 1. 0.00003"
-								}
-
-							}
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
-									"destination" : [ "obj-9", 0 ],
-									"hidden" : 1,
-									"source" : [ "obj-10", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-11", 0 ],
-									"hidden" : 1,
-									"source" : [ "obj-12", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-43", 0 ],
-									"midpoints" : [ 352.5, 173.314147999999989, 72.5, 173.314147999999989 ],
+									"midpoints" : [ 351.5, 173.314147999999989, 72.5, 173.314147999999989 ],
 									"source" : [ "obj-32", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-43", 0 ],
-									"source" : [ "obj-35", 0 ]
 								}
 
 							}
@@ -359,31 +202,8 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-43", 0 ],
-									"midpoints" : [ 433.5, 181.814147999999989, 72.5, 181.814147999999989 ],
+									"midpoints" : [ 72.5, 181.814147999999989, 72.5, 181.814147999999989 ],
 									"source" : [ "obj-39", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-41", 0 ],
-									"source" : [ "obj-40", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-35", 1 ],
-									"midpoints" : [ 70.5, 118.094727000000006, 87.5, 118.094727000000006 ],
-									"source" : [ "obj-41", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-35", 0 ],
-									"midpoints" : [ 133.5, 131.594727000000006, 72.5, 131.594727000000006 ],
-									"source" : [ "obj-42", 0 ]
 								}
 
 							}
@@ -1711,8 +1531,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 25.5, 219.0, 256.0, 23.0 ],
-					"text" : "fftz.cavoc27~ @density 0.1 @holdtime 200"
+					"patching_rect" : [ 25.5, 219.0, 176.0, 23.0 ],
+					"text" : "fftz.cavoc27~ @holdtime 250"
 				}
 
 			}
@@ -1759,14 +1579,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"midpoints" : [ 88.0, 206.5, 35.0, 206.5 ],
-					"source" : [ "obj-2", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-12", 0 ],
 					"source" : [ "obj-24", 0 ]
 				}
@@ -1802,10 +1614,6 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "el.rtrig~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "fftz.cavoc27~.mxo",
 				"type" : "iLaX"
 			}
