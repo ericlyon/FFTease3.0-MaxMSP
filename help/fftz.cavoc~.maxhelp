@@ -50,21 +50,6 @@
 			}
 , 			{
 				"box" : 				{
-					"attr" : "fftsize",
-					"fontname" : "Arial",
-					"fontsize" : 13.0,
-					"id" : "obj-13",
-					"maxclass" : "attrui",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 63.0, 272.0, 162.0, 23.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-61",
@@ -129,7 +114,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 238.0, 177.0, 20.0, 20.0 ]
+					"patching_rect" : [ 238.0, 177.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -468,7 +453,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 275.5, 219.0, 101.0, 23.0 ],
+									"patching_rect" : [ 313.5, 233.0, 101.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"description" : "",
 										"digest" : "",
@@ -612,7 +597,7 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-3", 0 ],
-									"midpoints" : [ 285.0, 262.0, 245.5, 262.0 ],
+									"midpoints" : [ 323.0, 270.0, 245.5, 270.0 ],
 									"source" : [ "obj-1", 0 ]
 								}
 
@@ -651,6 +636,17 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
+									"midpoints" : [ 285.0, 216.0, 323.0, 216.0 ],
+									"order" : 0,
+									"source" : [ "obj-2", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"midpoints" : [ 285.0, 241.0, 85.5, 241.0 ],
+									"order" : 1,
 									"source" : [ "obj-2", 0 ]
 								}
 
@@ -725,7 +721,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 112.0, 177.0, 117.0, 23.0 ],
+					"patching_rect" : [ 93.25, 177.0, 117.0, 23.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1079,26 +1075,18 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-10",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.5, 96.0, 296.0, 36.0 ],
-					"text" : "fftz.cavoc~ generates spectra with an 8 rule cellular automaton. Start with very low gain.",
+					"patching_rect" : [ 15.5, 96.0, 338.0, 50.0 ],
+					"text" : "fftz.cavoc~ generates spectra with an 8 rule cellular automaton. Start with very low gain. The output can be much louder with the \"oscbank\" option enabled.",
 					"textcolor" : [ 0.501961, 0.501961, 0.501961, 1.0 ]
 				}
 
 			}
  ],
 		"lines" : [ 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"midpoints" : [ 72.5, 299.5, 25.0, 299.5 ],
-					"source" : [ "obj-13", 0 ]
-				}
-
-			}
-, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
 					"midpoints" : [ 247.5, 258.0, 25.0, 258.0 ],
@@ -1133,7 +1121,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
-					"midpoints" : [ 121.5, 251.0, 25.0, 251.0 ],
+					"midpoints" : [ 102.75, 251.0, 25.0, 251.0 ],
 					"source" : [ "obj-7", 0 ]
 				}
 
