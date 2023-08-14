@@ -40,6 +40,19 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"attr" : "holdtime",
+					"id" : "obj-2",
+					"maxclass" : "attrui",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 139.0, 274.0, 150.0, 23.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-1",
 					"maxclass" : "ezdac~",
 					"numinlets" : 2,
@@ -1091,6 +1104,14 @@
 					"destination" : [ "obj-9", 0 ],
 					"midpoints" : [ 247.5, 258.0, 25.0, 258.0 ],
 					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"midpoints" : [ 148.5, 301.5, 25.0, 301.5 ],
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}

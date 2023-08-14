@@ -239,11 +239,13 @@ t_max_err set_holdtime(t_cavoc *x, void *attr, long ac, t_atom *av)
             return 0;
         }
         x->hold_time = f;
-        x->hold_frames = (int) ((x->hold_time/1000.0) / x->frame_duration);
-        if( x->hold_frames < 1 ){
-            x->hold_frames = 1;
+        if(x->fft->initialized){
+            x->hold_frames = (int) ((x->hold_time/1000.0) / x->frame_duration);
+            if( x->hold_frames < 1 ){
+                x->hold_frames = 1;
+            }
+            x->frames_left = x->hold_frames;
         }
-        x->frames_left = x->hold_frames;
 	}
 	return MAX_ERR_NONE;
 }
