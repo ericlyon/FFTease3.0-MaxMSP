@@ -83,7 +83,6 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)mindwarp_assist,"assist",A_CANT,0);
     class_addmethod(c,(method)mindwarp_mute,"mute", A_FLOAT, 0);
 	class_addmethod(c,(method)mindwarp_bypass,"bypass", A_FLOAT, 0);
-//	class_addmethod(c,(method)mindwarp_winfac,"winfac", A_FLOAT, 0);
 	class_addmethod(c,(method)mindwarp_fftinfo,"fftinfo", 0);
 	class_addmethod(c,(method)mindwarp_float,"float",A_FLOAT,0); 
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_mindwarp, fftsize_attr);
@@ -174,7 +173,7 @@ void mindwarp_init(t_mindwarp *x)
 		x->newChannel = (double *) sysmem_newptrclear ((x->fft->N + 1)* sizeof(double));
 	}
     else if(initialized == 1) {
-		x->newAmplitudes = (double *)sysmem_resizeptrclear(x->newAmplitudes, ((x->fft->N2 + 1) * 16) * sizeof(float));
+		x->newAmplitudes = (double *)sysmem_resizeptrclear(x->newAmplitudes, ((x->fft->N2 + 1) * 16) * sizeof(double));
 		x->newChannel = (double *)sysmem_resizeptrclear (x->newChannel, (x->fft->N + 1) * sizeof(double));
 	}
 	x->x_obj.z_disabled = 0;
@@ -183,13 +182,16 @@ void mindwarp_init(t_mindwarp *x)
 
 void mindwarp_free(t_mindwarp *x)
 {
-
 	dsp_free((t_pxobject *) x);
-	fftease_free(x->fft);
-    sysmem_freeptr(x->fft);
-	sysmem_freeptr(x->newAmplitudes);
-	sysmem_freeptr(x->newChannel);
-	
+    if(x->fft->initialized == 1){
+
+        sysmem_freeptr(x->newAmplitudes);
+        sysmem_freeptr(x->newChannel);
+        /*
+        fftease_free(x->fft);
+        sysmem_freeptr(x->fft);
+*/
+    }
 }
 
 void do_mindwarp(t_mindwarp *x)
