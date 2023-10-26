@@ -490,7 +490,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 272.5, 193.0, 53.0, 23.0 ],
+					"patching_rect" : [ 276.695833333333326, 193.0, 53.0, 23.0 ],
 					"text" : "diatonic"
 				}
 
@@ -504,7 +504,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 325.5, 193.0, 134.0, 23.0 ],
+					"patching_rect" : [ 333.891666666666652, 193.0, 134.0, 23.0 ],
 					"text" : "minor_seventh_chord"
 				}
 
@@ -566,7 +566,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 282.0, 316.5, 33.0, 316.5 ],
+					"midpoints" : [ 286.195833333333326, 316.5, 33.0, 316.5 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -574,7 +574,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 335.0, 325.5, 33.0, 325.5 ],
+					"midpoints" : [ 343.391666666666652, 325.5, 33.0, 325.5 ],
 					"source" : [ "obj-13", 0 ]
 				}
 
