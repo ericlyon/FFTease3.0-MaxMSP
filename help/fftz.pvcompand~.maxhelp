@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1849.0, 1353.0, 562.0, 440.0 ],
+		"rect" : [ 2085.0, 164.0, 562.0, 440.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 13.0,
@@ -105,18 +105,6 @@
 									"outlettype" : [ "float", "bang" ],
 									"patching_rect" : [ 305.0, 88.0, 288.0, 22.0 ],
 									"text" : "buffer~ fftz.pvcompand.sound1 EL2bar120Simple.aif"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"fontsize" : 13.0,
-									"id" : "obj-7",
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 297.0, 178.0, 276.0, 21.0 ],
-									"text" : "1. load a sound that's at least 10 seconds long"
 								}
 
 							}
