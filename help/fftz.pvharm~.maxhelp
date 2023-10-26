@@ -40,14 +40,39 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-16",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 307.0, 245.5, 150.0, 36.0 ],
+					"text" : "T1 and T2 are the two transposition factors"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"format" : 6,
+					"id" : "obj-11",
+					"maxclass" : "flonum",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 236.5, 138.0, 50.0, 23.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"hidden" : 1,
 					"id" : "obj-40",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "float", "float" ],
-					"patching_rect" : [ 321.5, 61.0, 65.0, 23.0 ],
-					"text" : "unpack f f"
+					"numoutlets" : 3,
+					"outlettype" : [ "float", "float", "float" ],
+					"patching_rect" : [ 321.5, 61.0, 72.0, 23.0 ],
+					"text" : "unpack f f f"
 				}
 
 			}
@@ -59,8 +84,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 324.0, 30.0, 115.0, 23.0 ],
-					"text" : "loadmess 0 20000"
+					"patching_rect" : [ 321.5, 15.0, 140.0, 23.0 ],
+					"text" : "loadmess 0 20000 200"
 				}
 
 			}
@@ -250,7 +275,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 24.0, 96.0, 378.0, 36.0 ],
+					"patching_rect" : [ 24.0, 96.0, 379.0, 36.0 ],
 					"text" : "fftz.pvharm~ provides basic harmonizing with two transpositions of the input internally calculated and mixed to the output",
 					"textcolor" : [ 0.498039, 0.498039, 0.498039, 1.0 ]
 				}
@@ -317,7 +342,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 236.5, 161.0, 85.0, 23.0 ],
+					"patching_rect" : [ 236.5, 173.0, 85.0, 23.0 ],
 					"text" : "phasor~ 200"
 				}
 
@@ -516,6 +541,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-32", 0 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-18", 0 ],
 					"source" : [ "obj-12", 0 ]
 				}
@@ -629,6 +661,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-40", 0 ],
+					"hidden" : 1,
 					"source" : [ "obj-39", 0 ]
 				}
 
@@ -638,6 +671,14 @@
 					"destination" : [ "obj-18", 0 ],
 					"midpoints" : [ 384.5, 241.5, 246.0, 241.5 ],
 					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-40", 2 ]
 				}
 
 			}
