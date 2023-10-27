@@ -116,17 +116,17 @@ Punches out all but a select set of partials.
 	</methodlist>
 	<!--ATTRIBUTES-->
 	<attributelist>
-		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+		<attribute name="fftsize" get="1" set="1" type="int">
 			<description>
 				FFT size (default is 1024)
 			</description>
 		</attribute>
-		<attribute name="maxfreq" get="1" set="1" type="int" size="10">
+		<attribute name="maxfreq" get="1" set="1" type="int">
 			<description>
 				Sets the highest frequency that can be swapped. This also limits the maximum number of bins that can be scrambled.
 			</description>
 		</attribute>
-		<attribute name="overlap" get="1" set="1" type="int" size="10">
+		<attribute name="overlap" get="1" set="1" type="int">
 			<description>
 				Overlap factor (default is 8)
 			</description>
