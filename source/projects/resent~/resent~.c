@@ -126,7 +126,7 @@ int C74_EXPORT main(void)
     CLASS_ATTR_ORDER(c, "size", 0, "1");
     CLASS_ATTR_ORDER(c, "fftsize", 0, "2");
     CLASS_ATTR_ORDER(c, "overlap", 0, "3");
-    CLASS_ATTR_ORDER(c, "Interpolation", 0, "4");
+    CLASS_ATTR_ORDER(c, "interpolation", 0, "4");
     
     class_dspinit(c);
     class_register(CLASS_BOX, c);

@@ -11,7 +11,6 @@ typedef struct _reanimator
 	t_pxobject x_obj;
 	t_fftease *fft;
 	double **framebank;
-//	double *normalized_frame;
 	double current_frame;
 	int framecount;
 	double frame_increment ;
@@ -338,7 +337,7 @@ void do_reanimator(t_reanimator *x)
 		if( framecount >= total_frames ){
 			sync = 1.0;
 			x->readme = 0;
-			post("reanimator~: data acquisition completed");
+			// post("reanimator~: data acquisition completed");
 			x->initialized = 1;
 			// clear input buffer
 			for( i = 0; i < fft->Nw; i++ ){
@@ -349,15 +348,12 @@ void do_reanimator(t_reanimator *x)
 			rdft(fft,FFT_FORWARD);
 			convert(fft);
 			sync = (float) framecount / (float) total_frames;
-			
 			new_ampsum = ampsum = 0;
 			for(i = 0; i < N; i += 2 ){
 				ampsum += channel[i];
 			}
-			
 			if( ampsum > .000001 ){
 				rescale = 1.0 / ampsum ;
-				
 				// use more efficient memcpy
 				for(i = 0; i < N; i++){
 					framebank[framecount][i] = channel[i];
@@ -366,7 +362,6 @@ void do_reanimator(t_reanimator *x)
 					framebank[framecount][i] *= rescale;
 				} 
 				++framecount;
-
 			} else {
 				post("amplitude for frame %d is too low\n", framecount);
 			}
@@ -628,7 +623,7 @@ void reanimator_analyze ( t_reanimator *x )
 	x->readme = 1;
 	x->initialized = 1;
 	x->framecount = 0;
-	post("reanimator: beginning spectral data acquisition");
+	// post("reanimator: beginning spectral data acquisition");
 	return;
 	
 }
