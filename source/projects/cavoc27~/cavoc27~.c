@@ -798,7 +798,7 @@ t_max_err set_holdtime(t_cavoc27 *x, void *attr, long ac, t_atom *av)
         x->hold_time = f;
         if(x->fft->initialized){
             if(! x->frame_duration){
-                error("%s: zero frame duration",OBJECT_NAME);
+               // error("%s: zero frame duration",OBJECT_NAME);
                 x->frame_duration = .15;
             }
             x->hold_frames = (int) ( (f/1000.0) / x->frame_duration);
