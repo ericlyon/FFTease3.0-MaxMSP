@@ -500,7 +500,7 @@ t_max_err set_fftsize(t_codepend *x, void *attr, long ac, t_atom *av)
 	
 	if (ac && av) {
 		long val = atom_getlong(av);
-        post("new FFT size: %d\n",val);
+        // post("new FFT size: %d\n",val);
         
 		x->fft->N = (int) val;
 		x->fft2->N = (int) val;
