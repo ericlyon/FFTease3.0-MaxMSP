@@ -85,7 +85,7 @@ An input sound is noise-reduced according to the changing spectrum of a second f
 	</methodlist>
 	<!--ATTRIBUTES-->
 	<attributelist>
-		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+		<attribute name="fftsize" get="1" set="1" type="int">
 			<!--digest>
 				Attack Time
 			</digest-->
@@ -93,7 +93,7 @@ An input sound is noise-reduced according to the changing spectrum of a second f
 				FFT size (default is 1024)
 			</description>
 		</attribute>
-		<attribute name="overlap" get="1" set="1" type="int" size="10">
+		<attribute name="overlap" get="1" set="1" type="int">
 			<!--digest>
 				Attack Time
 			</digest-->
