@@ -160,13 +160,13 @@ An FFT-analyzed sound is stratified into individual bin level loops
 	</methodlist>
 	<!--ATTRIBUTES-->
 	<attributelist>
-		<attribute name="fftsize" get="1" set="1" type="int" size="1">
+		<attribute name="fftsize" get="1" set="1" type="int">
 			<description>
 				FFT size (default is 1024)
 			</description>
 		</attribute>
   
-		<attribute name="overlap" get="1" set="1" type="int" size="1">
+		<attribute name="overlap" get="1" set="1" type="int">
 			<description>
 				Overlap factor (default is 8)
 			</description>
