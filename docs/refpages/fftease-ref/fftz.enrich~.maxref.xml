@@ -73,31 +73,31 @@ Oscillator bank resynthesis using a waveform read from a Max buffer
 	</methodlist>
 	<!--ATTRIBUTES-->
 	<attributelist>
-		<attribute name="buffername" get="1" set="1" type="symbol" size="10">
+		<attribute name="buffername" get="1" set="1" type="symbol">
 			<description>
 				Max buffer from which to read oscillator bank waveform
 			</description>
 		</attribute>
         
-		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+		<attribute name="fftsize" get="1" set="1" type="int">
 			<description>
 				FFT size (default is 1024)
 			</description>
 		</attribute>
  
-         <attribute name="hifreq" get="1" set="1" type="float" size="10">
+         <attribute name="hifreq" get="1" set="1" type="float">
              <description>
                  Highest frequency to synthesize
              </description>
          </attribute>
  
-         <attribute name="lofreq" get="1" set="1" type="float" size="10">
+         <attribute name="lofreq" get="1" set="1" type="float">
              <description>
                  Lowest frequency to synthesize
              </description>
          </attribute>
  
-		<attribute name="overlap" get="1" set="1" type="int" size="10">
+		<attribute name="overlap" get="1" set="1" type="int">
 			<description>
 				Overlap factor (default is 8)
 			</description>
