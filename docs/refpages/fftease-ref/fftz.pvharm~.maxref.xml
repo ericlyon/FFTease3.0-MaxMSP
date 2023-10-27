@@ -93,25 +93,25 @@ pvharm~ provides basic harmonizing with two transpositions of the input internal
 	<!--ATTRIBUTES-->
 	<attributelist>
         
-		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+		<attribute name="fftsize" get="1" set="1" type="int">
 			<description>
 				FFT size (default is 1024)
 			</description>
 		</attribute>
   
-      <attribute name="hifreq" get="1" set="1" type="int" size="10">
+      <attribute name="hifreq" get="1" set="1" type="int">
           <description>
               highest frequency to synthesize (default is 15000)
           </description>
       </attribute>
       
-      <attribute name="lowfreq" get="1" set="1" type="int" size="10">
+      <attribute name="lowfreq" get="1" set="1" type="int">
           <description>
               lowest frequency to synthesize (default is 0)
           </description>
       </attribute>
   
-		<attribute name="overlap" get="1" set="1" type="int" size="10">
+		<attribute name="overlap" get="1" set="1" type="int">
 			<description>
 				Overlap factor (default is 8)
 			</description>

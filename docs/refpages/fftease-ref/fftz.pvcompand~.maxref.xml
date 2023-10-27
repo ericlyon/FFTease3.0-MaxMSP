@@ -71,13 +71,13 @@ pvcompand~ either expands or compresses the differences between the amplitudes o
 	<!--ATTRIBUTES-->
 	<attributelist>
         
-		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+		<attribute name="fftsize" get="1" set="1" type="int">
 			<description>
 				FFT size (default is 1024)
 			</description>
 		</attribute>
   
-		<attribute name="overlap" get="1" set="1" type="int" size="10">
+		<attribute name="overlap" get="1" set="1" type="int">
 			<description>
 				Overlap factor (default is 8)
 			</description>

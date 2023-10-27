@@ -142,25 +142,25 @@ residency~ samples input to an internal buffer, after which the sound can be res
 	<!--ATTRIBUTES-->
 	<attributelist>
 
-<attribute name="buffername" get="1" set="1" type="symbol" size="10">
+<attribute name="buffername" get="1" set="1" type="symbol">
     <description>
         Max buffer to read/write FFT frames
     </description>
 </attribute>
 
-		<attribute name="fftsize" get="1" set="1" type="int" size="10">
+		<attribute name="fftsize" get="1" set="1" type="int">
 			<description>
 				FFT size (default is 1024)
 			</description>
 		</attribute>
   
-      <attribute name="interpolation" get="1" set="1" type="int" size="10">
+      <attribute name="interpolation" get="1" set="1" type="int">
           <description>
               Flag to interpolate between FFT frames (default is 0)
           </description>
       </attribute>
       
-		<attribute name="overlap" get="1" set="1" type="int" size="10">
+		<attribute name="overlap" get="1" set="1" type="int">
 			<description>
 				Overlap factor (default is 8)
 			</description>
