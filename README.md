@@ -71,12 +71,11 @@ default FFT size is 1024, and the default overlap factor is 8.
 **Acknowledgements**
 
 
-This repository was rebuilt for use with the Max 8.2 SDK by @isabelgk. 
+This repository was rebuilt for use with the Max 8.2 SDK by @isabelgk.
 
 Happy spectral surfing!
 
 Eric Lyon  
 ericlyon@vt.edu  
 Blacksburg, Virginia  
-January 21, 2023
-
+October 31, 2023
