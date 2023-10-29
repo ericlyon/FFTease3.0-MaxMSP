@@ -37,7 +37,8 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "ShowGrid_template",
-		"showontab" : 1,
+		"showrootpatcherontab" : 0,
+		"showontab" : 0,
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
@@ -1286,7 +1287,7 @@
 						"lines" : [  ]
 					}
 ,
-					"patching_rect" : [ 187.0, 131.0, 100.0, 22.0 ],
+					"patching_rect" : [ 187.0, 131.0, 123.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1294,7 +1295,7 @@
 						"tags" : ""
 					}
 ,
-					"text" : "p \"Object Listing\""
+					"text" : "p \"Object Categories\""
 				}
 
 			}
@@ -1317,7 +1318,7 @@
 						"classnamespace" : "box",
 						"rect" : [ 2239.0, 215.0, 876.0, 829.0 ],
 						"bglocked" : 0,
-						"openinpresentation" : 0,
+						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -1344,6 +1345,7 @@
 						"subpatcher_template" : "ShowGrid_template",
 						"showontab" : 1,
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontsize" : 14.0,
@@ -1354,7 +1356,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 207.0, 566.0, 443.0, 38.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 34.0, 432.0, 458.0, 22.0 ],
+									"presentation_rect" : [ 45.0, 704.0, 458.0, 22.0 ],
 									"text" : "<- Click to learn about Hiromi Okamura, who created the FFTease logo."
 								}
 
@@ -1369,7 +1371,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 176.0, 572.0, 24.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 5.0, 432.0, 24.0, 24.0 ]
+									"presentation_rect" : [ 16.0, 704.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -1382,7 +1384,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 176.0, 628.0, 261.0, 35.0 ],
-									"presentation_linecount" : 2,
 									"text" : ";\rmax launchbrowser https://hiromiokumura.com/"
 								}
 
@@ -1397,7 +1398,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 176.0, 351.0, 417.0, 38.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 34.0, 349.0, 739.0, 22.0 ],
+									"presentation_rect" : [ 45.0, 599.0, 739.0, 22.0 ],
 									"text" : "<- Click to see the first paper on FFTease, presented at the 2000 International Computer Music Conference in Berlin."
 								}
 
@@ -1412,7 +1413,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 147.0, 358.0, 24.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 5.0, 349.0, 24.0, 24.0 ]
+									"presentation_rect" : [ 16.0, 599.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -1424,24 +1425,24 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 147.0, 417.0, 723.0, 62.0 ],
-									"text" : ";\rmax launchbrowser https://quod.lib.umich.edu/cgi/p/pod/dod-idx/fftease-a-collection-of-spectral-signal-processors-for.pdf?c=icmc\\;\ridno=bbp2372.2000.207\\;\rformat=pdf"
+									"patching_rect" : [ 147.0, 417.0, 697.0, 62.0 ],
+									"text" : ";\rmax launchbrowser https://quod.lib.umich.edu/cgi/p/pod/dod-idx/fftease-a-collection-of-spectral-signal-processors-for.pdf?c=icmc\\; idno=bbp2372.2000.207\\; format=pdf"
 								}
 
 							}
 , 							{
 								"box" : 								{
-									"fontsize" : 14.0,
+									"fontsize" : 22.0,
 									"id" : "obj-4",
-									"linecount" : 3,
+									"linecount" : 8,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ -1.0, 240.0, 490.0, 53.0 ],
+									"patching_rect" : [ -1.0, 240.0, 752.0, 203.0 ],
 									"presentation" : 1,
-									"presentation_linecount" : 2,
-									"presentation_rect" : [ 5.0, 276.0, 827.0, 38.0 ],
-									"text" : "FFTease is a collection of objects designed to facilitate spectral sound processing in Max and Pd. The collection was designed by Eric Lyon and Christopher Penrose in 1999, and has been maintained by Lyon since 2003. "
+									"presentation_linecount" : 8,
+									"presentation_rect" : [ 45.0, 313.0, 756.0, 203.0 ],
+									"text" : "FFTease is a collection of objects designed to facilitate spectral sound processing in Max and Pd. The collection was designed by Eric Lyon and Christopher Penrose in 1999, and has been maintained by Lyon since 2003. The externals of FFTease can produce traditional phase vocoder effects, cross-synthesize two sounds, mix sounds together in the spectral domain, adjust the formant structure of vocal sounds, scrub a sound without changing its pitch, apply user-specified scales to tune a sound to specific frequencies, algorithmically warp the spectrum of a sound, and more."
 								}
 
 							}
@@ -1457,7 +1458,7 @@
 									"patching_rect" : [ -1.0, -2.0, 240.0, 240.0 ],
 									"pic" : "/Users/eric/Documents/GitHub/FFTease3.0-MaxMSP/icon.png",
 									"presentation" : 1,
-									"presentation_rect" : [ -1.0, -2.0, 240.0, 240.0 ]
+									"presentation_rect" : [ 294.5, 31.0, 240.0, 240.0 ]
 								}
 
 							}
