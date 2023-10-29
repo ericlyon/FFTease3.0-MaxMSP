@@ -10,9 +10,9 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 2666.0, 237.0, 876.0, 855.0 ],
+		"rect" : [ 1909.0, 360.0, 823.0, 849.0 ],
 		"bglocked" : 0,
-		"openinpresentation" : 0,
+		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
 		"default_fontname" : "Arial",
@@ -42,6 +42,1014 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 6,
+							"revision" : 0,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 26.0, 823.0, 823.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 1,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 2,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "ShowGrid_template",
+						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-31",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 699.0, 612.0, 58.0, 22.0 ],
+									"text" : "loadbang"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-30",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 699.0, 639.0, 85.0, 22.0 ],
+									"text" : "presentation 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-28",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 699.0, 668.0, 67.0, 22.0 ],
+									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
+									"text" : "thispatcher"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 46.0, 289.0, 126.0, 19.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 36.0, 238.0, 131.0, 20.0 ],
+									"text" : "fftz.cavoc27~",
+									"texton" : "fftz.cavoc27~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-15",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 46.0, 260.0, 126.0, 19.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 36.0, 205.0, 131.0, 20.0 ],
+									"text" : "fftz.cavoc~",
+									"texton" : "fftz.cavoc~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 525.0, 535.0, 51.0, 22.0 ],
+									"text" : "pcontrol"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 525.0, 505.0, 79.0, 22.0 ],
+									"text" : "prepend help"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontname" : "Arial Rounded MT Bold",
+									"fontsize" : 48.0,
+									"id" : "obj-24",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 17.0, 16.0, 260.0, 62.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 17.0, 16.0, 260.0, 62.0 ],
+									"text" : "FFTease"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 22.0,
+									"id" : "obj-4",
+									"linecount" : 4,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 17.0, 87.0, 761.0, 105.0 ],
+									"presentation" : 1,
+									"presentation_linecount" : 4,
+									"presentation_rect" : [ 17.0, 83.0, 759.0, 105.0 ],
+									"text" : "The Synthesizers category contains two objects that produce sound with no input, using cellular automata. Plenty of room for growth in this category, and machine learning might be an interesting direction to explore for possible new spectral synthesizer objects."
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-1", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-15", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-28", 0 ],
+									"source" : [ "obj-30", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-30", 0 ],
+									"source" : [ "obj-31", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 300.0, 244.0, 87.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p Synthesizers"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 6,
+							"revision" : 0,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 26.0, 823.0, 823.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 1,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 2,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "ShowGrid_template",
+						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"boxes" : [ 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontname" : "Arial Rounded MT Bold",
+									"fontsize" : 48.0,
+									"id" : "obj-24",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 17.0, 16.0, 260.0, 62.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 17.0, 16.0, 260.0, 62.0 ],
+									"text" : "FFTease"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-31",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 684.0, 597.0, 58.0, 22.0 ],
+									"text" : "loadbang"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-30",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 684.0, 624.0, 85.0, 22.0 ],
+									"text" : "presentation 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-28",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 684.0, 653.0, 67.0, 22.0 ],
+									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
+									"text" : "thispatcher"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-8",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 28.0, 444.0, 126.0, 19.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 501.0, 131.0, 20.0 ],
+									"text" : "fftz.reanimator~",
+									"texton" : "fftz.reanimator~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-7",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 28.0, 417.0, 126.0, 19.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 468.0, 131.0, 20.0 ],
+									"text" : "fftz.residency~",
+									"texton" : "fftz.residency~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-3",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 28.0, 391.0, 126.0, 19.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 434.0, 131.0, 20.0 ],
+									"text" : "fftz.residency_buffer~",
+									"texton" : "fftz.residency_buffer~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 28.0, 363.0, 126.0, 19.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 401.0, 131.0, 20.0 ],
+									"text" : "fftz.resent~",
+									"texton" : "fftz.resent~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 28.0, 333.0, 126.0, 19.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 367.0, 131.0, 20.0 ],
+									"text" : "fftz.morphine~",
+									"texton" : "fftz.morphine~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-15",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 28.0, 304.0, 126.0, 19.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 334.0, 131.0, 20.0 ],
+									"text" : "fftz.loopsea~",
+									"texton" : "fftz.loopsea~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 510.0, 520.0, 51.0, 22.0 ],
+									"text" : "pcontrol"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 510.0, 490.0, 79.0, 22.0 ],
+									"text" : "prepend help"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 22.0,
+									"id" : "obj-4",
+									"linecount" : 8,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 12.0, 83.0, 761.0, 203.0 ],
+									"presentation" : 1,
+									"presentation_linecount" : 8,
+									"presentation_rect" : [ 17.0, 83.0, 756.0, 203.0 ],
+									"text" : "Objects in the Spectral Samplers category require recording a fixed duration of sound into the object before synthesis can take place. The benefit of this paradigm is that after the sound has been stored as a series of FFT frames, the sound can be reproduced with arbitrary temporal adjustments. For example, fftz.residency~ allows for playback at any negative or positive speed, including zero, which produces a frozen spectrum. The spectral sample can also be scrubbed in real-time without changes to the underlying frequency structure."
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-1", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-15", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-2", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-3", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-28", 0 ],
+									"source" : [ "obj-30", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-30", 0 ],
+									"source" : [ "obj-31", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-7", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-8", 1 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 281.0, 205.0, 125.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p \"Spectral Samplers\""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 0,
+					"patcher" : 					{
+						"fileversion" : 1,
+						"appversion" : 						{
+							"major" : 8,
+							"minor" : 6,
+							"revision" : 0,
+							"architecture" : "x64",
+							"modernui" : 1
+						}
+,
+						"classnamespace" : "box",
+						"rect" : [ 0.0, 26.0, 823.0, 823.0 ],
+						"bglocked" : 0,
+						"openinpresentation" : 1,
+						"default_fontsize" : 12.0,
+						"default_fontface" : 0,
+						"default_fontname" : "Arial",
+						"gridonopen" : 2,
+						"gridsize" : [ 15.0, 15.0 ],
+						"gridsnaponopen" : 1,
+						"objectsnaponopen" : 1,
+						"statusbarvisible" : 2,
+						"toolbarvisible" : 1,
+						"lefttoolbarpinned" : 0,
+						"toptoolbarpinned" : 0,
+						"righttoolbarpinned" : 0,
+						"bottomtoolbarpinned" : 0,
+						"toolbars_unpinned_last_save" : 0,
+						"tallnewobj" : 0,
+						"boxanimatetime" : 200,
+						"enablehscroll" : 1,
+						"enablevscroll" : 1,
+						"devicewidth" : 0.0,
+						"description" : "",
+						"digest" : "",
+						"tags" : "",
+						"style" : "",
+						"subpatcher_template" : "ShowGrid_template",
+						"showontab" : 1,
+						"assistshowspatchername" : 0,
+						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-14",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 281.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 325.636363636363683, 100.0, 20.0 ],
+									"text" : "fftz.pvgrain~",
+									"texton" : "fftz.pvgrain~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontface" : 1,
+									"fontname" : "Arial Rounded MT Bold",
+									"fontsize" : 48.0,
+									"id" : "obj-24",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 17.0, 16.0, 260.0, 62.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 17.0, 16.0, 260.0, 62.0 ],
+									"text" : "FFTease"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-31",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 684.0, 597.0, 58.0, 22.0 ],
+									"text" : "loadbang"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-30",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 684.0, 624.0, 85.0, 22.0 ],
+									"text" : "presentation 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-28",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 684.0, 653.0, 67.0, 22.0 ],
+									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
+									"text" : "thispatcher"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-13",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 464.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 498.000000000000171, 100.0, 20.0 ],
+									"text" : "fftz.xsyn~",
+									"texton" : "fftz.xsyn~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-12",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 433.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 469.272727272727423, 100.0, 20.0 ],
+									"text" : "fftz.vacancy~",
+									"texton" : "fftz.vacancy~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-11",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 403.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 440.545454545454675, 100.0, 20.0 ],
+									"text" : "fftz.taint~",
+									"texton" : "fftz.taint~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-10",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 375.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 411.818181818181927, 100.0, 20.0 ],
+									"text" : "fftz.swinger~",
+									"texton" : "fftz.swinger~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-9",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 343.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 383.090909090909179, 100.0, 20.0 ],
+									"text" : "fftz.shapee~",
+									"texton" : "fftz.shapee~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-8",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 314.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 354.363636363636431, 100.0, 20.0 ],
+									"text" : "fftz.reanimator~",
+									"texton" : "fftz.reanimator~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-7",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 257.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 296.909090909090935, 100.0, 20.0 ],
+									"text" : "fftz.leaker~",
+									"texton" : "fftz.leaker~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-3",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 231.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 268.181818181818187, 100.0, 20.0 ],
+									"text" : "fftz.ether~",
+									"texton" : "fftz.ether~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 203.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 239.454545454545439, 100.0, 20.0 ],
+									"text" : "fftz.cross~",
+									"texton" : "fftz.cross~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 173.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 210.72727272727272, 100.0, 20.0 ],
+									"text" : "fftz.codepend~",
+									"texton" : "fftz.codepend~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-15",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 23.0, 144.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 31.0, 182.0, 100.0, 20.0 ],
+									"text" : "fftz.burrow~",
+									"texton" : "fftz.burrow~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 510.0, 520.0, 51.0, 22.0 ],
+									"text" : "pcontrol"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 510.0, 490.0, 79.0, 22.0 ],
+									"text" : "prepend help"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 22.0,
+									"id" : "obj-4",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 15.0, 24.0, 761.0, 80.0 ],
+									"presentation" : 1,
+									"presentation_linecount" : 3,
+									"presentation_rect" : [ 17.0, 83.0, 760.0, 80.0 ],
+									"text" : "The Cross Synthesis category includes live processors with two independent signal inputs, with a single output that combines attributes of both source sounds."
+								}
+
+							}
+ ],
+						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-1", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-10", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-11", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-12", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-13", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-14", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-15", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-2", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-3", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-28", 0 ],
+									"source" : [ "obj-30", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-30", 0 ],
+									"source" : [ "obj-31", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-6", 0 ],
+									"source" : [ "obj-5", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-7", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-8", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-9", 1 ]
+								}
+
+							}
+ ]
+					}
+,
+					"patching_rect" : [ 240.0, 171.0, 114.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"description" : "",
+						"digest" : "",
+						"globalpatchername" : "",
+						"tags" : ""
+					}
+,
+					"text" : "p \"Cross Synthesis\""
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -57,7 +1065,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
+						"rect" : [ 0.0, 26.0, 823.0, 823.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -96,8 +1104,8 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 228.5, 669.0, 328.0, 21.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 522.5, 212.0, 269.0, 21.0 ],
-									"text" : "Bin level feedback",
+									"presentation_rect" : [ 492.0, 195.0, 269.0, 21.0 ],
+									"text" : "Cross filtering",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.0 ]
 								}
 
@@ -106,15 +1114,14 @@
 								"box" : 								{
 									"fontname" : "Lato",
 									"id" : "obj-48",
-									"linecount" : 4,
+									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 195.5, 701.0, 177.0, 64.0 ],
+									"patching_rect" : [ 195.5, 701.0, 177.0, 35.0 ],
 									"presentation" : 1,
-									"presentation_linecount" : 3,
-									"presentation_rect" : [ 522.5, 248.0, 269.0, 50.0 ],
-									"text" : "fftz.bthresher~ provides independent control over the parameters of each individual bin for feedback effects.",
+									"presentation_rect" : [ 492.0, 231.0, 269.0, 21.0 ],
+									"text" : "Use one sound to filter another sound.",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.0 ]
 								}
 
@@ -130,8 +1137,8 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 162.5, 673.0, 276.0, 35.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 522.5, 162.0, 284.0, 35.0 ],
-									"text" : "fftz.bthresher~",
+									"presentation_rect" : [ 492.0, 145.0, 284.0, 35.0 ],
+									"text" : "fftz.burrow~",
 									"textcolor" : [ 0.0, 0.0, 0.0, 0.0 ]
 								}
 
@@ -284,7 +1291,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 603.0, 120.5, 128.0, 128.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 510.0, 143.0, 309.0, 177.0 ],
+									"presentation_rect" : [ 479.0, 126.0, 309.0, 177.0 ],
 									"proportion" : 0.5
 								}
 
@@ -1114,7 +2121,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 47.5, 143.0, 144.0, 151.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 47.5, 143.0, 458.5, 624.0 ],
+									"presentation_rect" : [ 17.0, 126.0, 458.5, 624.0 ],
 									"tabcolor" : [ 0.164705882352941, 0.164705882352941, 0.164705882352941, 1.0 ],
 									"tabs" : [ "fftz.bthresher~", "fftz.burrow~", "fftz.cavoc27~", "fftz.cavoc~", "fftz.centerring~", "fftz.codepend~", "fftz.cross~", "fftz.dentist~", "fftz.disarrain~", "fftz.disarray~", "fftz.drown~", "fftz.enrich~", "fftz.ether~", "fftz.leaker~", "fftz.loopsea~", "fftz.mindwarp~", "fftz.morphine~", "fftz.multyq~", "fftz.pileup~", "fftz.pvcompand~", "fftz.pvgrain~", "fftz.pvharm~", "fftz.pvoc~", "fftz.pvtuner~", "fftz.pvwarpb~", "fftz.pvwarp~", "fftz.reanimator~", "fftz.resent~", "fftz.residency_buffer~", "fftz.residency~", "fftz.schmear~", "fftz.scrape~", "fftz.shapee~", "fftz.swinger~", "fftz.taint~", "fftz.thresher~", "fftz.vacancy~", "fftz.xsyn~" ]
 								}
@@ -1128,7 +2135,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 60.0, 120.0, 291.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 53.269230544567108, 110.384615063667297, 291.0, 20.0 ],
+									"presentation_rect" : [ 17.0, 83.0, 291.0, 20.0 ],
 									"text" : "A set of objects for spectral processing and synthesis"
 								}
 
@@ -1143,7 +2150,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 60.0, 52.0, 205.0, 62.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 53.269230544567108, 42.384615063667297, 205.0, 62.0 ],
+									"presentation_rect" : [ 17.0, 16.0, 260.0, 62.0 ],
 									"text" : "FFTease"
 								}
 
@@ -1195,7 +2202,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 236.0, 162.0, 134.0, 22.0 ],
+					"patching_rect" : [ 320.0, 286.0, 134.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1224,9 +2231,9 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 2666.0, 263.0, 876.0, 829.0 ],
+						"rect" : [ 1909.0, 386.0, 823.0, 823.0 ],
 						"bglocked" : 0,
-						"openinpresentation" : 0,
+						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
 						"default_fontface" : 0,
 						"default_fontname" : "Arial",
@@ -1255,6 +2262,192 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-31",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"patching_rect" : [ 684.0, 597.0, 58.0, 22.0 ],
+									"text" : "loadbang"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-30",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 684.0, 624.0, 85.0, 22.0 ],
+									"text" : "presentation 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-28",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "" ],
+									"patching_rect" : [ 684.0, 653.0, 67.0, 22.0 ],
+									"save" : [ "#N", "thispatcher", ";", "#Q", "end", ";" ],
+									"text" : "thispatcher"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-27",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 213.0, 726.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 673.0, 100.0, 20.0 ],
+									"text" : "fftz.pvharm~",
+									"texton" : "fftz.pvharm~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-26",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 779.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 747.0, 100.0, 20.0 ],
+									"text" : "fftz.pvwarpb~",
+									"texton" : "fftz.pvwarpb~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-25",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 755.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 722.0, 100.0, 20.0 ],
+									"text" : "fftz.pvwarp~",
+									"texton" : "fftz.pvwarp~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-23",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 731.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 698.0, 100.0, 20.0 ],
+									"text" : "fftz.pvtuner~",
+									"texton" : "fftz.pvtuner~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-22",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 706.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 648.0, 100.0, 20.0 ],
+									"text" : "fftz.pvoc~",
+									"texton" : "fftz.pvoc~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-21",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 681.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 623.0, 100.0, 20.0 ],
+									"text" : "fftz.mindwarp~",
+									"texton" : "fftz.mindwarp~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-20",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 655.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 599.0, 100.0, 20.0 ],
+									"text" : "fftz.enrich~",
+									"texton" : "fftz.enrich~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-19",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 630.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 28.0, 574.0, 100.0, 20.0 ],
+									"text" : "fftz.centerring~",
+									"texton" : "fftz.centerring~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-18",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 24.0, 604.0, 263.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 17.0, 546.0, 263.0, 20.0 ],
+									"text" : "live frequency-based processors (single source)"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-16",
 									"maxclass" : "textbutton",
 									"numinlets" : 1,
@@ -1264,7 +2457,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 571.962059620595937, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 552.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 518.0, 100.0, 20.0 ],
 									"text" : "fftz.thresher~",
 									"texton" : "fftz.thresher~"
 								}
@@ -1281,7 +2474,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 327.0, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 299.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 267.0, 100.0, 20.0 ],
 									"text" : "fftz.bthresher~",
 									"texton" : "fftz.bthresher~"
 								}
@@ -1298,7 +2491,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 547.465853658536389, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 521.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 493.0, 100.0, 20.0 ],
 									"text" : "fftz.scrape~",
 									"texton" : "fftz.scrape~"
 								}
@@ -1315,7 +2508,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 522.969647696476841, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 497.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 467.0, 100.0, 20.0 ],
 									"text" : "fftz.schmear~",
 									"texton" : "fftz.schmear~"
 								}
@@ -1332,7 +2525,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 498.473441734417179, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 472.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 442.0, 100.0, 20.0 ],
 									"text" : "fftz.pvcompand~",
 									"texton" : "fftz.pvcompand~"
 								}
@@ -1349,7 +2542,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 473.977235772357631, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 448.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 417.0, 100.0, 20.0 ],
 									"text" : "fftz.pileup~",
 									"texton" : "fftz.pileup~"
 								}
@@ -1366,7 +2559,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 449.481029810297969, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 423.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 392.0, 100.0, 20.0 ],
 									"text" : "fftz.multyq~",
 									"texton" : "fftz.multyq~"
 								}
@@ -1383,7 +2576,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 424.98482384823842, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 399.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 367.0, 100.0, 20.0 ],
 									"text" : "fftz.drown~",
 									"texton" : "fftz.drown~"
 								}
@@ -1400,7 +2593,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 400.488617886178815, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 374.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 342.0, 100.0, 20.0 ],
 									"text" : "fftz.disarray~",
 									"texton" : "fftz.disarray~"
 								}
@@ -1417,7 +2610,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 375.99241192411921, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 350.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 317.0, 100.0, 20.0 ],
 									"text" : "fftz.disarrain~",
 									"texton" : "fftz.disarrain~"
 								}
@@ -1458,7 +2651,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 351.496205962059605, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 325.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 292.0, 100.0, 20.0 ],
 									"text" : "fftz.dentist~",
 									"texton" : "fftz.dentist~"
 								}
@@ -1470,10 +2663,10 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 24.0, 287.0, 181.0, 20.0 ],
+									"patching_rect" : [ 24.0, 287.0, 263.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 270.0, 181.0, 20.0 ],
-									"text" : "live amplitude-based processors"
+									"presentation_rect" : [ 17.0, 238.0, 263.0, 20.0 ],
+									"text" : "live amplitude-based processors (single source)"
 								}
 
 							}
@@ -1481,15 +2674,15 @@
 								"box" : 								{
 									"fontsize" : 22.0,
 									"id" : "obj-4",
-									"linecount" : 6,
+									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 17.0, 102.0, 755.0, 154.0 ],
+									"patching_rect" : [ 17.0, 102.0, 755.0, 129.0 ],
 									"presentation" : 1,
-									"presentation_linecount" : 6,
-									"presentation_rect" : [ 17.0, 83.0, 756.0, 154.0 ],
-									"text" : "This section breaks FFTease down into categories for different kinds of processing. The first category is live processing, meaning that these externals can be applied directly to a live input, whether from a microphone, or playback from a sound file. In this category are two sub-categories: the first modifies just the amplitudes of the spectrum, and the second modifies frequency content as well."
+									"presentation_linecount" : 5,
+									"presentation_rect" : [ 17.0, 83.0, 756.0, 129.0 ],
+									"text" : "The Processors category is for single-input live processing, meaning that these objects can be applied directly to a single input, whether from a microphone, or playback from a soundfile. In this category are two sub-categories: the first modifies just the amplitudes of the spectrum, and the second modifies frequency content as well."
 								}
 
 							}
@@ -1504,7 +2697,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 17.0, 10.0, 205.0, 62.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 17.0, 10.0, 260.0, 62.0 ],
+									"presentation_rect" : [ 17.0, 16.0, 260.0, 62.0 ],
 									"text" : "FFTease"
 								}
 
@@ -1555,7 +2748,77 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-19", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-20", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-21", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-22", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-23", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-25", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-26", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-27", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
 									"source" : [ "obj-3", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-28", 0 ],
+									"source" : [ "obj-30", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-30", 0 ],
+									"source" : [ "obj-31", 0 ]
 								}
 
 							}
@@ -1590,7 +2853,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 187.0, 131.0, 123.0, 22.0 ],
+					"patching_rect" : [ 187.0, 131.0, 87.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -1598,7 +2861,7 @@
 						"tags" : ""
 					}
 ,
-					"text" : "p \"Object Categories\""
+					"text" : "p Processors"
 				}
 
 			}
@@ -1619,7 +2882,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
+						"rect" : [ 0.0, 26.0, 823.0, 823.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -1657,7 +2920,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 445.0, 762.0, 375.0, 35.0 ],
-									"presentation_linecount" : 4,
 									"text" : ";\rmax launchbrowser https://github.com/ericlyon/FFTease3.0-MaxMSP"
 								}
 
@@ -1786,7 +3048,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ -1.0, 240.0, 752.0, 203.0 ],
+									"patching_rect" : [ -1.0, 240.0, 755.0, 203.0 ],
 									"presentation" : 1,
 									"presentation_linecount" : 8,
 									"presentation_rect" : [ 16.0, 311.0, 768.0, 203.0 ],
