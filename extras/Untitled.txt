@@ -1,6 +1,0 @@
-0, fftz.bthresher~;
-1, sbb.osc.fm;
-2, sbb.osc.additive;
-3, sbb.osc.karplus;
-4, sbb.osc.granular;
-5, sbb.osc.wavetable;
