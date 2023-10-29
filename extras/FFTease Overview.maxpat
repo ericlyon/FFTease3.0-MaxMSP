@@ -1224,7 +1224,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
+						"rect" : [ 2666.0, 263.0, 876.0, 829.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1255,6 +1255,142 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-16",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 571.962059620595937, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 24.0, 552.0, 100.0, 20.0 ],
+									"text" : "fftz.thresher~",
+									"texton" : "fftz.thresher~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-15",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 327.0, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 24.0, 299.0, 100.0, 20.0 ],
+									"text" : "fftz.bthresher~",
+									"texton" : "fftz.bthresher~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-14",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 547.465853658536389, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 24.0, 521.0, 100.0, 20.0 ],
+									"text" : "fftz.scrape~",
+									"texton" : "fftz.scrape~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-13",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 522.969647696476841, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 24.0, 497.0, 100.0, 20.0 ],
+									"text" : "fftz.schmear~",
+									"texton" : "fftz.schmear~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-12",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 498.473441734417179, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 24.0, 472.0, 100.0, 20.0 ],
+									"text" : "fftz.pvcompand~",
+									"texton" : "fftz.pvcompand~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-11",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 473.977235772357631, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 24.0, 448.0, 100.0, 20.0 ],
+									"text" : "fftz.pileup~",
+									"texton" : "fftz.pileup~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-10",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 449.481029810297969, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 24.0, 423.0, 100.0, 20.0 ],
+									"text" : "fftz.multyq~",
+									"texton" : "fftz.multyq~"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-9",
+									"maxclass" : "textbutton",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "", "int" ],
+									"outputmode" : 0,
+									"parameter_enable" : 0,
+									"patching_rect" : [ 24.0, 424.98482384823842, 100.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 24.0, 399.0, 100.0, 20.0 ],
+									"text" : "fftz.drown~",
+									"texton" : "fftz.drown~"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-8",
 									"maxclass" : "textbutton",
 									"numinlets" : 1,
@@ -1262,9 +1398,9 @@
 									"outlettype" : [ "", "", "int" ],
 									"outputmode" : 0,
 									"parameter_enable" : 0,
-									"patching_rect" : [ 24.0, 387.0, 100.0, 20.0 ],
+									"patching_rect" : [ 24.0, 400.488617886178815, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 54.0, 331.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 24.0, 374.0, 100.0, 20.0 ],
 									"text" : "fftz.disarray~",
 									"texton" : "fftz.disarray~"
 								}
@@ -1279,9 +1415,9 @@
 									"outlettype" : [ "", "", "int" ],
 									"outputmode" : 0,
 									"parameter_enable" : 0,
-									"patching_rect" : [ 24.0, 357.0, 100.0, 20.0 ],
+									"patching_rect" : [ 24.0, 375.99241192411921, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 39.0, 316.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 24.0, 350.0, 100.0, 20.0 ],
 									"text" : "fftz.disarrain~",
 									"texton" : "fftz.disarrain~"
 								}
@@ -1320,9 +1456,9 @@
 									"outlettype" : [ "", "", "int" ],
 									"outputmode" : 0,
 									"parameter_enable" : 0,
-									"patching_rect" : [ 24.0, 328.0, 100.0, 20.0 ],
+									"patching_rect" : [ 24.0, 351.496205962059605, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 24.0, 301.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 24.0, 325.0, 100.0, 20.0 ],
 									"text" : "fftz.dentist~",
 									"texton" : "fftz.dentist~"
 								}
@@ -1377,6 +1513,48 @@
 						"lines" : [ 							{
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-10", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-11", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-12", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-14", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-15", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-16", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
 									"source" : [ "obj-3", 1 ]
 								}
 
@@ -1392,6 +1570,20 @@
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
 									"source" : [ "obj-7", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-8", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 0 ],
+									"source" : [ "obj-9", 1 ]
 								}
 
 							}
@@ -1427,7 +1619,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 2666.0, 263.0, 876.0, 829.0 ],
+						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
