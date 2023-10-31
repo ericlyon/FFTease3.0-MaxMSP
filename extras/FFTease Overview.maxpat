@@ -2227,7 +2227,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 227.0, 202.0, 876.0, 829.0 ],
+						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -2885,7 +2885,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
+						"rect" : [ 227.0, 202.0, 876.0, 829.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -2968,7 +2968,7 @@
 									"patching_rect" : [ 207.0, 566.0, 443.0, 38.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 45.0, 748.922201138519995, 458.0, 22.0 ],
-									"text" : "<- Click to learn about Hiromi Okamura, who created the FFTease logo."
+									"text" : "<- Click to learn about Hiromi Okumura, who created the FFTease logo."
 								}
 
 							}
