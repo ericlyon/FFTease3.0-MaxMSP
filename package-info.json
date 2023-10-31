@@ -19,7 +19,7 @@
 		"reverse_domain" : "edu.vt.music.disis",
 		"copyright" : "Copyright (c) 1999-2023 Eric Lyon and Christopher Penrose"
 	},
-	"tags" : ["spectral processing", "cross synthesis", "analysis-synthesis", "cellular automata""],
+	"tags" : ["spectral processing", "cross synthesis", "analysis-synthesis", "cellular automata"],
 	"version" : "1.0.0",
 	"website" : "https://github.com/ericlyon/FFTease3.0-MaxMSP"
 }
