@@ -49,6 +49,10 @@ may be viewed <A HREF="https://quod.lib.umich.edu/cgi/p/pod/dod-idx/fftease-a-co
 - vacancy~ a spectral compositing object
 - xsyn~ a cross synthesis with compression object
 
+**Accessibility**
+
+As of October 31, 2023, FFTease is available for Max 8.0 and later as a Package, which can by installed
+from the Max Package Manager.
 
 **Compilation** 
 
@@ -72,6 +76,9 @@ default FFT size is 1024, and the default overlap factor is 8.
 
 
 This repository was rebuilt for use with the Max 8.2 SDK by @isabelgk.
+Testing and feedback for the Max Package of FFTease was provided by
+Gregory Taylor and Alex Van Gils. The FFTease logo for the Max Package
+was created by Hiromi Okumura.
 
 Happy spectral surfing!
 
