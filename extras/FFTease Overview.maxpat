@@ -2,15 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 8,
-			"minor" : 6,
+			"major" : 9,
+			"minor" : 0,
 			"revision" : 0,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1909.0, 360.0, 823.0, 849.0 ],
+		"rect" : [ 2239.0, 188.0, 876.0, 855.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -49,15 +49,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 6,
+							"major" : 9,
+							"minor" : 0,
 							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 823.0, 823.0 ],
+						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -208,7 +208,7 @@
 									"patching_rect" : [ 17.0, 87.0, 761.0, 105.0 ],
 									"presentation" : 1,
 									"presentation_linecount" : 4,
-									"presentation_rect" : [ 17.0, 83.0, 759.0, 105.0 ],
+									"presentation_rect" : [ 17.0, 83.0, 760.0, 105.0 ],
 									"text" : "The Synthesizers category contains two objects that produce sound with no input, using cellular automata. Plenty of room for growth in this category, and machine learning might be an interesting direction to explore for possible new spectral synthesizer objects."
 								}
 
@@ -273,15 +273,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 6,
+							"major" : 9,
+							"minor" : 0,
 							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 823.0, 823.0 ],
+						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -593,15 +593,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 6,
+							"major" : 9,
+							"minor" : 0,
 							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 823.0, 823.0 ],
+						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -922,7 +922,7 @@
 									"patching_rect" : [ 15.0, 24.0, 761.0, 80.0 ],
 									"presentation" : 1,
 									"presentation_linecount" : 3,
-									"presentation_rect" : [ 17.0, 83.0, 760.0, 80.0 ],
+									"presentation_rect" : [ 17.0, 83.0, 761.0, 80.0 ],
 									"text" : "The Cross Synthesis category includes live processors with two independent signal inputs, with a single output that combines attributes of both source sounds."
 								}
 
@@ -1057,15 +1057,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 6,
+							"major" : 9,
+							"minor" : 0,
 							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 823.0, 823.0 ],
+						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -1153,8 +1153,8 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 6,
+											"major" : 9,
+											"minor" : 0,
 											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
@@ -1306,8 +1306,8 @@
 									"patcher" : 									{
 										"fileversion" : 1,
 										"appversion" : 										{
-											"major" : 8,
-											"minor" : 6,
+											"major" : 9,
+											"minor" : 0,
 											"revision" : 0,
 											"architecture" : "x64",
 											"modernui" : 1
@@ -1352,8 +1352,8 @@
 													"patcher" : 													{
 														"fileversion" : 1,
 														"appversion" : 														{
-															"major" : 8,
-															"minor" : 6,
+															"major" : 9,
+															"minor" : 0,
 															"revision" : 0,
 															"architecture" : "x64",
 															"modernui" : 1
@@ -1571,10 +1571,6 @@
 													"numoutlets" : 3,
 													"outlettype" : [ "", "", "" ],
 													"patching_rect" : [ 170.266666666666708, 362.0, 173.0, 22.0 ],
-													"saved_object_attributes" : 													{
-														"legacy" : 1
-													}
-,
 													"text" : "dict.unpack description: digest:"
 												}
 
@@ -1842,8 +1838,8 @@
 													"id" : "obj-6",
 													"maxclass" : "newobj",
 													"numinlets" : 2,
-													"numoutlets" : 5,
-													"outlettype" : [ "dictionary", "", "", "", "" ],
+													"numoutlets" : 4,
+													"outlettype" : [ "dictionary", "", "", "" ],
 													"patching_rect" : [ 48.0, 283.395833333333371, 173.0, 22.0 ],
 													"saved_object_attributes" : 													{
 														"embed" : 0,
@@ -2223,15 +2219,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 6,
+							"major" : 9,
+							"minor" : 0,
 							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 1909.0, 386.0, 823.0, 823.0 ],
+						"rect" : [ 0.0, 26.0, 876.0, 829.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -2308,7 +2304,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 213.0, 726.0, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 673.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 684.0, 100.0, 20.0 ],
 									"text" : "fftz.pvharm~",
 									"texton" : "fftz.pvharm~"
 								}
@@ -2325,7 +2321,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 779.0, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 747.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 758.0, 100.0, 20.0 ],
 									"text" : "fftz.pvwarpb~",
 									"texton" : "fftz.pvwarpb~"
 								}
@@ -2342,7 +2338,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 755.0, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 722.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 733.0, 100.0, 20.0 ],
 									"text" : "fftz.pvwarp~",
 									"texton" : "fftz.pvwarp~"
 								}
@@ -2359,7 +2355,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 731.0, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 698.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 709.0, 100.0, 20.0 ],
 									"text" : "fftz.pvtuner~",
 									"texton" : "fftz.pvtuner~"
 								}
@@ -2376,7 +2372,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 706.0, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 648.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 659.0, 100.0, 20.0 ],
 									"text" : "fftz.pvoc~",
 									"texton" : "fftz.pvoc~"
 								}
@@ -2393,7 +2389,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 681.0, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 623.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 634.0, 100.0, 20.0 ],
 									"text" : "fftz.mindwarp~",
 									"texton" : "fftz.mindwarp~"
 								}
@@ -2410,7 +2406,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 655.0, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 599.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 610.0, 100.0, 20.0 ],
 									"text" : "fftz.enrich~",
 									"texton" : "fftz.enrich~"
 								}
@@ -2427,7 +2423,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 630.0, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 574.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 585.0, 100.0, 20.0 ],
 									"text" : "fftz.centerring~",
 									"texton" : "fftz.centerring~"
 								}
@@ -2441,7 +2437,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 24.0, 604.0, 263.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 17.0, 546.0, 263.0, 20.0 ],
+									"presentation_rect" : [ 17.0, 557.0, 263.0, 20.0 ],
 									"text" : "live frequency-based processors (single source)"
 								}
 
@@ -2457,7 +2453,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 571.962059620595937, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 518.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 529.0, 100.0, 20.0 ],
 									"text" : "fftz.thresher~",
 									"texton" : "fftz.thresher~"
 								}
@@ -2474,7 +2470,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 327.0, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 267.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 278.0, 100.0, 20.0 ],
 									"text" : "fftz.bthresher~",
 									"texton" : "fftz.bthresher~"
 								}
@@ -2491,7 +2487,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 547.465853658536389, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 493.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 504.0, 100.0, 20.0 ],
 									"text" : "fftz.scrape~",
 									"texton" : "fftz.scrape~"
 								}
@@ -2508,7 +2504,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 522.969647696476841, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 467.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 478.0, 100.0, 20.0 ],
 									"text" : "fftz.schmear~",
 									"texton" : "fftz.schmear~"
 								}
@@ -2525,7 +2521,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 498.473441734417179, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 442.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 453.0, 100.0, 20.0 ],
 									"text" : "fftz.pvcompand~",
 									"texton" : "fftz.pvcompand~"
 								}
@@ -2542,7 +2538,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 473.977235772357631, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 417.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 428.0, 100.0, 20.0 ],
 									"text" : "fftz.pileup~",
 									"texton" : "fftz.pileup~"
 								}
@@ -2559,7 +2555,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 449.481029810297969, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 392.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 403.0, 100.0, 20.0 ],
 									"text" : "fftz.multyq~",
 									"texton" : "fftz.multyq~"
 								}
@@ -2576,7 +2572,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 424.98482384823842, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 367.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 378.0, 100.0, 20.0 ],
 									"text" : "fftz.drown~",
 									"texton" : "fftz.drown~"
 								}
@@ -2593,7 +2589,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 400.488617886178815, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 342.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 353.0, 100.0, 20.0 ],
 									"text" : "fftz.disarray~",
 									"texton" : "fftz.disarray~"
 								}
@@ -2610,7 +2606,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 375.99241192411921, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 317.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 328.0, 100.0, 20.0 ],
 									"text" : "fftz.disarrain~",
 									"texton" : "fftz.disarrain~"
 								}
@@ -2651,7 +2647,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 24.0, 351.496205962059605, 100.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 28.0, 292.0, 100.0, 20.0 ],
+									"presentation_rect" : [ 28.0, 303.0, 100.0, 20.0 ],
 									"text" : "fftz.dentist~",
 									"texton" : "fftz.dentist~"
 								}
@@ -2665,7 +2661,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 24.0, 287.0, 263.0, 20.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 17.0, 238.0, 263.0, 20.0 ],
+									"presentation_rect" : [ 17.0, 249.0, 263.0, 20.0 ],
 									"text" : "live amplitude-based processors (single source)"
 								}
 
@@ -2682,7 +2678,7 @@
 									"presentation" : 1,
 									"presentation_linecount" : 5,
 									"presentation_rect" : [ 17.0, 83.0, 756.0, 129.0 ],
-									"text" : "The Processors category is for single-input live processing, meaning that these objects can be applied directly to a single input, whether from a microphone, or playback from a soundfile. In this category are two sub-categories: the first modifies just the amplitudes of the spectrum, and the second modifies frequency content as well."
+									"text" : "The Processors category is for single-input live processing, meaning that these objects can be applied directly to a single input, whether from a microphone, or playback from a soundfile. In this category are two sub-categories: the first modifies just the amplitudes of the spectrum, and the second modifies frequency content as well. "
 								}
 
 							}
@@ -2874,15 +2870,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 8,
-							"minor" : 6,
+							"major" : 9,
+							"minor" : 0,
 							"revision" : 0,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 823.0, 823.0 ],
+						"rect" : [ 2239.0, 214.0, 876.0, 829.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -2935,7 +2931,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 542.0, 680.0, 24.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 16.0, 655.348954727952332, 24.0, 24.0 ]
+									"presentation_rect" : [ 16.0, 670.948134092346663, 24.0, 24.0 ]
 								}
 
 							}
@@ -2949,7 +2945,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 70.0, 762.0, 165.0, 53.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 45.0, 655.267552182163172, 450.0, 22.0 ],
+									"presentation_rect" : [ 45.0, 671.948134092346663, 450.0, 22.0 ],
 									"text" : "<- Click for the Github repository, if you'd like to paw through the code."
 								}
 
@@ -2980,7 +2976,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 176.0, 572.0, 24.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 16.0, 749.085006230098315, 24.0, 24.0 ]
+									"presentation_rect" : [ 16.0, 747.922201138519995, 24.0, 24.0 ]
 								}
 
 							}
@@ -3007,7 +3003,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 176.0, 351.0, 417.0, 38.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 45.0, 561.612903225806463, 739.0, 22.0 ],
+									"presentation_rect" : [ 45.0, 594.974067046173332, 739.0, 22.0 ],
 									"text" : "<- Click to see the first paper on FFTease, presented at the 2000 International Computer Music Conference in Berlin."
 								}
 
@@ -3023,7 +3019,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 69.0, 741.0, 24.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 16.0, 561.612903225806463, 24.0, 24.0 ]
+									"presentation_rect" : [ 16.0, 593.974067046173218, 24.0, 24.0 ]
 								}
 
 							}
@@ -3044,15 +3040,15 @@
 								"box" : 								{
 									"fontsize" : 22.0,
 									"id" : "obj-4",
-									"linecount" : 8,
+									"linecount" : 10,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ -1.0, 240.0, 755.0, 203.0 ],
+									"patching_rect" : [ -1.0, 240.0, 755.0, 252.0 ],
 									"presentation" : 1,
-									"presentation_linecount" : 8,
-									"presentation_rect" : [ 16.0, 311.0, 768.0, 203.0 ],
-									"text" : "FFTease is a collection of objects designed to facilitate spectral sound processing in Max and Pd. The collection was designed by Eric Lyon and Christopher Penrose in 1999, and has been maintained by Lyon since 2003. The externals of FFTease can produce traditional phase vocoder effects, cross-synthesize two sounds, mix sounds together in the spectral domain, adjust the formant structure of vocal sounds, scrub a sound without changing its pitch, apply user-specified scales to tune a sound to specific frequencies, algorithmically warp the spectrum of a sound, and more."
+									"presentation_linecount" : 10,
+									"presentation_rect" : [ 16.0, 288.0, 768.0, 252.0 ],
+									"text" : "FFTease is a collection of objects designed to facilitate spectral sound processing in Max and Pd. The collection was designed by Eric Lyon and Christopher Penrose in 1999, and has been maintained by Lyon since 2003. The externals of FFTease can produce traditional phase vocoder effects, cross-synthesize two sounds, mix sounds together in the spectral domain, adjust the formant structure of vocal sounds, scrub a sound without changing its pitch, apply user-specified scales to tune a sound to specific frequencies, algorithmically warp the spectrum of a sound, and more. Check out the remaning tabs of this Overview for the categories of processing available in FFTease."
 								}
 
 							}
