@@ -6,7 +6,6 @@ static t_class *pvwarpb_class;
 
 typedef struct _pvwarpb
 {
-
 	t_pxobject x_obj;
 	t_symbol *buffername;
 	t_buffer_ref *tablebuf_ref;
@@ -59,12 +58,14 @@ void pvwarpb_fftinfo(t_pvwarpb *x);
 void pvwarpb_winfac(t_pvwarpb *x, t_floatarg f);
 void pvwarpb_dblclick(t_pvwarpb *x);
 void pvwarpb_setbuf(t_pvwarpb *x, t_symbol *wavename);
+void pvwarpb_attach_buffer(t_pvwarpb *x);
 t_max_err set_fftsize(t_pvwarpb *x, void *attr, long ac, t_atom *av);
 t_max_err get_fftsize(t_pvwarpb *x, void *attr, long *ac, t_atom **av);
 t_max_err set_overlap(t_pvwarpb *x, void *attr, long ac, t_atom *av);
 t_max_err get_overlap(t_pvwarpb *x, void *attr, long *ac, t_atom **av);
 t_max_err set_buffername(t_pvwarpb *x, void *attr, long ac, t_atom *av);
 t_max_err get_buffername(t_pvwarpb *x, void *attr, long *ac, t_atom **av);
+t_max_err pvwarpb_notify(t_pvwarpb *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
 
 void pvwarpb_dsp64(t_pvwarpb *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
 void pvwarpb_perform64(t_pvwarpb *x, t_object *dsp64, double **ins,
@@ -85,9 +86,9 @@ int C74_EXPORT main(void)
 	class_addmethod(c,(method)pvwarpb_topfreq,"topfreq",A_FLOAT,0);
 	class_addmethod(c,(method)pvwarpb_fftinfo,"fftinfo",0);
 	class_addmethod(c,(method)pvwarpb_autofunc,"autofunc",A_DEFFLOAT, A_DEFFLOAT,0);
-//	class_addmethod(c,(method)pvwarpb_winfac,"winfac",A_DEFFLOAT,0);
 	class_addmethod(c,(method)pvwarpb_fftinfo,"fftinfo",0);
     class_addmethod(c,(method)pvwarpb_dblclick,"dblclick", A_CANT, 0);
+    class_addmethod(c,(method)pvwarpb_notify, "notify", A_CANT, 0);
 	class_addmethod(c,(method)pvwarpb_float,"float",A_FLOAT,0);
     
 	CLASS_ATTR_FLOAT(c, "fftsize", 0, t_pvwarpb, fftsize_attr);
@@ -108,6 +109,7 @@ int C74_EXPORT main(void)
 	class_dspinit(c);
 	class_register(CLASS_BOX, c);
 	pvwarpb_class = c;
+    post("updated pvwarp~");
 	post("%s%s", FFTEASE_ANNOUNCEMENT, OBJECT_NAME);
 	return 0;
 }
@@ -139,7 +141,12 @@ void pvwarpb_fftinfo(t_pvwarpb *x)
 	fftease_fftinfo(x->fft, OBJECT_NAME );	
 }
 
-void update_warp_function( t_pvwarpb *x ) 
+t_max_err pvwarpb_notify(t_pvwarpb *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
+{
+    return buffer_ref_notify(x->tablebuf_ref, s, msg, sender, data);
+}
+
+void update_warp_function( t_pvwarpb *x )
 {
 	int i,j;
 	int N2 = x->fft->N2;
@@ -148,7 +155,6 @@ void update_warp_function( t_pvwarpb *x )
 	t_buffer_obj *dbuf;
     long b_nchans;
     long b_frames;
-    //double *warpfunc = (double*) sysmem_newptrclear(N2);
     t_double *warpfunc = x->warpfunc;
     float *b_samples;
 	double cf1 = x->cf1;
@@ -170,7 +176,7 @@ void update_warp_function( t_pvwarpb *x )
     }
     dbuf = buffer_ref_getobject(x->tablebuf_ref);
     if(dbuf == NULL){
-        object_post((t_object*)x,"%s: nonexistent buffer 2 ( %s )",OBJECT_NAME, x->buffername->s_name);
+        object_post((t_object*)x,"%s: nonexistent buffer ( %s )",OBJECT_NAME, x->buffername->s_name);
         return;
     }
     b_nchans = buffer_getchannelcount(dbuf);
@@ -453,6 +459,7 @@ void pvwarpb_init(t_pvwarpb *x)
 		x->initialized = 1;
 	}	
 	fftease_oscbank_setbins(fft,x->lofreq, x->hifreq);
+    pvwarpb_attach_buffer(x);
 	x->x_obj.z_disabled = 0;
 }
 
@@ -854,4 +861,31 @@ void pvwarpb_dsp64(t_pvwarpb *x, t_object *dsp64, short *count, double samplerat
         object_method(dsp64, gensym("dsp_add64"),x,pvwarpb_perform64,0,NULL);
 }
 
+// NEW LOAD CODE
 
+// buffer_ref_set(x->tablebuf_ref, x->buffername);
+
+// here's where we set the buffer~ we're going to access
+/*
+void pvwarpb_doset(t_pvwarpb *x, t_symbol *s)
+{
+    if (!x->buffer_ref){
+        x->buffer_ref = buffer_ref_new((t_object *)x, s);
+    } else {
+        buffer_ref_set(x->tablebuf_ref, s);
+    }
+    x->buffername = s;
+}
+
+void pvwarpb_set(t_pvwarp *x, t_symbol *s)
+{
+    defer(x, (method)pvwarpb_doset, s, 0, NULL);
+}
+*/
+void pvwarpb_attach_buffer(t_pvwarpb *x)
+{
+    if (!x->tablebuf_ref)
+        x->tablebuf_ref = buffer_ref_new((t_object*)x, x->buffername);
+    else
+        buffer_ref_set(x->tablebuf_ref, x->buffername);
+}
