@@ -2,7 +2,7 @@
     "name": "FFTease",
 	"author" : "Eric Lyon and Christopher Penrose",
 	"description" : "A collection of externals that process audio in the spectral domain",
-	"homepatcher" : "FFTease Overview.maxpat",
+	"homepatcher" : "FFTease.maxpat",
 	"max_version_min" : "8.0", "max_version_max" : "none",
 	"name" : "FFTease3.0-MaxMSP",
 	"os" : {
@@ -17,7 +17,7 @@
 	},
 	"package_extra" : {
 		"reverse_domain" : "edu.vt.music.disis",
-		"copyright" : "Copyright (c) 1999-2023 Eric Lyon and Christopher Penrose"
+		"copyright" : "Copyright (c) 1999-2022 Eric Lyon and Christopher Penrose"
 	},
 	"tags" : ["spectral processing", "cross synthesis", "analysis-synthesis", "cellular automata"],
 	"version" : "1.0.0",
