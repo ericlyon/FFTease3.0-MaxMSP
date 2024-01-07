@@ -1,0 +1,9 @@
+FFTease for Max - Changelog
+
+Version 3.0.2 (not yet released, but you can build it from Github)
+
+Added this Changelog file.
+
+fftz.pvwarpb - added a notify function to prevent initial buffer access crashes.
+
+Updated the FFTease.overview patch to correctly load fpic image.
