@@ -861,27 +861,6 @@ void pvwarpb_dsp64(t_pvwarpb *x, t_object *dsp64, short *count, double samplerat
         object_method(dsp64, gensym("dsp_add64"),x,pvwarpb_perform64,0,NULL);
 }
 
-// NEW LOAD CODE
-
-// buffer_ref_set(x->tablebuf_ref, x->buffername);
-
-// here's where we set the buffer~ we're going to access
-/*
-void pvwarpb_doset(t_pvwarpb *x, t_symbol *s)
-{
-    if (!x->buffer_ref){
-        x->buffer_ref = buffer_ref_new((t_object *)x, s);
-    } else {
-        buffer_ref_set(x->tablebuf_ref, s);
-    }
-    x->buffername = s;
-}
-
-void pvwarpb_set(t_pvwarp *x, t_symbol *s)
-{
-    defer(x, (method)pvwarpb_doset, s, 0, NULL);
-}
-*/
 void pvwarpb_attach_buffer(t_pvwarpb *x)
 {
     if (!x->tablebuf_ref)
