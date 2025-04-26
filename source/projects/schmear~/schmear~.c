@@ -60,7 +60,6 @@ int C74_EXPORT main(void)
     class_addmethod(c,(method)schmear_shift,"shift",A_FLOAT,0);
     class_addmethod(c,(method)schmear_schmimp,"schmimp",A_GIMME,0);
     class_addmethod(c,(method)schmear_oscbank,"oscbank",A_FLOAT,0);
-    //	class_addmethod(c,(method)schmear_winfac,"winfac",A_FLOAT,0);
     class_addmethod(c,(method)schmear_fftinfo,"fftinfo",0);
     class_addmethod(c,(method)schmear_float,"float",A_FLOAT,0);
     
@@ -177,8 +176,6 @@ void schmear_assist (t_schmear *x, void *b, long msg, long arg, char *dst)
     if (msg==1) {
         switch (arg) {
             case 0: sprintf(dst,"(signal) Input"); break;
-                // case 1: sprintf(dst,"(signal/float) Threshold Generator"); break;
-                // case 2: sprintf(dst,"(signal/float) Multiplier for Weak Bins"); break;
         }
     } else if (msg==2) {
         sprintf(dst,"(signal) Output");
@@ -225,7 +222,6 @@ void schmear_init(t_schmear *x)
     x->spreader[4] = 0.15;
     x->spreader[5] = 0.3;
     x->spreader[6] = 0.6;
-    //	x->freakmode = 0;
     x->shift = 0;
     x->x_obj.z_disabled = 0;
 }
@@ -246,7 +242,6 @@ void do_schmear(t_schmear *x)
     double *channel = fft->channel;
     double frame_peak = 0.0, local_thresh;
     double threshold = x->threshold;
-    //	int shift = x->shift;
     int N = fft->N;
     int N2 = fft->N2;
     double *newamps = x->newamps;
@@ -255,7 +250,6 @@ void do_schmear(t_schmear *x)
     int spreadlen = x->spreadlen;
     int spread_center = (spreadlen - 1) / 2;
     int thisbin;
-    //	short freakmode = x->freakmode;
     
     fold(fft);	
     rdft(fft,1);
@@ -267,25 +261,9 @@ void do_schmear(t_schmear *x)
     }
     local_thresh = frame_peak * threshold;
     // clean newamps
-    // memset(newamps, 0, N2 * sizeof(float));
     for(i = 0; i < N2; i++){
         newamps[i] = 0.0;
     }
-    /*
-     if( freakmode ){ // weird mistake version
-     for(i = 0; i < N2; i++){	
-     if(channel[i * 2] > local_thresh){
-     curamp = channel[i * 2];
-     for(j = i - spread_center; j <= i + spread_center; j++){
-     if(j >= 0 && j < N2){
-     newamps[j] += curamp * spreader[j + spread_center];
-     }
-     }
-     }
-     }  
-     } 
-     */
-    // no spread for now
     
     for(i = 0; i < N2; i++){	
         curamp = channel[i * 2];
@@ -302,15 +280,6 @@ void do_schmear(t_schmear *x)
             newamps[i] = curamp;
         }
     }
-    
-    
-    // shift works ok
-    /*
-     for( i = 0; i < N2; i++){
-     if( i + shift < N2 && i + shift >= 0 ){
-     newamps[i + shift] = channel[i * 2];
-     }
-     }*/
     
     // move amps back where they belong
     for(i = 0; i < N2; i++){
@@ -358,7 +327,7 @@ void schmear_perform64(t_schmear *x, t_object *dsp64, double **ins,
     }
     if(x->fft->obank_flag)
         mult *= FFTEASE_OSCBANK_SCALAR;
-    //do_schmear(x);
+
     if( fft->bufferStatus == EQUAL_TO_MSP_VECTOR ){
         sysmem_copyptr(input + D, input, (Nw - D) * sizeof(t_double));
         sysmem_copyptr(MSPInputVector, input + (Nw - D), D * sizeof(t_double));
