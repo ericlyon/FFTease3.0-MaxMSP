@@ -86,7 +86,7 @@ jobs:
         
     - uses: actions/upload-artifact@v4
       with:
-        name: ${{ github.event.repository.name }}-${{ steps.short-sha.outputs.sha }}-${{ matrix.config }}
+        name: ${{ github.event.repository.name }}-${{ steps.short-sha.outputs.sha }}-${{ matrix.config }}-${{ matrix.os }}
         path: ${{ github.event.repository.name }}
 
   release:
